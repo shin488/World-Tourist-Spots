@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>世界の観光地</title>
-</head>
+  <title>世界の観光地ガイド</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
       font-family: 'Georgia', serif;
-      background: #0a0a0a;
+      background: #050510;
       color: #fff;
       overflow-x: hidden;
     }
@@ -23,702 +18,376 @@
     .hero {
       height: 100vh;
       background: linear-gradient(135deg, #0a0a2e 0%, #1a1a4e 50%, #0d0d1a 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
     }
-
     .hero::before {
       content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(100,100,255,0.15) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(100,100,255,.15) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
       animation: pulse 4s ease-in-out infinite;
     }
-
     @keyframes pulse {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+      0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5;}
+      50%{transform:translate(-50%,-50%) scale(1.2);opacity:1;}
     }
-
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      letter-spacing: 0.1em;
-      text-shadow: 0 0 40px rgba(150,150,255,0.8);
-      position: relative;
-      z-index: 1;
+      font-size: clamp(2.5rem,6vw,5rem);
+      letter-spacing: .1em;
+      text-shadow: 0 0 40px rgba(150,150,255,.8);
+      position: relative; z-index: 1;
     }
-
     .hero p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.2em;
-      position: relative;
-      z-index: 1;
+      margin-top: 1rem; font-size: 1.2rem;
+      color: rgba(255,255,255,.6); letter-spacing: .2em;
+      position: relative; z-index: 1;
     }
-
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-    }
-
+    .stars { position: absolute; width: 100%; height: 100%; top:0; left:0; }
     .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
+      position: absolute; width: 2px; height: 2px;
+      background: white; border-radius: 50%;
       animation: twinkle var(--dur) ease-in-out infinite;
     }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
+    @keyframes twinkle { 0%,100%{opacity:.2;} 50%{opacity:1;} }
     .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.3em;
-      color: rgba(255,255,255,0.4);
+      position: absolute; bottom: 2rem;
+      font-size: .85rem; letter-spacing: .3em;
+      color: rgba(255,255,255,.4);
       animation: bounce 2s ease-in-out infinite;
     }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(8px); }
-    }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(8px);} }
 
     /* ===== NAV ===== */
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(10px);
-      padding: 1rem 2rem;
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(10px);
+      padding: .8rem 2rem;
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
-
     nav a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      transition: color 0.3s;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      transition: all 0.3s;
+      color: rgba(255,255,255,.6); text-decoration: none;
+      font-size: .85rem; letter-spacing: .1em;
+      padding: .3rem .8rem; border-radius: 20px;
+      transition: all .3s;
     }
+    nav a:hover { color: #fff; background: rgba(255,255,255,.1); }
 
-    nav a:hover {
-      color: #fff;
-      background: rgba(255,255,255,0.1);
-    }
-
-    /* ===== SECTION BASE ===== */
+    /* ===== COUNTRY SECTION ===== */
     .country-section {
-      padding: 6rem 2rem;
-      position: relative;
-      overflow: hidden;
+      padding: 5rem 2rem;
+      position: relative; overflow: hidden;
     }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
 
     .country-header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .country-flag { font-size: 4rem; display: block; margin-bottom: .5rem; }
+    .country-name { font-size: clamp(2rem,4vw,3.5rem); margin-bottom: .5rem; }
+    .country-tagline { font-size: 1rem; letter-spacing: .2em; opacity: .7; }
+
+    /* ===== COUNTRY INTRO ===== */
+    .country-intro {
       text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .country-flag {
-      font-size: 4rem;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .country-name {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      margin-bottom: 0.5rem;
-    }
-
-    .country-tagline {
+      padding: 1.5rem 2rem;
+      border-radius: 14px;
+      margin-bottom: 2.5rem;
       font-size: 1rem;
-      letter-spacing: 0.2em;
-      opacity: 0.7;
+      line-height: 1.9;
+      color: rgba(255,255,255,.8);
     }
 
+    /* ===== INFO STRIP ===== */
+    .info-strip {
+      display: flex; flex-wrap: wrap; gap: .8rem;
+      justify-content: center; margin-bottom: 2.5rem;
+    }
+    .info-pill {
+      padding: .4rem 1.2rem; border-radius: 30px;
+      font-size: .8rem; letter-spacing: .1em;
+    }
+
+    /* ===== SPOTS GRID ===== */
     .spots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
       gap: 1.5rem;
     }
-
     .spot-card {
-      border-radius: 16px;
-      padding: 2rem;
-      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 16px; padding: 2rem;
+      transition: transform .3s, box-shadow .3s;
       cursor: default;
     }
-
-    .spot-card:hover {
-      transform: translateY(-6px);
+    .spot-card:hover { transform: translateY(-6px); }
+    .spot-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+    .spot-name { font-size: 1.2rem; margin-bottom: .3rem; }
+    .spot-location { font-size: .75rem; opacity: .55; letter-spacing: .1em; margin-bottom: .7rem; }
+    .spot-desc { font-size: .88rem; line-height: 1.8; opacity: .8; }
+    .spot-tags { margin-top: .8rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tag {
+      padding: .2rem .7rem; border-radius: 20px;
+      font-size: .72rem; letter-spacing: .05em;
     }
 
-    .spot-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .spot-name {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .spot-desc {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      opacity: 0.8;
-    }
-
-    .spot-tag {
-      display: inline-block;
-      margin-top: 0.8rem;
-      padding: 0.2rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* ===== JAPAN ===== */
-    #japan {
-      background: linear-gradient(180deg, #1a0010 0%, #2d0020 50%, #1a0010 100%);
-    }
-
-    #japan .country-name {
-      color: #ff6b9d;
-      text-shadow: 0 0 30px rgba(255,107,157,0.5);
-    }
-
-    #japan .country-tagline { color: #ffb3d1; }
-
-    #japan .spot-card {
-      background: rgba(255,107,157,0.08);
-      border: 1px solid rgba(255,107,157,0.2);
-      box-shadow: 0 4px 20px rgba(255,107,157,0.1);
-    }
-
-    #japan .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(255,107,157,0.25);
-    }
-
-    #japan .spot-name { color: #ff6b9d; }
-    #japan .spot-tag {
-      background: rgba(255,107,157,0.15);
-      color: #ff6b9d;
-      border: 1px solid rgba(255,107,157,0.3);
-    }
-
-    #japan::before {
-      content: '桜';
-      position: absolute;
-      font-size: 20rem;
-      opacity: 0.03;
-      top: 50%;
-      right: -2rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    /* ===== ITALY ===== */
-    #italy {
-      background: linear-gradient(180deg, #1a0f00 0%, #2e1a00 50%, #1a0f00 100%);
-    }
-
-    #italy .country-name {
-      color: #f4a261;
-      text-shadow: 0 0 30px rgba(244,162,97,0.5);
-      font-style: italic;
-    }
-
-    #italy .country-tagline { color: #f4c89a; }
-
-    #italy .spot-card {
-      background: rgba(244,162,97,0.08);
-      border: 1px solid rgba(244,162,97,0.2);
-      box-shadow: 0 4px 20px rgba(244,162,97,0.1);
-    }
-
-    #italy .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(244,162,97,0.25);
-    }
-
-    #italy .spot-name { color: #f4a261; }
-    #italy .spot-tag {
-      background: rgba(244,162,97,0.15);
-      color: #f4a261;
-      border: 1px solid rgba(244,162,97,0.3);
-    }
-
-    #italy::before {
-      content: '✦';
-      position: absolute;
-      font-size: 25rem;
-      opacity: 0.02;
-      top: 50%;
-      left: -3rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    /* ===== EGYPT ===== */
-    #egypt {
-      background: linear-gradient(180deg, #0d0800 0%, #1f1400 50%, #0d0800 100%);
-    }
-
-    #egypt .country-name {
-      color: #ffd700;
-      text-shadow: 0 0 30px rgba(255,215,0,0.5);
-    }
-
-    #egypt .country-tagline { color: #ffe566; }
-
-    #egypt .spot-card {
-      background: rgba(255,215,0,0.06);
-      border: 1px solid rgba(255,215,0,0.2);
-      box-shadow: 0 4px 20px rgba(255,215,0,0.08);
-    }
-
-    #egypt .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(255,215,0,0.2);
-    }
-
-    #egypt .spot-name { color: #ffd700; }
-    #egypt .spot-tag {
-      background: rgba(255,215,0,0.12);
-      color: #ffd700;
-      border: 1px solid rgba(255,215,0,0.3);
-    }
-
-    #egypt::before {
-      content: '𓂀';
-      position: absolute;
-      font-size: 18rem;
-      opacity: 0.04;
-      top: 50%;
-      right: 2rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    /* ===== BRAZIL ===== */
-    #brazil {
-      background: linear-gradient(180deg, #001a08 0%, #002d10 50%, #001a08 100%);
-    }
-
-    #brazil .country-name {
-      color: #00e676;
-      text-shadow: 0 0 30px rgba(0,230,118,0.5);
-    }
-
-    #brazil .country-tagline { color: #69f0ae; }
-
-    #brazil .spot-card {
-      background: rgba(0,230,118,0.06);
-      border: 1px solid rgba(0,230,118,0.2);
-      box-shadow: 0 4px 20px rgba(0,230,118,0.08);
-    }
-
-    #brazil .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(0,230,118,0.2);
-    }
-
-    #brazil .spot-name { color: #00e676; }
-    #brazil .spot-tag {
-      background: rgba(0,230,118,0.12);
-      color: #00e676;
-      border: 1px solid rgba(0,230,118,0.3);
-    }
-
-    /* ===== INDIA ===== */
-    #india {
-      background: linear-gradient(180deg, #1a0800 0%, #2d1000 50%, #1a0800 100%);
-    }
-
-    #india .country-name {
-      color: #ff9800;
-      text-shadow: 0 0 30px rgba(255,152,0,0.5);
-    }
-
-    #india .country-tagline { color: #ffcc80; }
-
-    #india .spot-card {
-      background: rgba(255,152,0,0.07);
-      border: 1px solid rgba(255,152,0,0.2);
-      box-shadow: 0 4px 20px rgba(255,152,0,0.08);
-    }
-
-    #india .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(255,152,0,0.2);
-    }
-
-    #india .spot-name { color: #ff9800; }
-    #india .spot-tag {
-      background: rgba(255,152,0,0.12);
-      color: #ff9800;
-      border: 1px solid rgba(255,152,0,0.3);
-    }
-
-    #india::before {
-      content: '☸';
-      position: absolute;
-      font-size: 20rem;
-      opacity: 0.03;
-      top: 50%;
-      left: -2rem;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    /* ===== USA ===== */
-    #usa {
-      background: linear-gradient(180deg, #00001a 0%, #00002e 50%, #00001a 100%);
-    }
-
-    #usa .country-name {
-      color: #4fc3f7;
-      text-shadow: 0 0 30px rgba(79,195,247,0.5);
-    }
-
-    #usa .country-tagline { color: #b3e5fc; }
-
-    #usa .spot-card {
-      background: rgba(79,195,247,0.06);
-      border: 1px solid rgba(79,195,247,0.2);
-      box-shadow: 0 4px 20px rgba(79,195,247,0.08);
-    }
-
-    #usa .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(79,195,247,0.2);
-    }
-
-    #usa .spot-name { color: #4fc3f7; }
-    #usa .spot-tag {
-      background: rgba(79,195,247,0.12);
-      color: #4fc3f7;
-      border: 1px solid rgba(79,195,247,0.3);
-    }
-
-    /* ===== FRANCE ===== */
-    #france {
-      background: linear-gradient(180deg, #0a001a 0%, #150030 50%, #0a001a 100%);
-    }
-
-    #france .country-name {
-      color: #ce93d8;
-      text-shadow: 0 0 30px rgba(206,147,216,0.5);
-      font-style: italic;
-    }
-
-    #france .country-tagline { color: #e1bee7; }
-
-    #france .spot-card {
-      background: rgba(206,147,216,0.07);
-      border: 1px solid rgba(206,147,216,0.2);
-      box-shadow: 0 4px 20px rgba(206,147,216,0.08);
-    }
-
-    #france .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(206,147,216,0.2);
-    }
-
-    #france .spot-name { color: #ce93d8; }
-    #france .spot-tag {
-      background: rgba(206,147,216,0.12);
-      color: #ce93d8;
-      border: 1px solid rgba(206,147,216,0.3);
-    }
-
-    /* ===== AUSTRALIA ===== */
-    #australia {
-      background: linear-gradient(180deg, #001015 0%, #001f2a 50%, #001015 100%);
-    }
-
-    #australia .country-name {
-      color: #26c6da;
-      text-shadow: 0 0 30px rgba(38,198,218,0.5);
-    }
-
-    #australia .country-tagline { color: #80deea; }
-
-    #australia .spot-card {
-      background: rgba(38,198,218,0.06);
-      border: 1px solid rgba(38,198,218,0.2);
-      box-shadow: 0 4px 20px rgba(38,198,218,0.08);
-    }
-
-    #australia .spot-card:hover {
-      box-shadow: 0 10px 40px rgba(38,198,218,0.2);
-    }
-
-    #australia .spot-name { color: #26c6da; }
-    #australia .spot-tag {
-      background: rgba(38,198,218,0.12);
-      color: #26c6da;
-      border: 1px solid rgba(38,198,218,0.3);
-    }
-
-    /* ===== DIVIDER ===== */
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      margin: 0 2rem;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
     }
 
-    /* ===== FOOTER ===== */
     footer {
-      text-align: center;
-      padding: 3rem 2rem;
-      background: #000;
-      color: rgba(255,255,255,0.3);
-      font-size: 0.85rem;
-      letter-spacing: 0.2em;
+      text-align: center; padding: 3rem;
+      color: rgba(255,255,255,.2); font-size: .8rem; letter-spacing: .2em;
     }
 
-    /* ===== FADE IN ===== */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+    .fade-in { opacity:0; transform:translateY(30px); transition:opacity .8s,transform .8s; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
+
+    @media(max-width:600px) {
+      .spots-grid { grid-template-columns: 1fr; }
+      nav a { font-size: .75rem; padding: .2rem .5rem; }
     }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ========== 国ごとのテーマカラー ========== */
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      .spots-grid {
-        grid-template-columns: 1fr;
-      }
-      nav a {
-        font-size: 0.8rem;
-        padding: 0.2rem 0.5rem;
-      }
-    }
+    /* 日本 — ピンク */
+    #japan { background: linear-gradient(180deg,#120008 0%,#250015 50%,#120008 100%); }
+    #japan .country-name { color:#ff6b9d; text-shadow:0 0 30px rgba(255,107,157,.5); }
+    #japan .country-tagline { color:#ffb3d1; }
+    #japan .country-intro { background:rgba(255,107,157,.06); border:1px solid rgba(255,107,157,.15); }
+    #japan .info-pill { background:rgba(255,107,157,.1); color:#ff6b9d; border:1px solid rgba(255,107,157,.25); }
+    #japan .spot-card { background:rgba(255,107,157,.07); border:1px solid rgba(255,107,157,.2); }
+    #japan .spot-card:hover { box-shadow:0 12px 40px rgba(255,107,157,.2); }
+    #japan .spot-name { color:#ff6b9d; }
+    #japan .tag { background:rgba(255,107,157,.12); color:#ff6b9d; border:1px solid rgba(255,107,157,.25); }
+    #japan::before { content:'桜'; position:absolute; font-size:20rem; opacity:.03; top:50%; right:-1rem; transform:translateY(-50%); pointer-events:none; }
+
+    /* イタリア — オレンジ */
+    #italy { background: linear-gradient(180deg,#120900 0%,#261500 50%,#120900 100%); }
+    #italy .country-name { color:#f4a261; text-shadow:0 0 30px rgba(244,162,97,.5); font-style:italic; }
+    #italy .country-tagline { color:#f4c89a; }
+    #italy .country-intro { background:rgba(244,162,97,.06); border:1px solid rgba(244,162,97,.15); }
+    #italy .info-pill { background:rgba(244,162,97,.1); color:#f4a261; border:1px solid rgba(244,162,97,.25); }
+    #italy .spot-card { background:rgba(244,162,97,.07); border:1px solid rgba(244,162,97,.2); }
+    #italy .spot-card:hover { box-shadow:0 12px 40px rgba(244,162,97,.2); }
+    #italy .spot-name { color:#f4a261; }
+    #italy .tag { background:rgba(244,162,97,.12); color:#f4a261; border:1px solid rgba(244,162,97,.25); }
+
+    /* エジプト — ゴールド */
+    #egypt { background: linear-gradient(180deg,#0d0800 0%,#1f1400 50%,#0d0800 100%); }
+    #egypt .country-name { color:#ffd700; text-shadow:0 0 30px rgba(255,215,0,.5); }
+    #egypt .country-tagline { color:#ffe566; }
+    #egypt .country-intro { background:rgba(255,215,0,.05); border:1px solid rgba(255,215,0,.15); }
+    #egypt .info-pill { background:rgba(255,215,0,.08); color:#ffd700; border:1px solid rgba(255,215,0,.25); }
+    #egypt .spot-card { background:rgba(255,215,0,.06); border:1px solid rgba(255,215,0,.18); }
+    #egypt .spot-card:hover { box-shadow:0 12px 40px rgba(255,215,0,.15); }
+    #egypt .spot-name { color:#ffd700; }
+    #egypt .tag { background:rgba(255,215,0,.1); color:#ffd700; border:1px solid rgba(255,215,0,.25); }
+    #egypt::before { content:'𓂀'; position:absolute; font-size:18rem; opacity:.04; top:50%; right:2rem; transform:translateY(-50%); pointer-events:none; }
+
+    /* ブラジル — グリーン */
+    #brazil { background: linear-gradient(180deg,#001508 0%,#002810 50%,#001508 100%); }
+    #brazil .country-name { color:#00e676; text-shadow:0 0 30px rgba(0,230,118,.5); }
+    #brazil .country-tagline { color:#69f0ae; }
+    #brazil .country-intro { background:rgba(0,230,118,.05); border:1px solid rgba(0,230,118,.15); }
+    #brazil .info-pill { background:rgba(0,230,118,.08); color:#00e676; border:1px solid rgba(0,230,118,.25); }
+    #brazil .spot-card { background:rgba(0,230,118,.06); border:1px solid rgba(0,230,118,.18); }
+    #brazil .spot-card:hover { box-shadow:0 12px 40px rgba(0,230,118,.15); }
+    #brazil .spot-name { color:#00e676; }
+    #brazil .tag { background:rgba(0,230,118,.1); color:#00e676; border:1px solid rgba(0,230,118,.25); }
+
+    /* インド — オレンジ系 */
+    #india { background: linear-gradient(180deg,#120600 0%,#241000 50%,#120600 100%); }
+    #india .country-name { color:#ff9800; text-shadow:0 0 30px rgba(255,152,0,.5); }
+    #india .country-tagline { color:#ffcc80; }
+    #india .country-intro { background:rgba(255,152,0,.05); border:1px solid rgba(255,152,0,.15); }
+    #india .info-pill { background:rgba(255,152,0,.08); color:#ff9800; border:1px solid rgba(255,152,0,.25); }
+    #india .spot-card { background:rgba(255,152,0,.06); border:1px solid rgba(255,152,0,.18); }
+    #india .spot-card:hover { box-shadow:0 12px 40px rgba(255,152,0,.15); }
+    #india .spot-name { color:#ff9800; }
+    #india .tag { background:rgba(255,152,0,.1); color:#ff9800; border:1px solid rgba(255,152,0,.25); }
+    #india::before { content:'☸'; position:absolute; font-size:20rem; opacity:.03; top:50%; left:-2rem; transform:translateY(-50%); pointer-events:none; }
+
+    /* アメリカ — ブルー */
+    #usa { background: linear-gradient(180deg,#00001a 0%,#00002e 50%,#00001a 100%); }
+    #usa .country-name { color:#4fc3f7; text-shadow:0 0 30px rgba(79,195,247,.5); }
+    #usa .country-tagline { color:#b3e5fc; }
+    #usa .country-intro { background:rgba(79,195,247,.05); border:1px solid rgba(79,195,247,.15); }
+    #usa .info-pill { background:rgba(79,195,247,.08); color:#4fc3f7; border:1px solid rgba(79,195,247,.25); }
+    #usa .spot-card { background:rgba(79,195,247,.06); border:1px solid rgba(79,195,247,.18); }
+    #usa .spot-card:hover { box-shadow:0 12px 40px rgba(79,195,247,.15); }
+    #usa .spot-name { color:#4fc3f7; }
+    #usa .tag { background:rgba(79,195,247,.1); color:#4fc3f7; border:1px solid rgba(79,195,247,.25); }
+
+    /* フランス — パープル */
+    #france { background: linear-gradient(180deg,#0a001a 0%,#150030 50%,#0a001a 100%); }
+    #france .country-name { color:#ce93d8; text-shadow:0 0 30px rgba(206,147,216,.5); font-style:italic; }
+    #france .country-tagline { color:#e1bee7; }
+    #france .country-intro { background:rgba(206,147,216,.05); border:1px solid rgba(206,147,216,.15); }
+    #france .info-pill { background:rgba(206,147,216,.08); color:#ce93d8; border:1px solid rgba(206,147,216,.25); }
+    #france .spot-card { background:rgba(206,147,216,.06); border:1px solid rgba(206,147,216,.18); }
+    #france .spot-card:hover { box-shadow:0 12px 40px rgba(206,147,216,.15); }
+    #france .spot-name { color:#ce93d8; }
+    #france .tag { background:rgba(206,147,216,.1); color:#ce93d8; border:1px solid rgba(206,147,216,.25); }
+
+    /* オーストラリア — シアン */
+    #australia { background: linear-gradient(180deg,#001015 0%,#001f2a 50%,#001015 100%); }
+    #australia .country-name { color:#26c6da; text-shadow:0 0 30px rgba(38,198,218,.5); }
+    #australia .country-tagline { color:#80deea; }
+    #australia .country-intro { background:rgba(38,198,218,.05); border:1px solid rgba(38,198,218,.15); }
+    #australia .info-pill { background:rgba(38,198,218,.08); color:#26c6da; border:1px solid rgba(38,198,218,.25); }
+    #australia .spot-card { background:rgba(38,198,218,.06); border:1px solid rgba(38,198,218,.18); }
+    #australia .spot-card:hover { box-shadow:0 12px 40px rgba(38,198,218,.15); }
+    #australia .spot-name { color:#26c6da; }
+    #australia .tag { background:rgba(38,198,218,.1); color:#26c6da; border:1px solid rgba(38,198,218,.25); }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="stars" id="stars"></div>
-    <h1>🌍 世界の観光地</h1>
-    <p>WORLD TRAVEL GUIDE</p>
-    <div class="scroll-hint">▼ SCROLL</div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="stars" id="stars"></div>
+  <h1>🌍 世界の観光地</h1>
+  <p>WORLD TRAVEL GUIDE</p>
+  <div class="scroll-hint">▼ SCROLL</div>
+</section>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#japan">🇯🇵 日本</a>
-    <a href="#italy">🇮🇹 イタリア</a>
-    <a href="#egypt">🇪🇬 エジプト</a>
-    <a href="#brazil">🇧🇷 ブラジル</a>
-    <a href="#india">🇮🇳 インド</a>
-    <a href="#usa">🇺🇸 アメリカ</a>
-    <a href="#france">🇫🇷 フランス</a>
-    <a href="#australia">🇦🇺 オーストラリア</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#japan">🇯🇵 日本</a>
+  <a href="#italy">🇮🇹 イタリア</a>
+  <a href="#egypt">🇪🇬 エジプト</a>
+  <a href="#brazil">🇧🇷 ブラジル</a>
+  <a href="#india">🇮🇳 インド</a>
+  <a href="#usa">🇺🇸 アメリカ</a>
+  <a href="#france">🇫🇷 フランス</a>
+  <a href="#australia">🇦🇺 オーストラリア</a>
+</nav>
 
-  <!-- JAPAN -->
-  <section class="country-section" id="japan">
-    <div class="section-inner">
-      <div class="country-header fade-in">
-        <span class="country-flag">🇯🇵</span>
-        <h2 class="country-name">日本</h2>
-        <p class="country-tagline">— 静寂と美の国 —</p>
+<!-- ===== JAPAN ===== -->
+<section class="country-section" id="japan">
+  <div class="section-inner">
+    <div class="country-header fade-in">
+      <span class="country-flag">🇯🇵</span>
+      <h2 class="country-name">日本</h2>
+      <p class="country-tagline">— 静寂と美の国 —</p>
+    </div>
+    <div class="country-intro fade-in">
+      四季折々の自然美、千年の歴史が息づく古都、最先端の都市文化。日本は相反する魅力が共存する唯一無二の国。桜舞う春、緑輝く夏、紅葉燃える秋、雪化粧の冬——どの季節も旅人を魅了してやまない。
+    </div>
+    <div class="info-strip fade-in">
+      <span class="info-pill">🌸 ベストシーズン：3〜5月 / 10〜11月</span>
+      <span class="info-pill">¥ 通貨：日本円</span>
+      <span class="info-pill">🗣 言語：日本語</span>
+      <span class="info-pill">🏙 首都：東京</span>
+      <span class="info-pill">🍣 名物：寿司・ラーメン・抹茶</span>
+    </div>
+    <div class="spots-grid">
+      <div class="spot-card fade-in">
+        <span class="spot-icon">⛩️</span>
+        <h3 class="spot-name">伏見稲荷大社</h3>
+        <div class="spot-location">📍 京都府京都市</div>
+        <p class="spot-desc">無数の朱色の鳥居が連なる神秘的な参道「千本鳥居」。山頂まで続く約4kmの道のりは、日常から切り離された異世界への旅。夜明けや夕暮れ時の光景は特に幻想的。</p>
+        <div class="spot-tags"><span class="tag">神社仏閣</span><span class="tag">世界遺産</span><span class="tag">フォトスポット</span></div>
       </div>
-      <div class="spots-grid">
-        <div class="spot-card fade-in">
-          <span class="spot-icon">⛩️</span>
-          <h3 class="spot-name">京都・伏見稲荷大社</h3>
-          <p class="spot-desc">無数の朱色の鳥居が連なる神秘的な参道。夜明けの静寂の中を歩けば、時間を超えた感覚に包まれる。</p>
-          <span class="spot-tag">神社仏閣</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🗻</span>
-          <h3 class="spot-name">富士山</h3>
-          <p class="spot-desc">日本の象徴、標高3,776m。夜明けに染まる山頂の光景は、言葉を失うほどの美しさ。</p>
-          <span class="spot-tag">自然</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🌸</span>
-          <h3 class="spot-name">奈良・吉野山</h3>
-          <p class="spot-desc">春には3万本の桜が山全体を覆う。「一目千本」と称される絶景は、日本の春の頂点。</p>
-          <span class="spot-tag">自然・文化</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🏯</span>
-          <h3 class="spot-name">姫路城</h3>
-          <p class="spot-desc">白鷺城とも呼ばれる純白の天守閣。ユネスコ世界遺産に登録された日本最高峰の城郭建築。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🗻</span>
+        <h3 class="spot-name">富士山</h3>
+        <div class="spot-location">📍 静岡県・山梨県</div>
+        <p class="spot-desc">標高3,776m、日本最高峰。夜明けに染まる山頂「ご来光」は登山者だけが体験できる感動。河口湖からの逆さ富士も絶景。ユネスコ世界文化遺産。</p>
+        <div class="spot-tags"><span class="tag">自然</span><span class="tag">世界遺産</span><span class="tag">登山</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🌸</span>
+        <h3 class="spot-name">吉野山</h3>
+        <div class="spot-location">📍 奈良県吉野郡</div>
+        <p class="spot-desc">春には3万本の桜が山全体を覆う「一目千本」の絶景。下千本・中千本・上千本・奥千本と標高によって開花時期がずれるため、長期間楽しめる。</p>
+        <div class="spot-tags"><span class="tag">桜</span><span class="tag">世界遺産</span><span class="tag">春</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🏯</span>
+        <h3 class="spot-name">姫路城</h3>
+        <div class="spot-location">📍 兵庫県姫路市</div>
+        <p class="spot-desc">「白鷺城」と呼ばれる純白の天守閣。日本初のユネスコ世界遺産のひとつで、現存する最も完全な形の城郭建築。桜の季節は特に美しい。</p>
+        <div class="spot-tags"><span class="tag">城</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🦌</span>
+        <h3 class="spot-name">奈良公園</h3>
+        <div class="spot-location">📍 奈良県奈良市</div>
+        <p class="spot-desc">約1,200頭の野生の鹿が自由に歩き回る公園。東大寺の大仏、春日大社など世界遺産が集中するエリアで、鹿と歴史建築の共演が楽しめる。</p>
+        <div class="spot-tags"><span class="tag">動物</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🌊</span>
+        <h3 class="spot-name">屋久島</h3>
+        <div class="spot-location">📍 鹿児島県</div>
+        <p class="spot-desc">樹齢7,200年とも言われる縄文杉が息づく神秘の島。宮崎駿「もののけ姫」の舞台モデルとも言われ、豊かな水と緑が広がる。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <div class="divider"></div>
+<div class="divider"></div>
 
-  <!-- ITALY -->
-  <section class="country-section" id="italy">
-    <div class="section-inner">
-      <div class="country-header fade-in">
-        <span class="country-flag">🇮🇹</span>
-        <h2 class="country-name">Italia</h2>
-        <p class="country-tagline">— 永遠の都、芸術と情熱の国 —</p>
-      </div>
-      <div class="spots-grid">
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🏛️</span>
-          <h3 class="spot-name">ローマ・コロッセオ</h3>
-          <p class="spot-desc">2000年の歴史を刻む円形闘技場。夕暮れに黄金色に染まる姿は、古代ローマの栄光を今に伝える。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🛶</span>
-          <h3 class="spot-name">ヴェネツィア</h3>
-          <p class="spot-desc">水の都。ゴンドラで巡る運河、サン・マルコ広場の荘厳さ。世界で最もロマンティックな都市のひとつ。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🎨</span>
-          <h3 class="spot-name">フィレンツェ</h3>
-          <p class="spot-desc">ルネサンスの揺籠。ウフィツィ美術館にはボッティチェリの「春」が眠り、街全体が野外美術館。</p>
-          <span class="spot-tag">芸術・文化</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🌋</span>
-          <h3 class="spot-name">アマルフィ海岸</h3>
-          <p class="spot-desc">断崖に張り付くカラフルな街並みと紺碧の地中海。南イタリアの太陽が生み出す絶景。</p>
-          <span class="spot-tag">自然・絶景</span>
-        </div>
-      </div>
+<!-- ===== ITALY ===== -->
+<section class="country-section" id="italy">
+  <div class="section-inner">
+    <div class="country-header fade-in">
+      <span class="country-flag">🇮🇹</span>
+      <h2 class="country-name">Italia</h2>
+      <p class="country-tagline">— 永遠の都、芸術と情熱の国 —</p>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- EGYPT -->
-  <section class="country-section" id="egypt">
-    <div class="section-inner">
-      <div class="country-header fade-in">
-        <span class="country-flag">🇪🇬</span>
-        <h2 class="country-name">Egypt</h2>
-        <p class="country-tagline">— 砂漠に眠る、永遠の文明 —</p>
-      </div>
-      <div class="spots-grid">
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🔺</span>
-          <h3 class="spot-name">ギザのピラミッド</h3>
-          <p class="spot-desc">4500年前に建てられた人類最大の謎。砂漠の地平線に浮かぶ三角形のシルエットは、時間の概念を超える。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🦁</span>
-          <h3 class="spot-name">スフィンクス</h3>
-          <p class="spot-desc">ピラミッドを守護する巨大な石像。その視線の先には何千年もの歴史が積み重なっている。</p>
-          <span class="spot-tag">古代遺跡</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🏺</span>
-          <h3 class="spot-name">ルクソール神殿</h3>
-          <p class="spot-desc">ナイル川沿いに立つ古代エジプト最大の神殿群。夜のライトアップは幻想的な雰囲気を醸し出す。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🌊</span>
-          <h3 class="spot-name">紅海・ダハブ</h3>
-          <p class="spot-desc">世界屈指のダイビングスポット。透明度抜群の海中には、色鮮やかなサンゴと魚たちが広がる。</p>
-          <span class="spot-tag">自然・海</span>
-        </div>
-      </div>
+    <div class="country-intro fade-in">
+      古代ローマの遺跡、ルネサンスの傑作、地中海の絶景——イタリアは人類の文明と美が凝縮された国。食も芸術のひとつ。パスタ、ピッツァ、ジェラートが旅の記憶をさらに豊かにする。
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- BRAZIL -->
-  <section class="country-section" id="brazil">
-    <div class="section-inner">
-      <div class="country-header fade-in">
-        <span class="country-flag">🇧🇷</span>
-        <h2 class="country-name">Brasil</h2>
-        <p class="country-tagline">— 生命の躍動、地球の肺 —</p>
-      </div>
-      <div class="spots-grid">
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🌿</span>
-          <h3 class="spot-name">アマゾン熱帯雨林</h3>
-          <p class="spot-desc">地球の酸素の20%を生み出す「地球の肺」。無数の生命が息づくジャングルは、自然の神秘そのもの。</p>
-          <span class="spot-tag">自然遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">💧</span>
-          <h3 class="spot-name">イグアスの滝</h3>
-          <p class="spot-desc">幅2.7kmに広がる275本の滝。ルーズベルト大統領夫人が「ナイアガラが色あせる」と言った圧倒的な絶景。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">✝️</span>
-          <h3 class="spot-name">コルコバードのキリスト像</h3>
-          <p class="spot-desc">リオデジャネイロを見下ろす高さ38mの巨大像。世界新七不思議のひとつ。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🏖️</span>
-          <h3 class="spot-name">コパカバーナビーチ</h3>
-          <p class="spot-desc">リオの象徴、4kmに渡る白砂のビーチ。サンバのリズムと太陽が溢れる、ブラジルの魂。</p>
-          <span class="spot-tag">ビーチ</span>
-        </div>
-      </div>
+    <div class="info-strip fade-in">
+      <span class="info-pill">☀️ ベストシーズン：4〜6月 / 9〜10月</span>
+      <span class="info-pill">€ 通貨：ユーロ</span>
+      <span class="info-pill">🗣 言語：イタリア語</span>
+      <span class="info-pill">🏙 首都：ローマ</span>
+      <span class="info-pill">🍕 名物：ピッツァ・パスタ・ジェラート</span>
     </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- INDIA -->
-  <section class="country-section" id="india">
-    <div class="section-inner">
-      <div class="country-header fade-in">
-        <span class="country-flag">🇮🇳</span>
-        <h2 class="country-name">India</h2>
-        <p class="country-tagline">— 神々の宿る、色彩の大地 —</p>
+    <div class="spots-grid">
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🏛️</span>
+        <h3 class="spot-name">コロッセオ</h3>
+        <div class="spot-location">📍 ローマ</div>
+        <p class="spot-desc">2000年の歴史を刻む円形闘技場。夕暮れに黄金色に染まる姿は古代ローマの栄光を今に伝える。収容人数5万人を誇った世界最大の円形劇場。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">古代遺跡</span><span class="tag">歴史</span></div>
       </div>
-      <div class="spots-grid">
-        <div class="spot-card fade-in">
-          <span class="spot-icon">🕌</span>
-          <h3 class="spot-name">タージ・マハル</h3>
-          <p class="spot-desc">愛の証として建てられた純白の霊廟。夜明けの霧の中に浮かぶ姿は、この世のものとは思えない美しさ。</p>
-          <span class="spot-tag">世界遺産</span>
-        </div>
-        <div class="spot-card fade
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🛶</span>
+        <h3 class="spot-name">ヴェネツィア</h3>
+        <div class="spot-location">📍 ヴェネト州</div>
+        <p class="spot-desc">水の都。ゴンドラで巡る運河、サン・マルコ広場の荘厳さ。118の島々が橋で結ばれた世界で最もロマンティックな都市のひとつ。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">水の都</span><span class="tag">ロマンティック</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🎨</span>
+        <h3 class="spot-name">フィレンツェ</h3>
+        <div class="spot-location">📍 トスカーナ州</div>
+        <p class="spot-desc">ルネサンスの揺籠。ウフィツィ美術館にはボッティチェリの「春」が眠り、街全体が野外美術館。ミケランジェロの「ダビデ像」もここに。</p>
+        <div class="spot-tags"><span class="tag">芸術</span><span class="tag">世界遺産</span><span class="tag">美術館</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🌊</span>
+        <h3 class="spot-name">アマルフィ海岸</h3>
+        <div class="spot-location">📍 カンパニア州</div>
+        <p class="spot-desc">断崖に張り付くカラフルな街並みと紺碧の地中海。南イタリアの太陽が生み出す絶景はユネスコ世界遺産にも登録されている。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">絶景</span><span class="tag">海</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">⛲</span>
+        <h3 class="spot-name">トレヴィの泉</h3>
+        <div class="spot-location">📍 ローマ</div>
+        <p class="spot-desc">コインを投げると再びローマに来られるという伝説の噴水。バロック建築の傑作で、夜のライトアップは特に幻想的な美しさ。</p>
+        <div class="spot-tags"><span class="tag">噴水</span><span class="tag">バロック</span><span class="tag">ロマンティック</span></div>
+      </div>
+      <div class="spot-card fade-in">
+        <span class="spot-icon">🗼</span>
+        <h3 class="spot-name">ピサの斜塔</h3>
+        <div class="spot-location">📍 トスカーナ州ピサ</div>
