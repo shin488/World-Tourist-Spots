@@ -4,87 +4,80 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>インド — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#120800;}
-.back-btn{color:rgba(255,152,0,.7);border:1px solid rgba(255,152,0,.3);}
-.back-btn:hover{color:#ff9800;border-color:#ff9800;background:rgba(255,152,0,.1);}
-.hero{background:linear-gradient(180deg,#1a0800 0%,#3d1800 50%,#1a0800 100%);}
-.hero::before{background:radial-gradient(circle,rgba(255,152,0,.2) 0%,transparent 70%);}
-.hero h1{color:#ff9800;text-shadow:0 0 50px rgba(255,152,0,.7);}
-.hero p{color:rgba(255,152,0,.6);}
-.intro{background:rgba(255,152,0,.05);border:1px solid rgba(255,152,0,.15);}
-.info-chip{background:rgba(255,152,0,.08);border:1px solid rgba(255,152,0,.2);color:#ff9800;}
-.section-label{color:#ff9800;}
-.spot-card{background:rgba(255,152,0,.06);border:1px solid rgba(255,152,0,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(255,152,0,.2);}
-.spot-name{color:#ff9800;}
-.tag{background:rgba(255,152,0,.1);border:1px solid rgba(255,152,0,.25);color:#ff9800;}
-footer{border-top:1px solid rgba(255,152,0,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#1a0800; color:#ffe0b2; overflow-x:hidden; }
+.back-btn { position:fixed; top:1.2rem; left:1.2rem; z-index:200; background:rgba(230,81,0,.9); color:#fff; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em; padding:.5rem 1.1rem; border-radius:4px; transition:background .3s; }
+.back-btn:hover { background:#ff6d00; }
+.hero { height:70vh; position:relative; display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden; }
+.hero-pattern { position:absolute; inset:0; background: radial-gradient(ellipse at 60% 40%, rgba(255,152,0,.2) 0%, transparent 60%), radial-gradient(ellipse at 10% 70%, rgba(233,30,99,.12) 0%, transparent 50%), linear-gradient(180deg,#1a0800 0%,#3d1500 40%,#1a0800 100%); }
+.mandala-deco { position:absolute; font-size:14rem; opacity:.05; pointer-events:none; animation:spin 30s linear infinite; }
+.mandala-deco:nth-child(2) { bottom:-3rem; right:-2rem; }
+.mandala-deco:nth-child(3) { top:0; left:-3rem; font-size:10rem; animation-direction:reverse; }
+@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-size:.85rem; letter-spacing:.5em; color:rgba(255,152,0,.7); margin-bottom:.5rem; }
+.hero-title { font-size:clamp(4rem,10vw,8rem); font-weight:900; color:#ff9800; line-height:1; text-shadow:0 0 60px rgba(255,152,0,.5); }
+.hero-sub { font-size:1rem; color:rgba(255,152,0,.8); margin-top:.8rem; letter-spacing:.15em; }
+.hero-line { width:60px; height:3px; background:linear-gradient(90deg,#ff9800,#e91e63); margin:.8rem 0; }
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+.india-divider { text-align:center; margin:2.5rem 0; color:rgba(255,152,0,.5); font-size:1.5rem; letter-spacing:.5em; }
+.intro-card { background:rgba(255,152,0,.08); border-left:4px solid #ff9800; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(0,0,0,.3); font-size:1rem; line-height:2; color:#ffcc80; }
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip { background:rgba(255,152,0,.12); color:#ff9800; border:1px solid rgba(255,152,0,.3); padding:.4rem 1rem; border-radius:4px; font-size:.8rem; font-weight:700; }
+.section-label { font-size:.75rem; font-weight:700; letter-spacing:.4em; color:rgba(255,152,0,.6); margin-bottom:1.5rem; text-align:center; }
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card { background:rgba(255,152,0,.07); border-radius:8px; overflow:hidden; box-shadow:0 2px 20px rgba(0,0,0,.4); transition:transform .3s,box-shadow .3s; border-top:3px solid #ff9800; border:1px solid rgba(255,152,0,.15); }
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(255,152,0,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#ff9800; margin-bottom:.3rem; }
+.spot-loc { font-size:.75rem; color:rgba(255,152,0,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#ffcc80; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:4px; font-size:.72rem; font-weight:700; background:rgba(255,152,0,.12); color:#ff9800; border:1px solid rgba(255,152,0,.25); }
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a { display:inline-block; background:#ff9800; color:#1a0800; text-decoration:none; font-size:.85rem; font-weight:700; padding:.7rem 2.5rem; border-radius:4px; letter-spacing:.1em; transition:background .3s; }
+.back-top a:hover { background:#ffb300; }
+footer { text-align:center; padding:2.5rem; background:#0d0400; color:rgba(255,152,0,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">☸</div>
-<h1>India</h1>
-<p>— 神々の宿る、色彩の大地 —</p>
+  <div class="hero-pattern"></div>
+  <div class="mandala-deco">☸</div>
+  <div class="mandala-deco">🪷</div>
+  <div class="hero-text">
+    <div class="hero-en">INDIA</div>
+    <h1 class="hero-title">India</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">神々の宿る、色彩の大地</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">数千年の歴史、無数の神々、13億人の人々が織りなす色彩と喧騒——インドは五感すべてを圧倒する国。タージ・マハルの白亜の美しさ、ガンジス川の神聖さ、ラジャスタンの砂漠の壮大さ。一度訪れれば、必ずまた戻りたくなる。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌸 ベストシーズン：10〜3月</span>
-<span class="info-chip">💰 通貨：インドルピー</span>
-<span class="info-chip">🗣 言語：ヒンディー語・英語</span>
-<span class="info-chip">🏙 首都：ニューデリー</span>
-<span class="info-chip">🍛 名物：カレー・チャイ・ビリヤニ</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">🕌</span>
-<h3 class="spot-name">タージ・マハル</h3>
-<div class="spot-loc">📍 アーグラ</div>
-<p class="spot-desc">愛妃ムムターズ・マハルのために建てられた純白の霊廟。22年の歳月と2万人の職人が作り上げた愛の証。夜明けの霧の中に浮かぶ姿はこの世のものとは思えない美しさ。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">七不思議</span><span class="tag">絶景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌊</span>
-<h3 class="spot-name">ガンジス川・ヴァラナシ</h3>
-<div class="spot-loc">📍 ウッタル・プラデーシュ州</div>
-<p class="spot-desc">ヒンドゥー教最大の聖地。夜明けのガンジス川で沐浴する人々、炎が揺れるガート——生と死が交差するこの場所は、インドの魂そのもの。</p>
-<div class="spot-tags"><span class="tag">聖地</span><span class="tag">文化</span><span class="tag">宗教</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏰</span>
-<h3 class="spot-name">アンベール城</h3>
-<div class="spot-loc">📍 ジャイプール近郊</div>
-<p class="spot-desc">ラジャスタンの丘の上に建つ壮麗な宮殿。象に乗って城門をくぐる体験は格別。鏡の間「シーシュ・マハル」はろうそく1本で星空のように輝く。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">城</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🐅</span>
-<h3 class="spot-name">ランタンボール国立公園</h3>
-<div class="spot-loc">📍 ラジャスタン州</div>
-<p class="spot-desc">野生のベンガルトラが生息するインド最高のサファリスポット。廃墟となった城跡の中をトラが歩く光景は世界でここだけ。早朝のジープサファリで遭遇率が高い。</p>
-<div class="spot-tags"><span class="tag">野生動物</span><span class="tag">サファリ</span><span class="tag">自然</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🕍</span>
-<h3 class="spot-name">ゴールデン・テンプル</h3>
-<div class="spot-loc">📍 アムリトサル</div>
-<p class="spot-desc">シク教の総本山、黄金に輝く聖廟。聖なる池に浮かぶ黄金の建物は夜になるとさらに神秘的に輝く。宗教・国籍問わず誰でも無料で食事が提供される「ランガル」も有名。</p>
-<div class="spot-tags"><span class="tag">聖地</span><span class="tag">宗教</span><span class="tag">建築</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏝️</span>
-<h3 class="spot-name">ケーララのバックウォーター</h3>
-<div class="spot-loc">📍 ケーララ州</div>
-<p class="spot-desc">南インドの水郷地帯。ハウスボートに乗りながらヤシの木が茂る水路をゆっくり進む旅は、インドの喧騒を忘れさせてくれる別世界。</p>
-<div class="spot-tags"><span class="tag">自然</span><span class="tag">ボート</span><span class="tag">癒し</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">数千年の歴史、無数の神々、13億人の人々が織りなす色彩と喧騒——インドは五感すべてを圧倒する国。タージ・マハルの白亜の美しさ、ガンジス川の神聖さ、ラジャスタンの砂漠の壮大さ。一度訪れれば、必ずまた戻りたくなる。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌸 ベストシーズン：10〜3月</span>
+    <span class="info-chip">💰 通貨：インドルピー</span>
+    <span class="info-chip">🗣 言語：ヒンディー語・英語</span>
+    <span class="info-chip">🏙 首都：ニューデリー</span>
+    <span class="info-chip">🍛 名物：カレー・チャイ・ビリヤニ</span>
+  </div>
+  <div class="india-divider">🪷 ☸ 🪷</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🕌 タージ・マハル</div><div class="spot-loc">📍 アーグラ</div><p class="spot-desc">愛妃ムムターズ・マハルのために建てられた純白の霊廟。22年の歳月と2万人の職人が作り上げた愛の証。夜明けの霧の中に浮かぶ姿はこの世のものとは思えない美しさ。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">七不思議</span><span class="tag">絶景</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🌊 ガンジス川・ヴァラナシ</div><div class="spot-loc">📍 ウッタル・プラデーシュ州</div><p class="spot-desc">ヒンドゥー教最大の聖地。夜明けのガンジス川で沐浴する人々、炎が揺れるガート——生と死が交差するこの場所は、インドの魂そのもの。</p><div class="spot-tags"><span class="tag">聖地</span><span class="tag">文化</span><span class="tag">宗教</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏰 アンベール城</div><div class="spot-loc">📍 ジャイプール近郊</div><p class="spot-desc">ラジャスタンの丘の上に建つ壮麗な宮殿。象に乗って城門をくぐる体験は格別。鏡の間「シーシュ・マハル」はろうそく1本で星空のように輝く。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">城</span><span class="tag">歴史</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🐅 ランタンボール国立公園</div><div class="spot-loc">📍 ラジャスタン州</div><p class="spot-desc">野生のベンガルトラが生息するインド最高のサファリスポット。廃墟となった城跡の中をトラが歩く光景は世界でここだけ。早朝のジープサファリで遭遇率が高い。</p><div class="spot-tags"><span class="tag">野生動物</span><span class="tag">サファリ</span><span class="tag">自然</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🕍 ゴールデン・テンプル</div><div class="spot-loc">📍 アムリトサル</div><p class="spot-desc">シク教の総本山、黄金に輝く聖廟。聖なる池に浮かぶ黄金の建物は夜になるとさらに神秘的に輝く。宗教・国籍問わず誰でも無料で食事が提供される「ランガル」も有名。</p><div class="spot-tags"><span class="tag">聖地</span><span class="tag">宗教</span><span class="tag">建築</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏝️ ケーララのバックウォーター</div><div class="spot-loc">📍 ケーララ州</div><p class="spot-desc">南インドの水郷地帯。ハウスボートに乗りながらヤシの木が茂る水路をゆっくり進む旅は、インドの喧騒を忘れさせてくれる別世界。</p><div class="spot-tags"><span class="tag">自然</span><span class="tag">ボート</span><span class="tag">癒し</span></div></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
