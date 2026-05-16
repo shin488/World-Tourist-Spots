@@ -4,87 +4,80 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>フランス — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#0a001a;}
-.back-btn{color:rgba(206,147,216,.7);border:1px solid rgba(206,147,216,.3);}
-.back-btn:hover{color:#ce93d8;border-color:#ce93d8;background:rgba(206,147,216,.1);}
-.hero{background:linear-gradient(180deg,#0a001a 0%,#200040 50%,#0a001a 100%);}
-.hero::before{background:radial-gradient(circle,rgba(206,147,216,.2) 0%,transparent 70%);}
-.hero h1{color:#ce93d8;text-shadow:0 0 50px rgba(206,147,216,.7);font-style:italic;}
-.hero p{color:rgba(206,147,216,.6);}
-.intro{background:rgba(206,147,216,.05);border:1px solid rgba(206,147,216,.15);}
-.info-chip{background:rgba(206,147,216,.08);border:1px solid rgba(206,147,216,.2);color:#ce93d8;}
-.section-label{color:#ce93d8;}
-.spot-card{background:rgba(206,147,216,.06);border:1px solid rgba(206,147,216,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(206,147,216,.2);}
-.spot-name{color:#ce93d8;}
-.tag{background:rgba(206,147,216,.1);border:1px solid rgba(206,147,216,.25);color:#ce93d8;}
-footer{border-top:1px solid rgba(206,147,216,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Noto+Sans+JP:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#0a0015; color:#f3e5f5; overflow-x:hidden; }
+.back-btn { position:fixed; top:1.2rem; left:1.2rem; z-index:200; background:rgba(106,27,154,.9); color:#fff; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em; padding:.5rem 1.1rem; border-radius:3px; transition:background .3s; }
+.back-btn:hover { background:#7b1fa2; }
+.hero { height:70vh; position:relative; display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden; }
+.hero-pattern { position:absolute; inset:0; background: radial-gradient(ellipse at 40% 30%, rgba(206,147,216,.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(255,215,0,.06) 0%, transparent 50%), linear-gradient(180deg,#0a0015 0%,#1a0035 40%,#0a0015 100%); }
+.rose-deco { position:absolute; font-size:10rem; opacity:.05; pointer-events:none; animation:float 8s ease-in-out infinite; }
+.rose-deco:nth-child(2) { top:5%; right:4%; }
+.rose-deco:nth-child(3) { bottom:10%; left:2%; font-size:14rem; animation-delay:4s; }
+@keyframes float { 0%,100%{transform:translateY(0) rotate(-5deg);} 50%{transform:translateY(-15px) rotate(5deg);} }
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-family:'Cormorant Garamond',serif; font-size:1rem; letter-spacing:.5em; color:rgba(206,147,216,.7); margin-bottom:.5rem; font-style:italic; }
+.hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,10vw,9rem); font-weight:700; color:#ce93d8; line-height:.9; text-shadow:0 0 60px rgba(206,147,216,.5); font-style:italic; }
+.hero-sub { font-size:1rem; color:rgba(206,147,216,.8); margin-top:.8rem; letter-spacing:.2em; }
+.hero-line { width:60px; height:2px; background:linear-gradient(90deg,#ce93d8,#ffd700); margin:.8rem 0; }
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+.paris-divider { text-align:center; margin:2.5rem 0; color:rgba(206,147,216,.4); font-size:1.2rem; letter-spacing:.6em; font-family:'Cormorant Garamond',serif; font-style:italic; }
+.intro-card { background:rgba(206,147,216,.07); border-left:4px solid #ce93d8; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(0,0,0,.4); font-size:1rem; line-height:2; color:#e1bee7; }
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip { background:rgba(206,147,216,.1); color:#ce93d8; border:1px solid rgba(206,147,216,.3); padding:.4rem 1rem; border-radius:3px; font-size:.8rem; font-weight:700; }
+.section-label { font-family:'Cormorant Garamond',serif; font-size:1rem; letter-spacing:.4em; color:rgba(206,147,216,.6); margin-bottom:1.5rem; text-align:center; font-style:italic; }
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card { background:rgba(206,147,216,.06); border-radius:6px; overflow:hidden; box-shadow:0 2px 20px rgba(0,0,0,.5); transition:transform .3s,box-shadow .3s; border-top:3px solid #ce93d8; border:1px solid rgba(206,147,216,.15); }
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(206,147,216,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#ce93d8; margin-bottom:.3rem; font-family:'Cormorant Garamond',serif; }
+.spot-loc { font-size:.75rem; color:rgba(206,147,216,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#e1bee7; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:3px; font-size:.72rem; font-weight:700; background:rgba(206,147,216,.1); color:#ce93d8; border:1px solid rgba(206,147,216,.25); }
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a { display:inline-block; background:#ce93d8; color:#0a0015; text-decoration:none; font-size:.85rem; font-weight:700; padding:.7rem 2.5rem; border-radius:3px; letter-spacing:.1em; transition:background .3s; }
+.back-top a:hover { background:#e1bee7; }
+footer { text-align:center; padding:2.5rem; background:#050010; color:rgba(206,147,216,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">✦</div>
-<h1>France</h1>
-<p>— 優雅と洗練の国 —</p>
+  <div class="hero-pattern"></div>
+  <div class="rose-deco">🌹</div>
+  <div class="rose-deco">🗼</div>
+  <div class="hero-text">
+    <div class="hero-en">FRANCE</div>
+    <h1 class="hero-title">France</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">優雅と洗練の国</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">芸術、ファッション、美食、ワイン——フランスは「洗練」という言葉がそのまま国になったような場所。エッフェル塔の輝き、ルーヴルの傑作群、プロヴァンスのラベンダー畑。どこを切り取っても絵になる国。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌸 ベストシーズン：4〜6月 / 9〜10月</span>
-<span class="info-chip">€ 通貨：ユーロ</span>
-<span class="info-chip">🗣 言語：フランス語</span>
-<span class="info-chip">🏙 首都：パリ</span>
-<span class="info-chip">🥐 名物：クロワッサン・ワイン・チーズ</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">🗼</span>
-<h3 class="spot-name">エッフェル塔</h3>
-<div class="spot-loc">📍 パリ</div>
-<p class="spot-desc">1889年のパリ万博のために建てられた高さ330mの鉄塔。夜になると毎時間5分間のライトアップが始まり、パリの夜空を黄金色に染める。世界で最も訪問者が多い有料観光地。</p>
-<div class="spot-tags"><span class="tag">建築</span><span class="tag">夜景</span><span class="tag">象徴</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🎨</span>
-<h3 class="spot-name">ルーヴル美術館</h3>
-<div class="spot-loc">📍 パリ</div>
-<p class="spot-desc">世界最大の美術館。モナ・リザ、ミロのヴィーナス、サモトラケのニケ——人類の至宝が一堂に会する。全作品を1分ずつ見ても完全制覇に100日以上かかる。</p>
-<div class="spot-tags"><span class="tag">美術館</span><span class="tag">芸術</span><span class="tag">世界遺産</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">⛪</span>
-<h3 class="spot-name">モン・サン＝ミシェル</h3>
-<div class="spot-loc">📍 ノルマンディー</div>
-<p class="spot-desc">潮の満ち引きで孤島になる幻想的な修道院。満潮時に海に浮かぶ姿は息をのむ美しさ。中世から続く巡礼地で、ユネスコ世界遺産にも登録されている。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">修道院</span><span class="tag">絶景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">💜</span>
-<h3 class="spot-name">プロヴァンスのラベンダー畑</h3>
-<div class="spot-loc">📍 プロヴァンス地方</div>
-<p class="spot-desc">7月になると一面が紫色に染まるラベンダー畑。バレンソールやセナンク修道院周辺の景色は、まるで絵画の中に迷い込んだよう。甘い香りが大地を包む。</p>
-<div class="spot-tags"><span class="tag">自然</span><span class="tag">絶景</span><span class="tag">フォトスポット</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏰</span>
-<h3 class="spot-name">ヴェルサイユ宮殿</h3>
-<div class="spot-loc">📍 ヴェルサイユ</div>
-<p class="spot-desc">太陽王ルイ14世が建てた絢爛豪華な宮殿。鏡の回廊は357枚の鏡が並び、庭園は東京ドーム約17個分の広さ。フランス絶対王政の栄華を今に伝える。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">宮殿</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🍷</span>
-<h3 class="spot-name">ボルドーのワイン街道</h3>
-<div class="spot-loc">📍 ボルドー地方</div>
-<p class="spot-desc">世界最高峰のワインを生む葡萄畑が広がる丘陵地帯。シャトー巡りとワインテイスティングは、フランスならではの贅沢な旅のスタイル。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">グルメ</span><span class="tag">自然</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">芸術、ファッション、美食、ワイン——フランスは「洗練」という言葉がそのまま国になったような場所。エッフェル塔の輝き、ルーヴルの傑作群、プロヴァンスのラベンダー畑。どこを切り取っても絵になる国。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌸 ベストシーズン：4〜6月 / 9〜10月</span>
+    <span class="info-chip">€ 通貨：ユーロ</span>
+    <span class="info-chip">🗣 言語：フランス語</span>
+    <span class="info-chip">🏙 首都：パリ</span>
+    <span class="info-chip">🥐 名物：クロワッサン・ワイン・チーズ</span>
+  </div>
+  <div class="paris-divider">✦ Paris ✦</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🗼 エッフェル塔</div><div class="spot-loc">📍 パリ</div><p class="spot-desc">1889年のパリ万博のために建てられた高さ330mの鉄塔。夜になると毎時間5分間のライトアップが始まり、パリの夜空を黄金色に染める。世界で最も訪問者が多い有料観光地。</p><div class="spot-tags"><span class="tag">建築</span><span class="tag">夜景</span><span class="tag">象徴</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🎨 ルーヴル美術館</div><div class="spot-loc">📍 パリ</div><p class="spot-desc">世界最大の美術館。モナ・リザ、ミロのヴィーナス、サモトラケのニケ——人類の至宝が一堂に会する。全作品を1分ずつ見ても完全制覇に100日以上かかる。</p><div class="spot-tags"><span class="tag">美術館</span><span class="tag">芸術</span><span class="tag">世界遺産</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">⛪ モン・サン＝ミシェル</div><div class="spot-loc">📍 ノルマンディー</div><p class="spot-desc">潮の満ち引きで孤島になる幻想的な修道院。満潮時に海に浮かぶ姿は息をのむ美しさ。中世から続く巡礼地で、ユネスコ世界遺産にも登録されている。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">修道院</span><span class="tag">絶景</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">💜 プロヴァンスのラベンダー畑</div><div class="spot-loc">📍 プロヴァンス地方</div><p class="spot-desc">7月になると一面が紫色に染まるラベンダー畑。バレンソールやセナンク修道院周辺の景色は、まるで絵画の中に迷い込んだよう。甘い香りが大地を包む。</p><div class="spot-tags"><span class="tag">自然</span><span class="tag">絶景</span><span class="tag">フォトスポット</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏰 ヴェルサイユ宮殿</div><div class="spot-loc">📍 ヴェルサイユ</div><p class="spot-desc">太陽王ルイ14世が建てた絢爛豪華な宮殿。鏡の回廊は357枚の鏡が並び、庭園は東京ドーム約17個分の広さ。フランス絶対王政の栄華を今に伝える。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">宮殿</span><span class="tag">歴史</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🍷 ボルドーのワイン街道</div><div class="spot-loc">📍 ボルドー地方</div><p class="spot-desc">世界最高峰のワインを生む葡萄畑が広がる丘陵地帯。シャトー巡りとワインテイスティングは、フランスならではの贅沢な旅のスタイル。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">グルメ</span><span class="tag">自然</span></div></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
