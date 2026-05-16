@@ -52,4 +52,44 @@ footer{border-top:1px solid rgba(79,195,247,.1);}
 <span class="spot-icon">🗽</span>
 <h3 class="spot-name">自由の女神</h3>
 <div class="spot-loc">📍 ニューヨーク州</div>
-<p class="spot-desc
+<p class="spot-desc">ニューヨーク港に立つ高さ93mの巨大像。フランスからの贈り物で、自由と民主主義の象徴。フェリーで近づくと、そのスケールに圧倒される。</p>
+<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">象徴</span><span class="tag">歴史</span></div>
+</div>
+<div class="spot-card fade-in">
+<span class="spot-icon">🌲</span>
+<h3 class="spot-name">イエローストーン国立公園</h3>
+<div class="spot-loc">📍 ワイオミング州</div>
+<p class="spot-desc">世界初の国立公園。間欠泉「オールド・フェイスフル」、カラフルな温泉池、バイソンの群れ——地球の鼓動を感じられる唯一無二の場所。</p>
+<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">野生動物</span></div>
+</div>
+<div class="spot-card fade-in">
+<span class="spot-icon">🌉</span>
+<h3 class="spot-name">ゴールデンゲートブリッジ</h3>
+<div class="spot-loc">📍 サンフランシスコ</div>
+<p class="spot-desc">霧の中に浮かぶ朱色の吊り橋。全長2.7km、完成当時は世界最長の吊り橋だった。サンフランシスコの象徴として世界中から愛される。</p>
+<div class="spot-tags"><span class="tag">建築</span><span class="tag">絶景</span><span class="tag">都市</span></div>
+</div>
+<div class="spot-card fade-in">
+<span class="spot-icon">🎰</span>
+<h3 class="spot-name">ラスベガス</h3>
+<div class="spot-loc">📍 ネバダ州</div>
+<p class="spot-desc">砂漠の中に突如現れる光の都。世界中のランドマークを再現したホテル群、豪華なショー、カジノ——眠らない街は24時間旅人を魅了し続ける。</p>
+<div class="spot-tags"><span class="tag">エンタメ</span><span class="tag">都市</span><span class="tag">夜景</span></div>
+</div>
+<div class="spot-card fade-in">
+<span class="spot-icon">🏔️</span>
+<h3 class="spot-name">ヨセミテ国立公園</h3>
+<div class="spot-loc">📍 カリフォルニア州</div>
+<p class="spot-desc">垂直に切り立つ花崗岩の絶壁、流れ落ちる滝、巨大なセコイア——アメリカの自然の美しさが凝縮された場所。アンセル・アダムスが愛した絶景。</p>
+<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">登山</span></div>
+</div>
+</div>
+<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+</div>
+<footer>© 2026 WORLD TRAVEL GUIDE</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
