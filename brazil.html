@@ -4,87 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ブラジル — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#001508;}
-.back-btn{color:rgba(0,230,118,.7);border:1px solid rgba(0,230,118,.3);}
-.back-btn:hover{color:#00e676;border-color:#00e676;background:rgba(0,230,118,.1);}
-.hero{background:linear-gradient(180deg,#001508 0%,#003018 50%,#001508 100%);}
-.hero::before{background:radial-gradient(circle,rgba(0,230,118,.2) 0%,transparent 70%);}
-.hero h1{color:#00e676;text-shadow:0 0 50px rgba(0,230,118,.7);}
-.hero p{color:rgba(0,230,118,.6);}
-.intro{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.15);}
-.info-chip{background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.2);color:#00e676;}
-.section-label{color:#00e676;}
-.spot-card{background:rgba(0,230,118,.06);border:1px solid rgba(0,230,118,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(0,230,118,.2);}
-.spot-name{color:#00e676;}
-.tag{background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.25);color:#00e676;}
-footer{border-top:1px solid rgba(0,230,118,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#001a08; color:#e8f5e9; overflow-x:hidden; }
+
+.back-btn {
+  position:fixed; top:1.2rem; left:1.2rem; z-index:200;
+  background:rgba(0,180,80,.85); color:#fff;
+  text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em;
+  padding:.5rem 1.1rem; border-radius:30px; transition:background .3s;
+}
+.back-btn:hover { background:#00c853; }
+
+.hero {
+  height:70vh; position:relative;
+  display:flex; align-items:flex-end;
+  padding:3rem 2rem; overflow:hidden;
+}
+.hero-pattern {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(0,230,118,.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,215,0,.08) 0%, transparent 50%),
+    linear-gradient(180deg,#001a08 0%,#003d15 40%,#001a08 100%);
+}
+.leaf-deco {
+  position:absolute; font-size:10rem; opacity:.06;
+  pointer-events:none; animation:sway 6s ease-in-out infinite;
+}
+.leaf-deco:nth-child(2) { top:5%; right:5%; animation-delay:0s; }
+.leaf-deco:nth-child(3) { bottom:10%; left:3%; font-size:14rem; animation-delay:3s; }
+@keyframes sway { 0%,100%{transform:rotate(-5deg);} 50%{transform:rotate(5deg);} }
+
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.5em; color:rgba(0,230,118,.7); margin-bottom:.3rem; }
+.hero-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(5rem,12vw,10rem); font-weight:400;
+  color:#00e676; line-height:.9;
+  text-shadow:0 0 60px rgba(0,230,118,.4);
+}
+.hero-sub { font-size:1rem; color:rgba(0,230,118,.8); margin-top:.8rem; letter-spacing:.1em; }
+.hero-line { width:60px; height:3px; background:linear-gradient(90deg,#00e676,#ffd700); margin:.8rem 0; }
+
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+
+.tropical-divider { text-align:center; margin:2.5rem 0; color:rgba(0,230,118,.4); font-size:1.5rem; letter-spacing:.5em; }
+
+.intro-card {
+  background:rgba(0,230,118,.07);
+  border-left:4px solid #00e676;
+  border-radius:0 8px 8px 0;
+  padding:1.8rem 2rem; margin-bottom:2.5rem;
+  box-shadow:4px 4px 20px rgba(0,0,0,.3);
+  font-size:1rem; line-height:2; color:#c8e6c9;
+}
+
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip {
+  background:rgba(0,230,118,.1); color:#00e676;
+  border:1px solid rgba(0,230,118,.3);
+  padding:.4rem 1rem; border-radius:30px;
+  font-size:.8rem; font-weight:700;
+}
+
+.section-label { font-size:.75rem; font-weight:700; letter-spacing:.4em; color:rgba(0,230,118,.6); margin-bottom:1.5rem; text-align:center; }
+
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card {
+  background:rgba(0,230,118,.06);
+  border-radius:12px; overflow:hidden;
+  box-shadow:0 2px 20px rgba(0,0,0,.4);
+  transition:transform .3s, box-shadow .3s;
+  border:1px solid rgba(0,230,118,.15);
+  border-top:3px solid #00e676;
+}
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,230,118,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#00e676; margin-bottom:.3rem; }
+.spot-loc { font-size:.75rem; color:rgba(0,230,118,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#a5d6a7; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:30px; font-size:.72rem; font-weight:700; background:rgba(0,230,118,.1); color:#00e676; border:1px solid rgba(0,230,118,.25); }
+
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a {
+  display:inline-block; background:#00e676; color:#001a08;
+  text-decoration:none; font-size:.85rem; font-weight:700;
+  padding:.7rem 2.5rem; border-radius:30px; letter-spacing:.1em; transition:background .3s;
+}
+.back-top a:hover { background:#69f0ae; }
+
+footer { text-align:center; padding:2.5rem; background:#000d04; color:rgba(0,230,118,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">🌿</div>
-<h1>Brasil</h1>
-<p>— 生命の躍動、地球の肺 —</p>
+  <div class="hero-pattern"></div>
+  <div class="leaf-deco">🌿</div>
+  <div class="leaf-deco">🌴</div>
+  <div class="hero-text">
+    <div class="hero-en">BRAZIL</div>
+    <h1 class="hero-title">Brasil</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">生命の躍動、地球の肺</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">地球上で最も多様な生命が息づくアマゾン、世界最大の滝イグアス、情熱のカーニバル——ブラジルはスケールが違う。南米最大の国が持つ圧倒的な自然と文化は、訪れる者すべてを虜にする。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌞 ベストシーズン：4〜9月</span>
-<span class="info-chip">💰 通貨：レアル</span>
-<span class="info-chip">🗣 言語：ポルトガル語</span>
-<span class="info-chip">🏙 首都：ブラジリア</span>
-<span class="info-chip">🍖 名物：シュラスコ・フェイジョアーダ</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">💧</span>
-<h3 class="spot-name">イグアスの滝</h3>
-<div class="spot-loc">📍 パラナ州</div>
-<p class="spot-desc">幅2.7kmに広がる275本の滝。ルーズベルト大統領夫人が「ナイアガラが色あせる」と言った圧倒的な絶景。「悪魔の喉笛」と呼ばれる最大の滝は轟音と水しぶきで全身を包む。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">滝</span><span class="tag">絶景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">✝️</span>
-<h3 class="spot-name">コルコバードのキリスト像</h3>
-<div class="spot-loc">📍 リオデジャネイロ</div>
-<p class="spot-desc">リオデジャネイロを見下ろす高さ38mの巨大像。世界新七不思議のひとつ。山頂からの360度パノラマビューはリオの美しさを余すことなく見せてくれる。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">絶景</span><span class="tag">七不思議</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌿</span>
-<h3 class="spot-name">アマゾン熱帯雨林</h3>
-<div class="spot-loc">📍 アマゾナス州</div>
-<p class="spot-desc">地球の酸素の20%を生み出す「地球の肺」。無数の生命が息づくジャングルはボートツアーで探検できる。ピンクイルカや巨大アナコンダとの遭遇も。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">ジャングル</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏖️</span>
-<h3 class="spot-name">コパカバーナビーチ</h3>
-<div class="spot-loc">📍 リオデジャネイロ</div>
-<p class="spot-desc">リオの象徴、4kmに渡る白砂のビーチ。サンバのリズムと太陽が溢れるブラジルの魂。大晦日の花火大会には200万人以上が集まる世界最大級のイベント。</p>
-<div class="spot-tags"><span class="tag">ビーチ</span><span class="tag">都市</span><span class="tag">祭り</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🦜</span>
-<h3 class="spot-name">パンタナール</h3>
-<div class="spot-loc">📍 マトグロッソ州</div>
-<p class="spot-desc">世界最大の熱帯湿地帯。ジャガー、カピバラ、オオアリクイなど希少動物の宝庫。野生動物の観察密度はアフリカのサバンナをも上回ると言われる。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">野生動物</span><span class="tag">自然</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏜️</span>
-<h3 class="spot-name">レンソイス・マラニャンセス</h3>
-<div class="spot-loc">📍 マラニャン州</div>
-<p class="spot-desc">白い砂丘の間に青いラグーンが点在する幻想的な景観。雨季には砂漠に湖が出現するという地球上で唯一の場所。まるで別の惑星のような絶景。</p>
-<div class="spot-tags"><span class="tag">絶景</span><span class="tag">砂漠</span><span class="tag">ラグーン</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">地球上で最も多様な生命が息づくアマゾン、世界最大の滝イグアス、情熱のカーニバル——ブラジルはスケールが違う。南米最大の国が持つ圧倒的な自然と文化は、訪れる者すべてを虜にする。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌞 ベストシーズン：4〜9月</span>
+    <span class="info-chip">💰 通貨：レアル</span>
+    <span class="info-chip">🗣 言語：ポルトガル語</span>
+    <span class="info-chip">🏙 首都：ブラジリア</span>
+    <span class="info-chip">🍖 名物：シュラスコ・フェイジョアーダ</span>
+  </div>
+  <div class="tropical-divider">🌿 🦜 🌿</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">💧 イグアスの滝</div><div class="spot-loc">📍 パラナ州</div><p class="spot-desc">幅2.7kmに広がる275本の滝。ルーズベルト大統領夫人が「ナイアガラが色あせる」と言った圧倒的な絶景。「悪魔の喉笛」と呼ばれる最大の滝は轟音と水しぶきで全身を包む。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">滝</span><span class="tag">絶景</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">✝️ コルコバードのキリスト像</div><div class="spot-loc">📍 リオデジャネイロ</div><p class="spot-desc">リオデジャネイロを見下ろす高さ38mの巨大像。世界新七不思議のひとつ。山頂からの360度パノラマビューはリオの美しさを余すことなく見せてくれる。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">絶景</span><span class="tag">七不思議</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🌿 アマゾン熱帯雨林</div><div class="spot-loc">📍 アマゾナス州</div><p class="spot-desc">地球の酸素の20%を生み出す「地球の肺」。無数の生命が息づくジャングルはボートツアーで探検できる。ピンクイルカや巨大アナコンダとの遭遇も。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">ジャングル</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏖️ コパカバーナビーチ</div><div class="spot-loc">📍 リオデジャネイロ</div><p class="spot-desc">リオの象徴、4kmに渡る白砂のビーチ。サンバのリズムと太陽が溢れるブラジルの魂。大晦日の花火大会には200万人以上が集まる世界最大級のイベント。</p><div class="spot-tags"><span class="tag">ビーチ</span><span class="tag">都市</span><span class="tag">祭り</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🦜 パンタナール</div><div class="spot-loc">📍 マトグロッソ州</div><p class="spot-desc">世界最大の熱帯湿地帯。ジャガー、カピバラ、オオアリクイなど希少動物の宝庫。野生動物の観察密度はアフリカのサバンナをも上回ると言われる。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">野生動物</span><span class="tag">自然</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏜️ レンソイス・マラニャンセス</div><div class="spot-loc">📍 マラニャン州</div><p class="spot-desc">白い砂丘の間に青いラグーンが点在する幻想的な景観。雨季には砂漠に湖が出現するという地球上で唯一の場所。まるで別の惑星のような絶景。</p><div class="spot-tags"><span class="tag">絶景</span><span class="tag">砂漠</span><span class="tag">ラグーン</span></div></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
