@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>イタリア — 世界の観光地ガイド</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:#100800; }
+    .back-btn { color:rgba(244,162,97,.7); border:1px solid rgba(244,162,97,.3); }
+    .back-btn:hover { color:#f4a261; border-color:#f4a261; background:rgba(244,162,97,.1); }
+    .hero { background:linear-gradient(180deg,#1a0f00 0%,#3d2000 50%,#1a0f00 100%); }
+    .hero::before { background:radial-gradient(circle,rgba(244,162,97,.2) 0%,transparent 70%); }
+    .hero h1 { color:#f4a261; text-shadow:0 0 50px rgba(244,162,97,.7); font-style:italic; }
+    .hero p { color:rgba(244,162,97,.6); }
+    .intro { background:rgba(244,162,97,.06); border:1px solid rgba(244,162,97,.15); }
+    .info-chip { background:rgba(244,162,97,.1); border:1px solid rgba(244,162,97,.2); color:#f4a261; }
+    .section-label { color:#f4a261; }
+    .spot-card { background:rgba(244,162,97,.07); border:1px solid rgba(244,162,97,.18); }
+    .spot-card:hover { box-shadow:0 10px 35px rgba(244,162,97,.2); }
+    .spot-name { color:#f4a261; }
+    .tag { background:rgba(244,162,97,.12); border:1px solid rgba(244,162,97,.25); color:#f4a261; }
+    footer { border-top:1px solid rgba(244,162,97,.1); }
+  </style>
+</head>
+<body>
+<a href="index.html" class="back-btn">← BACK</a>
+<section class="hero">
+  <div class="hero-bg-text">Italia</div>
+  <h1>Italia</h1>
+  <p>— 永遠の都、芸術と情熱の国 —</p>
+</section>
+<div class="content">
+  <div class="intro fade-in">古代ローマの遺跡、ルネサンスの傑作、地中海の絶景——イタリアは人類の文明と美が凝縮された国。食も芸術のひとつ。パスタ、ピッツァ、ジェラートが旅の記憶をさらに豊かにする。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">☀️ ベストシーズン：4〜6月 / 9〜10月</span>
+    <span class="info-chip">€ 通貨：ユーロ</span>
+    <span class="info-chip">🗣 言語：イタリア語</span>
+    <span class="info-chip">🏙 首都：ローマ</span>
+    <span class="info-chip">🍕 名物：ピッツァ・パスタ・ジェラート</span>
+  </div>
+  <div class="section-label fade-in">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><span class="spot-icon">🏛️</span><h3 class="spot-name">コロッセオ</h3><div class="spot-loc">📍 ローマ</div><p class="spot-desc">2000年の歴史を刻む円形闘技場。夕暮れに黄金色に染まる姿は古代ローマの栄光を今に伝える。収容人数5万人を誇った世界最大の円形劇場。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">古代遺跡</span><span class="tag">歴史</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🛶</span><h3 class="spot-name">ヴェネツィア</h3><div class="spot-loc">📍 ヴェネト州</div><p class="spot-desc">水の都。ゴンドラで巡る運河、サン・マルコ広場の荘厳さ。118の島々が橋で結ばれた世界で最もロマンティックな都市のひとつ。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">水の都</span><span class="tag">ロマンティック</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🎨</span><h3 class="spot-name">フィレンツェ</h3><div class="spot-loc">📍 トスカーナ州</div><p class="spot-desc">ルネサンスの揺籠。ウフィツィ美術館にはボッティチェリの「春」が眠り、街全体が野外美術館。ミケランジェロの「ダビデ像」もここに。</p><div class="spot-tags"><span class="tag">芸術</span><span class="tag">世界遺産</span><span class="tag">美術館</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🌊</span><h3 class="spot-name">アマルフィ海岸</h3><div class="spot-loc">📍 カンパニア州</div><p class="spot-desc">断崖に張り付くカラフルな街並みと紺碧の地中海。南イタリアの太陽が生み出す絶景はユネスコ世界遺産にも登録されている。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">絶景</span><span class="tag">海</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">⛲</span><h3 class="spot-name">トレヴィの泉</h3><div class="spot-loc">📍 ローマ</div><p class="spot-desc">コインを投げると再びローマに
