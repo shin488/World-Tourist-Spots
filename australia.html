@@ -4,87 +4,122 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>オーストラリア — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#001015;}
-.back-btn{color:rgba(38,198,218,.7);border:1px solid rgba(38,198,218,.3);}
-.back-btn:hover{color:#26c6da;border-color:#26c6da;background:rgba(38,198,218,.1);}
-.hero{background:linear-gradient(180deg,#001015 0%,#002535 50%,#001015 100%);}
-.hero::before{background:radial-gradient(circle,rgba(38,198,218,.2) 0%,transparent 70%);}
-.hero h1{color:#26c6da;text-shadow:0 0 50px rgba(38,198,218,.7);}
-.hero p{color:rgba(38,198,218,.6);}
-.intro{background:rgba(38,198,218,.05);border:1px solid rgba(38,198,218,.15);}
-.info-chip{background:rgba(38,198,218,.08);border:1px solid rgba(38,198,218,.2);color:#26c6da;}
-.section-label{color:#26c6da;}
-.spot-card{background:rgba(38,198,218,.06);border:1px solid rgba(38,198,218,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(38,198,218,.2);}
-.spot-name{color:#26c6da;}
-.tag{background:rgba(38,198,218,.1);border:1px solid rgba(38,198,218,.25);color:#26c6da;}
-footer{border-top:1px solid rgba(38,198,218,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#0a1520; color:#e0f7fa; overflow-x:hidden; }
+.back-btn { position:fixed; top:1.2rem; left:1.2rem; z-index:200; background:rgba(0,131,143,.9); color:#fff; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em; padding:.5rem 1.1rem; border-radius:4px; transition:background .3s; }
+.back-btn:hover { background:#00838f; }
+.hero { height:70vh; position:relative; display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden; }
+.hero-pattern { position:absolute; inset:0; background: radial-gradient(ellipse at 30% 40%, rgba(38,198,218,.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 60%, rgba(255,87,34,.1) 0%, transparent 50%), linear-gradient(180deg,#0a1520 0%,#0d2535 40%,#0a1520 100%); }
+.outback-deco { position:absolute; font-size:10rem; opacity:.05; pointer-events:none; animation:bounce 4s ease-in-out infinite; }
+.outback-deco:nth-child(2) { bottom:5%; right:3%; }
+.outback-deco:nth-child(3) { top:8%; left:2%; font-size:8rem; animation-delay:2s; }
+@keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-size:.85rem; letter-spacing:.5em; color:rgba(38,198,218,.7); margin-bottom:.5rem; }
+.hero-title { font-size:clamp(3rem,8vw,7rem); font-weight:900; color:#26c6da; line-height:1; text-shadow:0 0 60px rgba(38,198,218,.5); }
+.hero-sub { font-size:1rem; color:rgba(38,198,218,.8); margin-top:.8rem; letter-spacing:.15em; }
+.hero-line { width:60px; height:3px; background:linear-gradient(90deg,#26c6da,#ff5722); margin:.8rem 0; }
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+.aus-divider { text-align:center; margin:2.5rem 0; color:rgba(38,198,218,.4); font-size:1.5rem; letter-spacing:.5em; }
+.intro-card { background:rgba(38,198,218,.07); border-left:4px solid #26c6da; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(0,0,0,.4); font-size:1rem; line-height:2; color:#b2ebf2; }
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip { background:rgba(38,198,218,.1); color:#26c6da; border:1px solid rgba(38,198,218,.3); padding:.4rem 1rem; border-radius:4px; font-size:.8rem; font-weight:700; }
+.section-label { font-size:.75rem; font-weight:700; letter-spacing:.4em; color:rgba(38,198,218,.6); margin-bottom:1.5rem; text-align:center; }
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card { background:rgba(38,198,218,.06); border-radius:8px; overflow:hidden; box-shadow:0 2px 20px rgba(0,0,0,.4); transition:transform .3s,box-shadow .3s; border-top:3px solid #26c6da; border:1px solid rgba(38,198,218,.15); }
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(38,198,218,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#26c6da; margin-bottom:.3rem; }
+.spot-loc { font-size:.75rem; color:rgba(38,198,218,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#b2ebf2; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:4px; font-size:.72rem; font-weight:700; background:rgba(38,198,218,.1); color:#26c6da; border:1px solid rgba(38,198,218,.25); }
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a { display:inline-block; background:#26c6da; color:#0a1520; text-decoration:none; font-size:.85rem; font-weight:700; padding:.7rem 2.5rem; border-radius:4px; letter-spacing:.1em; transition:background .3s; }
+.back-top a:hover { background:#80deea; }
+footer { text-align:center; padding:2.5rem; background:#050f18; color:rgba(38,198,218,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">🦘</div>
-<h1>Australia</h1>
-<p>— 大自然と野生の大陸 —</p>
+  <div class="hero-pattern"></div>
+  <div class="outback-deco">🦘</div>
+  <div class="outback-deco">🐨</div>
+  <div class="hero-text">
+    <div class="hero-en">AUSTRALIA</div>
+    <h1 class="hero-title">Australia</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">大自然と野生の大陸</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">地球上で唯一、大陸全体がひとつの国。コアラ、カンガルー、コモドドラゴン——ここにしかいない生き物たちと、グレートバリアリーフの海、エアーズロックの赤い大地。オーストラリアは地球の原点を感じさせる。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌞 ベストシーズン：9〜11月 / 3〜5月</span>
-<span class="info-chip">💰 通貨：オーストラリアドル</span>
-<span class="info-chip">🗣 言語：英語</span>
-<span class="info-chip">🏙 首都：キャンベラ</span>
-<span class="info-chip">🦞 名物：バラマンディ・ラミントン</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">🪸</span>
-<h3 class="spot-name">グレートバリアリーフ</h3>
-<div class="spot-loc">📍 クイーンズランド州</div>
-<p class="spot-desc">全長2300kmに渡る世界最大のサンゴ礁。2900以上のサンゴ礁と900の島々からなり、1500種以上の魚が生息する。宇宙からも見える地球最大の生き物の集合体。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">海</span><span class="tag">ダイビング</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🟠</span>
-<h3 class="spot-name">ウルル（エアーズロック）</h3>
-<div class="spot-loc">📍 ノーザンテリトリー</div>
-<p class="spot-desc">赤い大地にそびえる高さ348mの巨大一枚岩。夕暮れ時に刻々と色が変わる様子は神秘的。アボリジニの聖地として何万年もの歴史を持つ。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">聖地</span><span class="tag">絶景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🎭</span>
-<h3 class="spot-name">シドニー・オペラハウス</h3>
-<div class="spot-loc">📍 シドニー</div>
-<p class="spot-desc">帆船をモチーフにした独創的な建築は20世紀最高の建築物のひとつ。シドニー湾に映る姿は絵葉書そのもの。年間300万人以上が訪れる。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">建築</span><span class="tag">文化</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🐨</span>
-<h3 class="spot-name">フィリップ島</h3>
-<div class="spot-loc">📍 ビクトリア州</div>
-<p class="spot-desc">毎夕、何百羽ものリトルペンギンが海から上陸する「ペンギンパレード」が有名。コアラやウォンバットも間近で観察できる、動物好きの聖地。</p>
-<div class="spot-tags"><span class="tag">野生動物</span><span class="tag">自然</span><span class="tag">ペンギン</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌊</span>
-<h3 class="spot-name">ホワイトヘブンビーチ</h3>
-<div class="spot-loc">📍 ウィットサンデー諸島</div>
-<p class="spot-desc">純白のシリカサンドが7kmに渡って続く世界屈指のビーチ。砂が熱を持たないため素足で歩ける。エメラルドグリーンの海との対比は息をのむ美しさ。</p>
-<div class="spot-tags"><span class="tag">ビーチ</span><span class="tag">絶景</span><span class="tag">自然</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏔️</span>
-<h3 class="spot-name">ブルーマウンテンズ</h3>
-<div class="spot-loc">📍 ニューサウスウェールズ州</div>
-<p class="spot-desc">シドニーから車で2時間。ユーカリの油分が大気に漂い青く霞む山々。「スリー・シスターズ」と呼ばれる3本の岩柱と深い渓谷が織りなす絶景。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">地球上で唯一、大陸全体がひとつの国。コアラ、カンガルー——ここにしかいない生き物たちと、グレートバリアリーフの海、エアーズロックの赤い大地。オーストラリアは地球の原点を感じさせる。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌞 ベストシーズン：9〜11月 / 3〜5月</span>
+    <span class="info-chip">💰 通貨：オーストラリアドル</span>
+    <span class="info-chip">🗣 言語：英語</span>
+    <span class="info-chip">🏙 首都：キャンベラ</span>
+    <span class="info-chip">🦞 名物：バラマンディ・ラミントン</span>
+  </div>
+  <div class="aus-divider">🦘 🌊 🐨</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🪸 グレートバリアリーフ</div>
+        <div class="spot-loc">📍 クイーンズランド州</div>
+        <p class="spot-desc">全長2300kmに渡る世界最大のサンゴ礁。2900以上のサンゴ礁と900の島々からなり、1500種以上の魚が生息する。宇宙からも見える地球最大の生き物の集合体。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">海</span><span class="tag">ダイビング</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🟠 ウルル（エアーズロック）</div>
+        <div class="spot-loc">📍 ノーザンテリトリー</div>
+        <p class="spot-desc">赤い大地にそびえる高さ348mの巨大一枚岩。夕暮れ時に刻々と色が変わる様子は神秘的。アボリジニの聖地として何万年もの歴史を持つ。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">聖地</span><span class="tag">絶景</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🎭 シドニー・オペラハウス</div>
+        <div class="spot-loc">📍 シドニー</div>
+        <p class="spot-desc">帆船をモチーフにした独創的な建築は20世紀最高の建築物のひとつ。シドニー湾に映る姿は絵葉書そのもの。年間300万人以上が訪れる。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">建築</span><span class="tag">文化</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🐨 フィリップ島</div>
+        <div class="spot-loc">📍 ビクトリア州</div>
+        <p class="spot-desc">毎夕、何百羽ものリトルペンギンが海から上陸する「ペンギンパレード」が有名。コアラやウォンバットも間近で観察できる、動物好きの聖地。</p>
+        <div class="spot-tags"><span class="tag">野生動物</span><span class="tag">自然</span><span class="tag">ペンギン</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🌊 ホワイトヘブンビーチ</div>
+        <div class="spot-loc">📍 ウィットサンデー諸島</div>
+        <p class="spot-desc">純白のシリカサンドが7kmに渡って続く世界屈指のビーチ。砂が熱を持たないため素足で歩ける。エメラルドグリーンの海との対比は息をのむ美しさ。</p>
+        <div class="spot-tags"><span class="tag">ビーチ</span><span class="tag">絶景</span><span class="tag">自然</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🏔️ ブルーマウンテンズ</div>
+        <div class="spot-loc">📍 ニューサウスウェールズ州</div>
+        <p class="spot-desc">シドニーから車で2時間。ユーカリの油分が大気に漂い青く霞む山々。「スリー・シスターズ」と呼ばれる3本の岩柱と深い渓谷が織りなす絶景。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
