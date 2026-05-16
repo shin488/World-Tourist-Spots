@@ -5,45 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>イタリア — 世界の観光地ガイド</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+JP:wght@400;700&display=swap');
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Noto Sans JP',sans-serif; background:#fdf8f0; color:#2c1a00; overflow-x:hidden; }
-.back-btn {
-  position:fixed; top:1.2rem; left:1.2rem; z-index:200;
-  background:rgba(180,60,0,.9); color:#fff; text-decoration:none;
-  font-size:.82rem; font-weight:700; letter-spacing:.1em;
-  padding:.5rem 1.1rem; border-radius:4px; transition:background .3s;
-}
-.back-btn:hover { background:#c0392b; }
-.hero {
-  height:70vh; position:relative;
-  display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden;
-}
-.hero-bg {
-  position:absolute; inset:0;
-  background:linear-gradient(160deg,#3d1500 0%,#7a2e00 40%,#3d1500 100%);
-}
-.hero-arch {
-  position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-  width:300px; height:200px;
-  border:2px solid rgba(244,162,97,.15);
-  border-bottom:none; border-radius:150px 150px 0 0;
-  pointer-events:none;
-}
-.hero-arch2 {
-  position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-  width:500px; height:300px;
-  border:1px solid rgba(244,162,97,.08);
-  border-bottom:none; border-radius:250px 250px 0 0;
-  pointer-events:none;
-}
+body { font-family:'Noto Sans JP',sans-serif; background:#f5ede0; color:#2c1a0e; overflow-x:hidden; }
+.back-btn { position:fixed; top:1.2rem; left:1.2rem; z-index:200; background:rgba(139,69,19,.9); color:#fff; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em; padding:.5rem 1.1rem; border-radius:3px; transition:background .3s; }
+.back-btn:hover { background:#a0522d; }
+.hero { height:70vh; position:relative; display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden; }
+.hero-pattern { position:absolute; inset:0; background: radial-gradient(ellipse at 70% 30%, rgba(205,133,63,.2) 0%, transparent 60%), radial-gradient(ellipse at 20% 70%, rgba(139,69,19,.15) 0%, transparent 50%), linear-gradient(180deg,#1a0a00 0%,#3d1f00 40%,#1a0a00 100%); }
+.colosseum-deco { position:absolute; font-size:12rem; opacity:.05; pointer-events:none; }
+.colosseum-deco:nth-child(2) { bottom:-1rem; right:1rem; }
+.colosseum-deco:nth-child(3) { top:5%; left:3%; font-size:8rem; opacity:.04; }
 .hero-text { position:relative; z-index:1; color:#fff; }
-.hero-en { font-size:.85rem; letter-spacing:.4em; color:rgba(244,162,97,.7); margin-bottom:.5rem; font-family:'Playfair Display',serif; font-style:italic; }
-.hero-title { font-size:clamp(3.5rem,9vw,7rem); font-weight:700; font-family:'Playfair Display',serif; font-style:italic; color:#f4a261; text-shadow:0 0 40px rgba(244,162,97,.4); line-height:1; }
-.hero-sub { font-size:1rem; color:rgba(244,162,97,.7); margin-top:.8rem; letter-spacing:.15em; }
-.hero-line { width:60px; height:2px; background:linear-gradient(90deg,#f4a261,transparent); margin:.8rem 0; }
+.hero-en { font-family:'Playfair Display',serif; font-size:.85rem; letter-spacing:.4em; color:rgba(205,133,63,.8); margin-bottom:.5rem; font-style:italic; }
+.hero-title { font-family:'Playfair Display',serif; font-size:clamp(4rem,10vw,8rem); font-weight:900; color:#cd853f; line-height:1; text-shadow:0 0 60px rgba(205,133,63,.5); font-style:italic; }
+.hero-sub { font-size:1rem; color:rgba(205,133,63,.8); margin-top:.8rem; letter-spacing:.15em; }
+.hero-line { width:60px; height:2px; background:linear-gradient(90deg,#cd853f,transparent); margin:.8rem 0; }
 .content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
-.intro-card { background:#fff; border-left:4px solid #f4a261; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(180,60,0,.08); font-size:1rem; line-height:2; color:#3d2010; }
+.roman-divider { text-align:center; margin:2.5rem 0; color:#cd853f; font-size:1rem; letter-spacing:.8em; font-family:'Playfair Display',serif; }
+.intro-card { background:#fff; border-left:4px solid #cd853f; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(139,69,19,.1); font-size:1rem; line-height:2; color:#3d2010; }
 .info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
-.info-chip { background:#fff8f0; color:#c0392b; border:1px solid #f4a261; padding:.4rem 1rem; border-radius:4px; font-size:.8rem; font-weight:700; }
-.section-label { font-size:.75rem; font-weight:700; letter-spacing:.4em; color:#7a2e00; margin-bottom
+.info-chip { background:#fdf0e0; color:#8b4513; border:1px solid #deb887; padding:.4rem 1rem; border-radius:3px; font-size:.8rem; font-weight:700; }
+.section-label { font-family:'Playfair Display',serif; font-size:.85rem; font-weight:700; letter-spacing:.4em; color:#8b4513; margin-bottom:1.5rem; text-align:center; font-style:italic; }
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card { background:#fff; border-radius:6px; overflow:hidden; box-shadow:0 2px 20px rgba(139,69,19,.1); transition:transform .3s,box-shadow .3s; border-top:3px solid #cd853f; }
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(139,69,19,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#8b4513; margin-bottom:.3rem; font-family:'Playfair Display',serif; }
+.spot-loc { font-size:.75rem; color:#aaa; margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#555; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:3px; font-size:.72rem; font-weight:700; background:#fdf0e0; color:#8b4513; border:1px solid #deb887; }
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a { display:inline-block; background:#8b4513; color:#fff; text-decoration:none; font-size:.85rem; font-weight:700; padding:.7rem 2.5rem; border-radius:3px; letter-spacing:.1em; transition:background .3s; }
+.back-top a:hover { background:#cd853f; }
+footer { text-align:center; padding:2.5rem; background:#1a0a00; color:rgba(205,133,63,.3); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<a href="index.html" class="back-btn">← 一覧</a>
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="colosseum-deco">🏛️</div>
+  <div class="colosseum-deco">🛶</div>
+  <div class="hero-text">
+    <div class="hero-en">ITALY</div>
+    <h1 class="hero-title">Italia</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">永遠の都、芸術と情熱の国</p>
+  </div>
+</section>
+<div class="content">
+  <div class="intro-card fade-in">古代ローマの遺跡、ルネサンスの傑作、地中海の絶景——イタリアは人類の文明と美が凝縮された国。食も芸術のひとつ。パスタ、ピッツァ、ジェラートが旅の記憶をさらに豊かにする。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">☀️ ベストシーズン：4〜6月 / 9〜10月</span>
+    <span class="info-chip">€ 通貨：ユーロ</span>
+    <span class="info-chip">🗣 言語：イタリア語</span>
+    <span class="info-chip">🏙 首都：ローマ</span>
+    <span class="info-chip">🍕 名物：ピッツァ・パスタ・ジェラート</span>
+  </div>
+  <div class="roman-divider">✦ ROMA ✦</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏛️ コロッセオ</div><div class="spot-loc">📍 ローマ</div><p class="spot-desc">2000年の歴史を刻む円形闘技場。夕暮れに黄金色に染まる姿は古代ローマの栄光を今に伝える。収容人数5万人を誇った世界最大の円形劇場。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">古代遺跡</span><span class="tag">歴史</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🛶 ヴェネツィア</div><div class="spot-loc">📍 ヴェネト州</div><p class="spot-desc">水の都。ゴンドラで巡る運河、サン・マルコ広場の荘厳さ。118の島々が橋で結ばれた世界で最もロマンティックな都市のひとつ。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">水の都</span><span class="tag">ロマンティック</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🎨 フィレンツェ</div><div class="spot-loc">📍 トスカーナ州</div><p class="spot-desc">ルネサンスの揺籠。ウフィツィ美術館にはボッティチェリの「春」が眠り、街全体が野外美術館。ミケランジェロの「ダビデ像」もここに。</p><div class="spot-tags"><span class="tag">芸術</span><span class="tag">世界遺産</span><span class="tag">美術館</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🌊 アマルフィ海岸</div><div class="spot-loc">📍 カンパニア州</div><p class="spot-desc">断崖に張り付くカラフルな街並みと紺碧の地中海。南イタリアの太陽が生み出す絶景はユネスコ世界遺産にも登録されている。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">絶景</span><span class="tag">海</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">⛲ トレヴィの泉</div><div class="spot-loc">📍 ローマ</div><p class="spot-desc">コインを投げると再びローマに来られるという伝説の噴水。バロック建築の傑作で、夜のライトアップは特に幻想的な美しさ。</p><div class="spot-tags"><span class="tag">噴水</span><span class="tag">バロック</span><span class="tag">ロマンティック</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🗼 ピサの斜塔</div><div class="spot-loc">📍 トスカーナ州ピサ</div><p class="spot-desc">約5.5度傾いた世界一有名な塔。ガリレオが落体の実験を行ったとも言われる。頂上からの眺めと「支えるポーズ」の写真は定番中の定番。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">建築</span><span class="tag">フォトスポット</span></div></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+</div>
+<footer>© 2026 WORLD TRAVEL GUIDE</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
