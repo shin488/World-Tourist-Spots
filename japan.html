@@ -4,87 +4,224 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>日本 — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#0d0008;}
-.back-btn{color:rgba(255,107,157,.7);border:1px solid rgba(255,107,157,.3);}
-.back-btn:hover{color:#ff6b9d;border-color:#ff6b9d;background:rgba(255,107,157,.1);}
-.hero{background:linear-gradient(180deg,#1a0010 0%,#3d0025 50%,#1a0010 100%);}
-.hero::before{background:radial-gradient(circle,rgba(255,107,157,.2) 0%,transparent 70%);}
-.hero h1{color:#ff6b9d;text-shadow:0 0 50px rgba(255,107,157,.7);}
-.hero p{color:rgba(255,107,157,.6);}
-.intro{background:rgba(255,107,157,.06);border:1px solid rgba(255,107,157,.15);}
-.info-chip{background:rgba(255,107,157,.1);border:1px solid rgba(255,107,157,.2);color:#ff6b9d;}
-.section-label{color:#ff6b9d;}
-.spot-card{background:rgba(255,107,157,.07);border:1px solid rgba(255,107,157,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(255,107,157,.2);}
-.spot-name{color:#ff6b9d;}
-.tag{background:rgba(255,107,157,.12);border:1px solid rgba(255,107,157,.25);color:#ff6b9d;}
-footer{border-top:1px solid rgba(255,107,157,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Serif JP',serif; background:#fdf6f0; color:#2c1810; overflow-x:hidden; }
+
+.back-btn {
+  position:fixed; top:1.2rem; left:1.2rem; z-index:200;
+  background:rgba(139,0,0,.85); backdrop-filter:blur(8px);
+  color:#fff; text-decoration:none;
+  font-size:.82rem; font-weight:700; letter-spacing:.1em;
+  padding:.5rem 1.1rem; border-radius:4px;
+  transition:background .3s;
+}
+.back-btn:hover { background:#8b0000; }
+
+/* HERO */
+.hero {
+  height:70vh; position:relative;
+  display:flex; align-items:flex-end;
+  padding:3rem 2rem; overflow:hidden;
+  background:#1a0010;
+}
+.hero-pattern {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255,182,193,.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(255,105,135,.1) 0%, transparent 50%),
+    linear-gradient(180deg,#1a0010 0%,#3d0025 40%,#1a0010 100%);
+}
+/* 桜の花びら装飾 */
+.sakura {
+  position:absolute; font-size:8rem; opacity:.06;
+  pointer-events:none; animation:float 8s ease-in-out infinite;
+}
+.sakura:nth-child(1) { top:10%; left:5%; animation-delay:0s; }
+.sakura:nth-child(2) { top:30%; right:8%; font-size:12rem; animation-delay:2s; }
+.sakura:nth-child(3) { bottom:20%; left:15%; font-size:6rem; animation-delay:4s; }
+@keyframes float {
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-20px) rotate(10deg);}
+}
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-size:.85rem; letter-spacing:.4em; color:rgba(255,182,193,.7); margin-bottom:.5rem; }
+.hero-title {
+  font-size:clamp(4rem,10vw,8rem); font-weight:900;
+  color:#fff; line-height:1;
+  text-shadow:0 0 60px rgba(255,105,135,.5);
+}
+.hero-sub { font-size:1rem; color:rgba(255,182,193,.8); margin-top:.8rem; letter-spacing:.2em; }
+.hero-line {
+  width:60px; height:3px;
+  background:linear-gradient(90deg,#ff6b9d,transparent);
+  margin:.8rem 0;
+}
+
+/* CONTENT */
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+
+/* 和風区切り線 */
+.wa-divider {
+  text-align:center; margin:2.5rem 0;
+  color:#c8a882; font-size:1.2rem; letter-spacing:.5em;
+}
+
+.intro-card {
+  background:#fff;
+  border-left:4px solid #ff6b9d;
+  border-radius:0 8px 8px 0;
+  padding:1.8rem 2rem;
+  margin-bottom:2.5rem;
+  box-shadow:4px 4px 20px rgba(139,0,0,.08);
+  font-size:1rem; line-height:2; color:#3d2010;
+}
+
+.info-bar {
+  display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem;
+}
+.info-chip {
+  background:#fff0f3; color:#c0392b;
+  border:1px solid #ffb3c6;
+  padding:.4rem 1rem; border-radius:4px;
+  font-size:.8rem; font-weight:700;
+}
+
+.section-label {
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.4em; color:#8b0000;
+  margin-bottom:1.5rem; text-align:center;
+}
+
+.spots-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem; margin-bottom:3rem;
+}
+.spot-card {
+  background:#fff;
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 2px 20px rgba(139,0,0,.08);
+  transition:transform .3s, box-shadow .3s;
+  border-top:3px solid #ff6b9d;
+}
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(139,0,0,.15); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name {
+  display:flex; align-items:center; gap:.5rem;
+  font-size:1.1rem; font-weight:900; color:#8b0000;
+  margin-bottom:.3rem;
+}
+.spot-loc { font-size:.75rem; color:#999; margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#444; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag {
+  padding:.2rem .7rem; border-radius:4px;
+  font-size:.72rem; font-weight:700;
+  background:#fff0f3; color:#c0392b;
+  border:1px solid #ffb3c6;
+}
+
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a {
+  display:inline-block;
+  background:#8b0000; color:#fff;
+  text-decoration:none; font-size:.85rem; font-weight:700;
+  padding:.7rem 2.5rem; border-radius:4px;
+  letter-spacing:.1em;
+  transition:background .3s;
+}
+.back-top a:hover { background:#c0392b; }
+
+footer {
+  text-align:center; padding:2.5rem;
+  background:#1a0010; color:rgba(255,182,193,.3);
+  font-size:.78rem; letter-spacing:.2em;
+}
+
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">日本</div>
-<h1>日本</h1>
-<p>— 静寂と美の国 —</p>
+  <div class="hero-pattern"></div>
+  <div class="sakura">🌸</div>
+  <div class="sakura">🌸</div>
+  <div class="sakura">🌸</div>
+  <div class="hero-text">
+    <div class="hero-en">JAPAN</div>
+    <h1 class="hero-title">日本</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">静寂と美の国</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">四季折々の自然美、千年の歴史が息づく古都、最先端の都市文化。日本は相反する魅力が共存する唯一無二の国。桜舞う春、緑輝く夏、紅葉燃える秋、雪化粧の冬——どの季節も旅人を魅了してやまない。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌸 ベストシーズン：3〜5月 / 10〜11月</span>
-<span class="info-chip">¥ 通貨：日本円</span>
-<span class="info-chip">🗣 言語：日本語</span>
-<span class="info-chip">🏙 首都：東京</span>
-<span class="info-chip">🍣 名物：寿司・ラーメン・抹茶</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">⛩️</span>
-<h3 class="spot-name">伏見稲荷大社</h3>
-<div class="spot-loc">📍 京都府京都市</div>
-<p class="spot-desc">無数の朱色の鳥居が連なる神秘的な参道「千本鳥居」。山頂まで続く約4kmの道のりは、日常から切り離された異世界への旅。夜明けや夕暮れ時の光景は特に幻想的。</p>
-<div class="spot-tags"><span class="tag">神社仏閣</span><span class="tag">世界遺産</span><span class="tag">フォトスポット</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🗻</span>
-<h3 class="spot-name">富士山</h3>
-<div class="spot-loc">📍 静岡県・山梨県</div>
-<p class="spot-desc">標高3,776m、日本最高峰。夜明けに染まる山頂「ご来光」は登山者だけが体験できる感動。河口湖からの逆さ富士も絶景。ユネスコ世界文化遺産。</p>
-<div class="spot-tags"><span class="tag">自然</span><span class="tag">世界遺産</span><span class="tag">登山</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌸</span>
-<h3 class="spot-name">吉野山</h3>
-<div class="spot-loc">📍 奈良県吉野郡</div>
-<p class="spot-desc">春には3万本の桜が山全体を覆う「一目千本」の絶景。下千本・中千本・上千本・奥千本と標高によって開花時期がずれるため長期間楽しめる。</p>
-<div class="spot-tags"><span class="tag">桜</span><span class="tag">世界遺産</span><span class="tag">春</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏯</span>
-<h3 class="spot-name">姫路城</h3>
-<div class="spot-loc">📍 兵庫県姫路市</div>
-<p class="spot-desc">「白鷺城」と呼ばれる純白の天守閣。日本初のユネスコ世界遺産のひとつで、現存する最も完全な形の城郭建築。桜の季節は特に美しい。</p>
-<div class="spot-tags"><span class="tag">城</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🦌</span>
-<h3 class="spot-name">奈良公園</h3>
-<div class="spot-loc">📍 奈良県奈良市</div>
-<p class="spot-desc">約1,200頭の野生の鹿が自由に歩き回る公園。東大寺の大仏、春日大社など世界遺産が集中するエリアで、鹿と歴史建築の共演が楽しめる。</p>
-<div class="spot-tags"><span class="tag">動物</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌿</span>
-<h3 class="spot-name">屋久島</h3>
-<div class="spot-loc">📍 鹿児島県</div>
-<p class="spot-desc">樹齢7,200年とも言われる縄文杉が息づく神秘の島。宮崎駿「もののけ姫」の舞台モデルとも言われ、豊かな水と緑が広がる。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">四季折々の自然美、千年の歴史が息づく古都、最先端の都市文化。日本は相反する魅力が共存する唯一無二の国。桜舞う春、緑輝く夏、紅葉燃える秋、雪化粧の冬——どの季節も旅人を魅了してやまない。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌸 ベストシーズン：3〜5月 / 10〜11月</span>
+    <span class="info-chip">¥ 通貨：日本円</span>
+    <span class="info-chip">🗣 言語：日本語</span>
+    <span class="info-chip">🏙 首都：東京</span>
+    <span class="info-chip">🍣 名物：寿司・ラーメン・抹茶</span>
+  </div>
+  <div class="wa-divider fade-in">✦ ✦ ✦</div>
+  <div class="section-label fade-in">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">⛩️ 伏見稲荷大社</div>
+        <div class="spot-loc">📍 京都府京都市</div>
+        <p class="spot-desc">無数の朱色の鳥居が連なる神秘的な参道「千本鳥居」。山頂まで続く約4kmの道のりは、日常から切り離された異世界への旅。夜明けや夕暮れ時の光景は特に幻想的。</p>
+        <div class="spot-tags"><span class="tag">神社仏閣</span><span class="tag">世界遺産</span><span class="tag">フォトスポット</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🗻 富士山</div>
+        <div class="spot-loc">📍 静岡県・山梨県</div>
+        <p class="spot-desc">標高3,776m、日本最高峰。夜明けに染まる山頂「ご来光」は登山者だけが体験できる感動。河口湖からの逆さ富士も絶景。ユネスコ世界文化遺産。</p>
+        <div class="spot-tags"><span class="tag">自然</span><span class="tag">世界遺産</span><span class="tag">登山</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🌸 吉野山</div>
+        <div class="spot-loc">📍 奈良県吉野郡</div>
+        <p class="spot-desc">春には3万本の桜が山全体を覆う「一目千本」の絶景。下千本・中千本・上千本・奥千本と標高によって開花時期がずれるため長期間楽しめる。</p>
+        <div class="spot-tags"><span class="tag">桜</span><span class="tag">世界遺産</span><span class="tag">春</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🏯 姫路城</div>
+        <div class="spot-loc">📍 兵庫県姫路市</div>
+        <p class="spot-desc">「白鷺城」と呼ばれる純白の天守閣。日本初のユネスコ世界遺産のひとつで、現存する最も完全な形の城郭建築。桜の季節は特に美しい。</p>
+        <div class="spot-tags"><span class="tag">城</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🦌 奈良公園</div>
+        <div class="spot-loc">📍 奈良県奈良市</div>
+        <p class="spot-desc">約1,200頭の野生の鹿が自由に歩き回る公園。東大寺の大仏、春日大社など世界遺産が集中するエリアで、鹿と歴史建築の共演が楽しめる。</p>
+        <div class="spot-tags"><span class="tag">動物</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🌿 屋久島</div>
+        <div class="spot-loc">📍 鹿児島県</div>
+        <p class="spot-desc">樹齢7,200年とも言われる縄文杉が息づく神秘の島。宮崎駿「もののけ姫」の舞台モデルとも言われ、豊かな水と緑が広がる。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
