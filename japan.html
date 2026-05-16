@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本 — 世界の観光地ガイド</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:#0d0008; }
+    .back-btn { color:rgba(255,107,157,.7); border:1px solid rgba(255,107,157,.3); }
+    .back-btn:hover { color:#ff6b9d; border-color:#ff6b9d; background:rgba(255,107,157,.1); }
+    .hero { background:linear-gradient(180deg,#1a0010 0%,#3d0025 50%,#1a0010 100%); }
+    .hero::before { background:radial-gradient(circle,rgba(255,107,157,.2) 0%,transparent 70%); }
+    .hero h1 { color:#ff6b9d; text-shadow:0 0 50px rgba(255,107,157,.7); }
+    .hero p { color:rgba(255,107,157,.6); }
+    .intro { background:rgba(255,107,157,.06); border:1px solid rgba(255,107,157,.15); }
+    .info-chip { background:rgba(255,107,157,.1); border:1px solid rgba(255,107,157,.2); color:#ff6b9d; }
+    .section-label { color:#ff6b9d; }
+    .spot-card { background:rgba(255,107,157,.07); border:1px solid rgba(255,107,157,.18); }
+    .spot-card:hover { box-shadow:0 10px 35px rgba(255,107,157,.2); }
+    .spot-name { color:#ff6b9d; }
+    .tag { background:rgba(255,107,157,.12); border:1px solid rgba(255,107,157,.25); color:#ff6b9d; }
+    footer { border-top:1px solid rgba(255,107,157,.1); }
+  </style>
+</head>
+<body>
+<a href="index.html" class="back-btn">← BACK</a>
+<section class="hero">
+  <div class="hero-bg-text">日本</div>
+  <h1>日本</h1>
+  <p>— 静寂と美の国 —</p>
+</section>
+<div class="content">
+  <div class="intro fade-in">四季折々の自然美、千年の歴史が息づく古都、最先端の都市文化。日本は相反する魅力が共存する唯一無二の国。桜舞う春、緑輝く夏、紅葉燃える秋、雪化粧の冬——どの季節も旅人を魅了してやまない。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌸 ベストシーズン：3〜5月 / 10〜11月</span>
+    <span class="info-chip">¥ 通貨：日本円</span>
+    <span class="info-chip">🗣 言語：日本語</span>
+    <span class="info-chip">🏙 首都：東京</span>
+    <span class="info-chip">🍣 名物：寿司・ラーメン・抹茶</span>
+  </div>
+  <div class="section-label fade-in">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><span class="spot-icon">⛩️</span><h3 class="spot-name">伏見稲荷大社</h3><div class="spot-loc">📍 京都府京都市</div><p class="spot-desc">無数の朱色の鳥居が連なる神秘的な参道「千本鳥居」。山頂まで続く約4kmの道のりは、日常から切り離された異世界への旅。夜明けや夕暮れ時の光景は特に幻想的。</p><div class="spot-tags"><span class="tag">神社仏閣</span><span class="tag">世界遺産</span><span class="tag">フォトスポット</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🗻</span><h3 class="spot-name">富士山</h3><div class="spot-loc">📍 静岡県・山梨県</div><p class="spot-desc">標高3,776m、日本最高峰。夜明けに染まる山頂「ご来光」は登山者だけが体験できる感動。河口湖からの逆さ富士も絶景。ユネスコ世界文化遺産。</p><div class="spot-tags"><span class="tag">自然</span><span class="tag">世界遺産</span><span class="tag">登山</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🌸</span><h3 class="spot-name">吉野山</h3><div class="spot-loc">📍 奈良県吉野郡</div><p class="spot-desc">春には3万本の桜が山全体を覆う「一目千本」の絶景。下千本・中千本・上千本・奥千本と標高によって開花時期がずれるため長期間楽しめる。</p><div class="spot-tags"><span class="tag">桜</span><span class="tag">世界遺産</span><span class="tag">春</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🏯</span><h3 class="spot-name">姫路城</h3><div class="spot-loc">📍 兵庫県姫路市</div><p class="spot-desc">「白鷺城」と呼ばれる純白の天守閣。日本初のユネスコ世界遺産のひとつで、現存する最も完全な形の城郭建築。桜の季節は特に美しい。</p><div class="spot-tags"><span class="tag">城</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🦌</span><h3 class="spot-name">奈良公園</h3><div class="spot-loc">📍 奈良県奈良市</div><p class="spot-desc">約1,200頭の野生の鹿が自由に歩き回る公園。東大寺の大仏、春日大社など世界遺産が集中するエリアで、鹿と歴史建築の共演が楽しめる。</p><div class="spot-tags"><span class="tag">動物</span><span class="tag">世界遺産</span><span class="tag">歴史</span></div></div>
+    <div class="spot-card fade-in"><span class="spot-icon">🌿</span><h3 class="spot-name">屋久島</h3><div class="spot-loc">📍 鹿児島県</div><p class="spot-desc">樹齢7,200年とも言われる縄文杉が息づく神秘の島。宮崎駿「もののけ姫」の舞台モデルとも言われ、豊かな水と緑が広がる。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">トレッキング</span></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+</div>
+<footer>© 2026 WORLD TRAVEL GUIDE</footer>
+<script>
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
