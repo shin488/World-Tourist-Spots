@@ -4,87 +4,80 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>アメリカ — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#00001a;}
-.back-btn{color:rgba(79,195,247,.7);border:1px solid rgba(79,195,247,.3);}
-.back-btn:hover{color:#4fc3f7;border-color:#4fc3f7;background:rgba(79,195,247,.1);}
-.hero{background:linear-gradient(180deg,#00001a 0%,#00003d 50%,#00001a 100%);}
-.hero::before{background:radial-gradient(circle,rgba(79,195,247,.2) 0%,transparent 70%);}
-.hero h1{color:#4fc3f7;text-shadow:0 0 50px rgba(79,195,247,.7);}
-.hero p{color:rgba(79,195,247,.6);}
-.intro{background:rgba(79,195,247,.05);border:1px solid rgba(79,195,247,.15);}
-.info-chip{background:rgba(79,195,247,.08);border:1px solid rgba(79,195,247,.2);color:#4fc3f7;}
-.section-label{color:#4fc3f7;}
-.spot-card{background:rgba(79,195,247,.06);border:1px solid rgba(79,195,247,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(79,195,247,.2);}
-.spot-name{color:#4fc3f7;}
-.tag{background:rgba(79,195,247,.1);border:1px solid rgba(79,195,247,.25);color:#4fc3f7;}
-footer{border-top:1px solid rgba(79,195,247,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#00001a; color:#e3f2fd; overflow-x:hidden; }
+.back-btn { position:fixed; top:1.2rem; left:1.2rem; z-index:200; background:rgba(21,101,192,.9); color:#fff; text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em; padding:.5rem 1.1rem; border-radius:3px; transition:background .3s; }
+.back-btn:hover { background:#1976d2; }
+.hero { height:70vh; position:relative; display:flex; align-items:flex-end; padding:3rem 2rem; overflow:hidden; }
+.hero-pattern { position:absolute; inset:0; background: radial-gradient(ellipse at 50% 30%, rgba(79,195,247,.15) 0%, transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(244,67,54,.08) 0%, transparent 50%), linear-gradient(180deg,#00001a 0%,#00003d 40%,#00001a 100%); }
+.star-deco { position:absolute; font-size:10rem; opacity:.05; pointer-events:none; animation:twinkle 3s ease-in-out infinite; }
+.star-deco:nth-child(2) { top:10%; right:5%; }
+.star-deco:nth-child(3) { bottom:15%; left:3%; font-size:7rem; animation-delay:1.5s; }
+@keyframes twinkle { 0%,100%{opacity:.04;} 50%{opacity:.1;} }
+.hero-text { position:relative; z-index:1; color:#fff; }
+.hero-en { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.5em; color:rgba(79,195,247,.7); margin-bottom:.3rem; }
+.hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(4rem,10vw,9rem); font-weight:400; color:#4fc3f7; line-height:.9; text-shadow:0 0 60px rgba(79,195,247,.5); }
+.hero-sub { font-size:1rem; color:rgba(79,195,247,.8); margin-top:.8rem; letter-spacing:.15em; }
+.hero-line { width:60px; height:3px; background:linear-gradient(90deg,#4fc3f7,#f44336); margin:.8rem 0; }
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+.usa-divider { text-align:center; margin:2.5rem 0; color:rgba(79,195,247,.4); font-size:1.2rem; letter-spacing:.6em; }
+.intro-card { background:rgba(79,195,247,.07); border-left:4px solid #4fc3f7; border-radius:0 8px 8px 0; padding:1.8rem 2rem; margin-bottom:2.5rem; box-shadow:4px 4px 20px rgba(0,0,0,.4); font-size:1rem; line-height:2; color:#b3e5fc; }
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip { background:rgba(79,195,247,.1); color:#4fc3f7; border:1px solid rgba(79,195,247,.3); padding:.4rem 1rem; border-radius:3px; font-size:.8rem; font-weight:700; }
+.section-label { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:.5em; color:rgba(79,195,247,.6); margin-bottom:1.5rem; text-align:center; }
+.spots-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-bottom:3rem; }
+.spot-card { background:rgba(79,195,247,.06); border-radius:6px; overflow:hidden; box-shadow:0 2px 20px rgba(0,0,0,.5); transition:transform .3s,box-shadow .3s; border-top:3px solid #4fc3f7; border:1px solid rgba(79,195,247,.15); }
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(79,195,247,.2); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#4fc3f7; margin-bottom:.3rem; }
+.spot-loc { font-size:.75rem; color:rgba(79,195,247,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#b3e5fc; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag { padding:.2rem .7rem; border-radius:3px; font-size:.72rem; font-weight:700; background:rgba(79,195,247,.1); color:#4fc3f7; border:1px solid rgba(79,195,247,.25); }
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a { display:inline-block; background:#4fc3f7; color:#00001a; text-decoration:none; font-size:.85rem; font-weight:700; padding:.7rem 2.5rem; border-radius:3px; letter-spacing:.1em; transition:background .3s; }
+.back-top a:hover { background:#81d4fa; }
+footer { text-align:center; padding:2.5rem; background:#000010; color:rgba(79,195,247,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">★</div>
-<h1>U.S.A.</h1>
-<p>— 夢と自由の超大国 —</p>
+  <div class="hero-pattern"></div>
+  <div class="star-deco">⭐</div>
+  <div class="star-deco">🗽</div>
+  <div class="hero-text">
+    <div class="hero-en">UNITED STATES OF AMERICA</div>
+    <h1 class="hero-title">U.S.A.</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">夢と自由の超大国</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">広大な国土に詰め込まれた多様な文化、圧倒的な自然、世界を動かす都市——アメリカは何度訪れても新しい発見がある国。グランドキャニオンの絶壁からニューヨークの摩天楼まで、スケールが違う。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🍂 ベストシーズン：春・秋（地域による）</span>
-<span class="info-chip">💵 通貨：USドル</span>
-<span class="info-chip">🗣 言語：英語</span>
-<span class="info-chip">🏙 首都：ワシントンD.C.</span>
-<span class="info-chip">🍔 名物：ハンバーガー・BBQ・ロブスター</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">🏜️</span>
-<h3 class="spot-name">グランドキャニオン</h3>
-<div class="spot-loc">📍 アリゾナ州</div>
-<p class="spot-desc">コロラド川が2000万年かけて刻んだ全長446km、深さ1600mの大峡谷。地球の歴史が地層として刻まれた圧倒的な景観は、人間の小ささを思い知らせる。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">絶景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🗽</span>
-<h3 class="spot-name">自由の女神</h3>
-<div class="spot-loc">📍 ニューヨーク州</div>
-<p class="spot-desc">ニューヨーク港に立つ高さ93mの巨大像。フランスからの贈り物で、自由と民主主義の象徴。フェリーで近づくと、そのスケールに圧倒される。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">象徴</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌲</span>
-<h3 class="spot-name">イエローストーン国立公園</h3>
-<div class="spot-loc">📍 ワイオミング州</div>
-<p class="spot-desc">世界初の国立公園。間欠泉「オールド・フェイスフル」、カラフルな温泉池、バイソンの群れ——地球の鼓動を感じられる唯一無二の場所。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">野生動物</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌉</span>
-<h3 class="spot-name">ゴールデンゲートブリッジ</h3>
-<div class="spot-loc">📍 サンフランシスコ</div>
-<p class="spot-desc">霧の中に浮かぶ朱色の吊り橋。全長2.7km、完成当時は世界最長の吊り橋だった。サンフランシスコの象徴として世界中から愛される。</p>
-<div class="spot-tags"><span class="tag">建築</span><span class="tag">絶景</span><span class="tag">都市</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🎰</span>
-<h3 class="spot-name">ラスベガス</h3>
-<div class="spot-loc">📍 ネバダ州</div>
-<p class="spot-desc">砂漠の中に突如現れる光の都。世界中のランドマークを再現したホテル群、豪華なショー、カジノ——眠らない街は24時間旅人を魅了し続ける。</p>
-<div class="spot-tags"><span class="tag">エンタメ</span><span class="tag">都市</span><span class="tag">夜景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏔️</span>
-<h3 class="spot-name">ヨセミテ国立公園</h3>
-<div class="spot-loc">📍 カリフォルニア州</div>
-<p class="spot-desc">垂直に切り立つ花崗岩の絶壁、流れ落ちる滝、巨大なセコイア——アメリカの自然の美しさが凝縮された場所。アンセル・アダムスが愛した絶景。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">登山</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">広大な国土に詰め込まれた多様な文化、圧倒的な自然、世界を動かす都市——アメリカは何度訪れても新しい発見がある国。グランドキャニオンの絶壁からニューヨークの摩天楼まで、スケールが違う。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🍂 ベストシーズン：春・秋（地域による）</span>
+    <span class="info-chip">💵 通貨：USドル</span>
+    <span class="info-chip">🗣 言語：英語</span>
+    <span class="info-chip">🏙 首都：ワシントンD.C.</span>
+    <span class="info-chip">🍔 名物：ハンバーガー・BBQ・ロブスター</span>
+  </div>
+  <div class="usa-divider">★ ★ ★</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏜️ グランドキャニオン</div><div class="spot-loc">📍 アリゾナ州</div><p class="spot-desc">コロラド川が2000万年かけて刻んだ全長446km、深さ1600mの大峡谷。地球の歴史が地層として刻まれた圧倒的な景観は、人間の小ささを思い知らせる。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">絶景</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🗽 自由の女神</div><div class="spot-loc">📍 ニューヨーク州</div><p class="spot-desc">ニューヨーク港に立つ高さ93mの巨大像。フランスからの贈り物で、自由と民主主義の象徴。フェリーで近づくと、そのスケールに圧倒される。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">象徴</span><span class="tag">歴史</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🌲 イエローストーン国立公園</div><div class="spot-loc">📍 ワイオミング州</div><p class="spot-desc">世界初の国立公園。間欠泉「オールド・フェイスフル」、カラフルな温泉池、バイソンの群れ——地球の鼓動を感じられる唯一無二の場所。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">野生動物</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🌉 ゴールデンゲートブリッジ</div><div class="spot-loc">📍 サンフランシスコ</div><p class="spot-desc">霧の中に浮かぶ朱色の吊り橋。全長2.7km、完成当時は世界最長の吊り橋だった。サンフランシスコの象徴として世界中から愛される。</p><div class="spot-tags"><span class="tag">建築</span><span class="tag">絶景</span><span class="tag">都市</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🎰 ラスベガス</div><div class="spot-loc">📍 ネバダ州</div><p class="spot-desc">砂漠の中に突如現れる光の都。世界中のランドマークを再現したホテル群、豪華なショー、カジノ——眠らない街は24時間旅人を魅了し続ける。</p><div class="spot-tags"><span class="tag">エンタメ</span><span class="tag">都市</span><span class="tag">夜景</span></div></div></div>
+    <div class="spot-card fade-in"><div class="spot-body"><div class="spot-icon-name">🏔️ ヨセミテ国立公園</div><div class="spot-loc">📍 カリフォルニア州</div><p class="spot-desc">垂直に切り立つ花崗岩の絶壁、流れ落ちる滝、巨大なセコイア——アメリカの自然の美しさが凝縮された場所。アンセル・アダムスが愛した絶景。</p><div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">自然</span><span class="tag">登山</span></div></div></div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
