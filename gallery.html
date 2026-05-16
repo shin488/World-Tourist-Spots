@@ -8,9 +8,8 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Helvetica Neue',Arial,sans-serif; background:#111; color:#fff; overflow-x:hidden; }
 
-/* ===== BACK BTN ===== */
 .back-btn {
-  position: fixed; top:1.2rem; left:1.2rem; z-index:200;
+  position:fixed; top:1.2rem; left:1.2rem; z-index:200;
   background:rgba(0,0,0,.6); backdrop-filter:blur(8px);
   color:#fff; text-decoration:none;
   font-size:.82rem; font-weight:700; letter-spacing:.1em;
@@ -19,52 +18,38 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#111; color:#ff
 }
 .back-btn:hover { background:rgba(255,255,255,.2); }
 
-/* ===== HERO ===== */
 .hero {
-  height: 50vh;
+  height:45vh;
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
   text-align:center; position:relative; overflow:hidden;
+  background:#000;
 }
 .hero-bg {
   position:absolute; inset:0;
-  background:url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80') center/cover no-repeat;
-}
-.hero-overlay {
-  position:absolute; inset:0;
-  background:rgba(0,0,0,.6);
+  background:url('https://source.unsplash.com/1600x900/?travel,world') center/cover no-repeat;
+  opacity:.5;
 }
 .hero-content { position:relative; z-index:1; }
-.hero-eyebrow {
-  font-size:.75rem; letter-spacing:.3em; color:rgba(255,255,255,.6);
-  margin-bottom:.8rem;
-}
-.hero h1 {
-  font-size:clamp(2.5rem,6vw,5rem);
-  font-weight:900; color:#fff;
-  text-shadow:0 4px 20px rgba(0,0,0,.5);
-}
+.hero-eyebrow { font-size:.75rem; letter-spacing:.3em; color:rgba(255,255,255,.6); margin-bottom:.8rem; }
+.hero h1 { font-size:clamp(2.5rem,6vw,5rem); font-weight:900; }
 .hero p { color:rgba(255,255,255,.7); margin-top:.6rem; font-size:1rem; letter-spacing:.1em; }
 
-/* ===== NAV TABS ===== */
 .tab-nav {
   position:sticky; top:0; z-index:100;
-  background:rgba(17,17,17,.95); backdrop-filter:blur(10px);
+  background:rgba(17,17,17,.97); backdrop-filter:blur(10px);
   padding:.8rem 1rem;
   display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap;
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 .tab-btn {
-  background:transparent; border:1px solid rgba(255,255,255,.15);
+  background:transparent; border:1px solid rgba(255,255,255,.2);
   color:rgba(255,255,255,.6); font-size:.8rem;
   padding:.4rem 1rem; border-radius:20px; cursor:pointer;
   transition:all .3s; white-space:nowrap;
 }
-.tab-btn:hover, .tab-btn.active {
-  background:#fff; color:#111; border-color:#fff; font-weight:700;
-}
+.tab-btn:hover { background:rgba(255,255,255,.1); color:#fff; }
 
-/* ===== COUNTRY SECTION ===== */
 .country-section { padding:4rem 1.5rem; max-width:1200px; margin:0 auto; }
 
 .country-header {
@@ -85,7 +70,6 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#111; color:#ff
 }
 .country-header a:hover { background:#fff; color:#111; }
 
-/* ===== PHOTO GRID ===== */
 .photo-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -93,21 +77,19 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#111; color:#ff
 }
 .photo-item {
   position:relative; overflow:hidden; border-radius:12px;
-  cursor:pointer;
-  aspect-ratio:4/3;
+  cursor:pointer; aspect-ratio:4/3;
+  background:#222;
 }
 .photo-item.wide { grid-column:span 2; aspect-ratio:16/9; }
-.photo-item.tall { grid-row:span 2; aspect-ratio:3/4; }
 .photo-item img {
   width:100%; height:100%; object-fit:cover;
-  transition:transform .4s;
-  display:block;
+  transition:transform .4s; display:block;
 }
 .photo-item:hover img { transform:scale(1.06); }
 .photo-caption {
   position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,transparent 100%);
-  padding:1.5rem .8rem .8rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 100%);
+  padding:2rem .8rem .8rem;
   opacity:0; transition:opacity .3s;
 }
 .photo-item:hover .photo-caption { opacity:1; }
@@ -120,29 +102,22 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#111; color:#ff
   margin:0 1.5rem;
 }
 
-/* ===== LIGHTBOX ===== */
+/* ライトボックス */
 .lightbox {
   display:none; position:fixed; inset:0; z-index:1000;
   background:rgba(0,0,0,.95); align-items:center; justify-content:center;
+  flex-direction:column;
 }
 .lightbox.open { display:flex; }
-.lightbox img {
-  max-width:90vw; max-height:85vh;
-  object-fit:contain; border-radius:8px;
-}
+.lightbox img { max-width:90vw; max-height:80vh; object-fit:contain; border-radius:8px; }
 .lightbox-close {
   position:absolute; top:1.5rem; right:1.5rem;
   background:rgba(255,255,255,.15); border:none;
   color:#fff; font-size:1.5rem; width:44px; height:44px;
-  border-radius:50%; cursor:pointer; transition:background .3s;
+  border-radius:50%; cursor:pointer;
 }
-.lightbox-close:hover { background:rgba(255,255,255,.3); }
-.lightbox-caption {
-  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
-  text-align:center; color:rgba(255,255,255,.8); font-size:.9rem;
-}
+.lightbox-caption { margin-top:1rem; color:rgba(255,255,255,.7); font-size:.9rem; }
 
-/* ===== FOOTER ===== */
 footer {
   text-align:center; padding:2.5rem;
   background:#000; color:rgba(255,255,255,.2);
@@ -153,12 +128,8 @@ footer {
 .fade-in.visible { opacity:1; transform:translateY(0); }
 
 @media(max-width:700px) {
-  .photo-grid { grid-template-columns:repeat(2,1fr); }
+  .photo-grid { grid-template-columns:1fr 1fr; }
   .photo-item.wide { grid-column:span 2; }
-  .photo-item.tall { grid-row:span 1; aspect-ratio:4/3; }
-}
-@media(max-width:480px) {
-  .photo-grid { grid-template-columns:1fr 1fr; gap:.5rem; }
 }
 </style>
 </head>
@@ -166,10 +137,8 @@ footer {
 
 <a href="index.html" class="back-btn">← 一覧に戻る</a>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">WORLD TRAVEL GUIDE</div>
     <h1>📸 フォトギャラリー</h1>
@@ -177,19 +146,18 @@ footer {
   </div>
 </section>
 
-<!-- TAB NAV -->
 <div class="tab-nav">
-  <button class="tab-btn active" onclick="scrollTo('japan')">🇯🇵 日本</button>
-  <button class="tab-btn" onclick="scrollTo('italy')">🇮🇹 イタリア</button>
-  <button class="tab-btn" onclick="scrollTo('egypt')">🇪🇬 エジプト</button>
-  <button class="tab-btn" onclick="scrollTo('brazil')">🇧🇷 ブラジル</button>
-  <button class="tab-btn" onclick="scrollTo('india')">🇮🇳 インド</button>
-  <button class="tab-btn" onclick="scrollTo('usa')">🇺🇸 アメリカ</button>
-  <button class="tab-btn" onclick="scrollTo('france')">🇫🇷 フランス</button>
-  <button class="tab-btn" onclick="scrollTo('australia')">🇦🇺 オーストラリア</button>
+  <button class="tab-btn" onclick="document.getElementById('japan').scrollIntoView({behavior:'smooth'})">🇯🇵 日本</button>
+  <button class="tab-btn" onclick="document.getElementById('italy').scrollIntoView({behavior:'smooth'})">🇮🇹 イタリア</button>
+  <button class="tab-btn" onclick="document.getElementById('egypt').scrollIntoView({behavior:'smooth'})">🇪🇬 エジプト</button>
+  <button class="tab-btn" onclick="document.getElementById('brazil').scrollIntoView({behavior:'smooth'})">🇧🇷 ブラジル</button>
+  <button class="tab-btn" onclick="document.getElementById('india').scrollIntoView({behavior:'smooth'})">🇮🇳 インド</button>
+  <button class="tab-btn" onclick="document.getElementById('usa').scrollIntoView({behavior:'smooth'})">🇺🇸 アメリカ</button>
+  <button class="tab-btn" onclick="document.getElementById('france').scrollIntoView({behavior:'smooth'})">🇫🇷 フランス</button>
+  <button class="tab-btn" onclick="document.getElementById('australia').scrollIntoView({behavior:'smooth'})">🇦🇺 オーストラリア</button>
 </div>
 
-<!-- ===== JAPAN ===== -->
+<!-- JAPAN -->
 <div id="japan">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -198,37 +166,36 @@ footer {
     <a href="japan.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=1200&q=85" alt="伏見稲荷大社">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?fushimi-inari,kyoto,torii" alt="伏見稲荷大社" loading="lazy">
       <div class="photo-caption"><div class="name">伏見稲荷大社</div><div class="loc">📍 京都</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=800&q=85" alt="富士山">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?mount-fuji,japan" alt="富士山" loading="lazy">
       <div class="photo-caption"><div class="name">富士山</div><div class="loc">📍 静岡・山梨</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=85" alt="京都の桜">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?kyoto,sakura,cherry-blossom" alt="京都の桜" loading="lazy">
       <div class="photo-caption"><div class="name">京都の桜</div><div class="loc">📍 京都</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=85" alt="姫路城">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?himeji-castle,japan" alt="姫路城" loading="lazy">
       <div class="photo-caption"><div class="name">姫路城</div><div class="loc">📍 兵庫</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=85" alt="奈良の鹿">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?nara,deer,japan" alt="奈良公園" loading="lazy">
       <div class="photo-caption"><div class="name">奈良公園</div><div class="loc">📍 奈良</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=85" alt="東京夜景">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?tokyo,night,japan" alt="東京夜景" loading="lazy">
       <div class="photo-caption"><div class="name">東京夜景</div><div class="loc">📍 東京</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== ITALY ===== -->
+<!-- ITALY -->
 <div id="italy">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -237,33 +204,32 @@ footer {
     <a href="italy.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=800&q=85" alt="コロッセオ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?colosseum,rome,italy" alt="コロッセオ" loading="lazy">
       <div class="photo-caption"><div class="name">コロッセオ</div><div class="loc">📍 ローマ</div></div>
     </div>
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?w=1200&q=85" alt="ヴェネツィア">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?venice,canal,gondola" alt="ヴェネツィア" loading="lazy">
       <div class="photo-caption"><div class="name">ヴェネツィア</div><div class="loc">📍 ヴェネト州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1541370976299-4d24be63e9d3?w=800&q=85" alt="フィレンツェ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?florence,italy,duomo" alt="フィレンツェ" loading="lazy">
       <div class="photo-caption"><div class="name">フィレンツェ</div><div class="loc">📍 トスカーナ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=800&q=85" alt="アマルフィ海岸">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?amalfi,coast,italy" alt="アマルフィ海岸" loading="lazy">
       <div class="photo-caption"><div class="name">アマルフィ海岸</div><div class="loc">📍 カンパニア州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=85" alt="トレヴィの泉">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?trevi-fountain,rome" alt="トレヴィの泉" loading="lazy">
       <div class="photo-caption"><div class="name">トレヴィの泉</div><div class="loc">📍 ローマ</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== EGYPT ===== -->
+<!-- EGYPT -->
 <div id="egypt">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -272,33 +238,32 @@ footer {
     <a href="egypt.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=1200&q=85" alt="ピラミッド">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?pyramid,egypt,giza" alt="ピラミッド" loading="lazy">
       <div class="photo-caption"><div class="name">ギザのピラミッド</div><div class="loc">📍 カイロ近郊</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=800&q=85" alt="スフィンクス">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?sphinx,egypt" alt="スフィンクス" loading="lazy">
       <div class="photo-caption"><div class="name">スフィンクス</div><div class="loc">📍 ギザ高原</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&q=85" alt="ルクソール">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?luxor,temple,egypt" alt="ルクソール" loading="lazy">
       <div class="photo-caption"><div class="name">ルクソール神殿</div><div class="loc">📍 ルクソール</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85" alt="紅海">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?red-sea,diving,coral" alt="紅海" loading="lazy">
       <div class="photo-caption"><div class="name">紅海ダイビング</div><div class="loc">📍 シナイ半島</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1562679299-8e5e4b3e3e3e?w=800&q=85" alt="砂漠">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?sahara,desert,sand" alt="砂漠" loading="lazy">
       <div class="photo-caption"><div class="name">サハラ砂漠</div><div class="loc">📍 エジプト</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== BRAZIL ===== -->
+<!-- BRAZIL -->
 <div id="brazil">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -307,33 +272,32 @@ footer {
     <a href="brazil.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=85" alt="リオデジャネイロ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?rio-de-janeiro,brazil" alt="リオ" loading="lazy">
       <div class="photo-caption"><div class="name">リオデジャネイロ</div><div class="loc">📍 リオ州</div></div>
     </div>
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1544989164-31c5f7e673b4?w=1200&q=85" alt="イグアスの滝">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?iguazu,falls,waterfall" alt="イグアスの滝" loading="lazy">
       <div class="photo-caption"><div class="name">イグアスの滝</div><div class="loc">📍 パラナ州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?w=800&q=85" alt="アマゾン">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?amazon,jungle,rainforest" alt="アマゾン" loading="lazy">
       <div class="photo-caption"><div class="name">アマゾン熱帯雨林</div><div class="loc">📍 アマゾナス州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?w=800&q=85" alt="コパカバーナ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?copacabana,beach,brazil" alt="コパカバーナ" loading="lazy">
       <div class="photo-caption"><div class="name">コパカバーナビーチ</div><div class="loc">📍 リオ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?w=800&q=85" alt="キリスト像">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?christ-redeemer,brazil" alt="キリスト像" loading="lazy">
       <div class="photo-caption"><div class="name">キリスト像</div><div class="loc">📍 リオデジャネイロ</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== INDIA ===== -->
+<!-- INDIA -->
 <div id="india">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -342,33 +306,32 @@ footer {
     <a href="india.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=85" alt="タージマハル">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?taj-mahal,india,agra" alt="タージマハル" loading="lazy">
       <div class="photo-caption"><div class="name">タージ・マハル</div><div class="loc">📍 アーグラ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=85" alt="ガンジス川">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?ganges,varanasi,india" alt="ガンジス川" loading="lazy">
       <div class="photo-caption"><div class="name">ガンジス川</div><div class="loc">📍 ヴァラナシ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=85" alt="ジャイプール">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?jaipur,palace,india" alt="ジャイプール" loading="lazy">
       <div class="photo-caption"><div class="name">アンベール城</div><div class="loc">📍 ジャイプール</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=800&q=85" alt="デリー">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?india,colorful,street" alt="インド街並み" loading="lazy">
       <div class="photo-caption"><div class="name">インド街並み</div><div class="loc">📍 デリー</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=85" alt="ケーララ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?kerala,backwater,india" alt="ケーララ" loading="lazy">
       <div class="photo-caption"><div class="name">ケーララ水郷</div><div class="loc">📍 ケーララ州</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== USA ===== -->
+<!-- USA -->
 <div id="usa">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -377,33 +340,32 @@ footer {
     <a href="usa.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=85" alt="ニューヨーク">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?new-york,manhattan,skyline" alt="ニューヨーク" loading="lazy">
       <div class="photo-caption"><div class="name">ニューヨーク</div><div class="loc">📍 NY州</div></div>
     </div>
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1474044159687-1ee9f3a51722?w=1200&q=85" alt="グランドキャニオン">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?grand-canyon,arizona,usa" alt="グランドキャニオン" loading="lazy">
       <div class="photo-caption"><div class="name">グランドキャニオン</div><div class="loc">📍 アリゾナ州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=85" alt="ゴールデンゲート">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?golden-gate,bridge,san-francisco" alt="ゴールデンゲート" loading="lazy">
       <div class="photo-caption"><div class="name">ゴールデンゲートブリッジ</div><div class="loc">📍 サンフランシスコ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?w=800&q=85" alt="イエローストーン">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?yellowstone,geyser,national-park" alt="イエローストーン" loading="lazy">
       <div class="photo-caption"><div class="name">イエローストーン</div><div class="loc">📍 ワイオミング州</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=800&q=85" alt="ラスベガス">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?las-vegas,nevada,night" alt="ラスベガス" loading="lazy">
       <div class="photo-caption"><div class="name">ラスベガス</div><div class="loc">📍 ネバダ州</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== FRANCE ===== -->
+<!-- FRANCE -->
 <div id="france">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -412,33 +374,32 @@ footer {
     <a href="france.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item wide fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&q=85" alt="エッフェル塔">
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?eiffel-tower,paris,france" alt="エッフェル塔" loading="lazy">
       <div class="photo-caption"><div class="name">エッフェル塔</div><div class="loc">📍 パリ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=85" alt="パリ街並み">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?paris,street,france" alt="パリ街並み" loading="lazy">
       <div class="photo-caption"><div class="name">パリ街並み</div><div class="loc">📍 パリ</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85" alt="モン・サン＝ミシェル">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?mont-saint-michel,france" alt="モン・サン＝ミシェル" loading="lazy">
       <div class="photo-caption"><div class="name">モン・サン＝ミシェル</div><div class="loc">📍 ノルマンディー</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=85" alt="ラベンダー畑">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?lavender,provence,france" alt="ラベンダー畑" loading="lazy">
       <div class="photo-caption"><div class="name">ラベンダー畑</div><div class="loc">📍 プロヴァンス</div></div>
     </div>
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1551634979-2b11f8c946fe?w=800&q=85" alt="ヴェルサイユ">
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?versailles,palace,france" alt="ヴェルサイユ" loading="lazy">
       <div class="photo-caption"><div class="name">ヴェルサイユ宮殿</div><div class="loc">📍 ヴェルサイユ</div></div>
     </div>
   </div>
 </div>
 </div>
-
 <div class="section-divider"></div>
 
-<!-- ===== AUSTRALIA ===== -->
+<!-- AUSTRALIA -->
 <div id="australia">
 <div class="country-section">
   <div class="country-header fade-in">
@@ -447,5 +408,28 @@ footer {
     <a href="australia.html">詳細ページ →</a>
   </div>
   <div class="photo-grid">
-    <div class="photo-item fade-in" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e
+    <div class="photo-item wide fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/800x450/?great-barrier-reef,australia,coral" alt="グレートバリアリーフ" loading="lazy">
+      <div class="photo-caption"><div class="name">グレートバリアリーフ</div><div class="loc">📍 クイーンズランド州</div></div>
+    </div>
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?uluru,ayers-rock,australia" alt="ウルル" loading="lazy">
+      <div class="photo-caption"><div class="name">ウルル（エアーズロック）</div><div class="loc">📍 ノーザンテリトリー</div></div>
+    </div>
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?sydney-opera-house,australia" alt="オペラハウス" loading="lazy">
+      <div class="photo-caption"><div class="name">シドニー・オペラハウス</div><div class="loc">📍 シドニー</div></div>
+    </div>
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?kangaroo,australia,wildlife" alt="カンガルー" loading="lazy">
+      <div class="photo-caption"><div class="name">野生のカンガルー</div><div class="loc">📍 オーストラリア</div></div>
+    </div>
+    <div class="photo-item fade-in" onclick="openLB(this)">
+      <img src="https://source.unsplash.com/600x450/?whitehaven,beach,australia" alt="ホワイトヘブン" loading="lazy">
+      <div class="photo-caption"><div class="name">ホワイトヘブンビーチ</div><div class="loc">📍 ウィットサンデー諸島</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>© 2026 WORLD TRAVEL GUIDE — Photos by Unsplash</footer
