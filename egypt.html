@@ -4,87 +4,196 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>エジプト — 世界の観光地ガイド</title>
-<link rel="stylesheet" href="style.css">
 <style>
-body{background:#0d0800;}
-.back-btn{color:rgba(255,215,0,.7);border:1px solid rgba(255,215,0,.3);}
-.back-btn:hover{color:#ffd700;border-color:#ffd700;background:rgba(255,215,0,.1);}
-.hero{background:linear-gradient(180deg,#1a1000 0%,#3d2800 50%,#1a1000 100%);}
-.hero::before{background:radial-gradient(circle,rgba(255,215,0,.2) 0%,transparent 70%);}
-.hero h1{color:#ffd700;text-shadow:0 0 50px rgba(255,215,0,.7);}
-.hero p{color:rgba(255,215,0,.6);}
-.intro{background:rgba(255,215,0,.05);border:1px solid rgba(255,215,0,.15);}
-.info-chip{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.2);color:#ffd700;}
-.section-label{color:#ffd700;}
-.spot-card{background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.18);}
-.spot-card:hover{box-shadow:0 10px 35px rgba(255,215,0,.2);}
-.spot-name{color:#ffd700;}
-.tag{background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.25);color:#ffd700;}
-footer{border-top:1px solid rgba(255,215,0,.1);}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Cinzel','Georgia',serif; background:#1a1200; color:#e8d5a3; overflow-x:hidden; }
+
+.back-btn {
+  position:fixed; top:1.2rem; left:1.2rem; z-index:200;
+  background:rgba(180,140,0,.85); color:#1a1200;
+  text-decoration:none; font-size:.82rem; font-weight:700; letter-spacing:.1em;
+  padding:.5rem 1.1rem; border-radius:2px; transition:background .3s;
+}
+.back-btn:hover { background:#ffd700; }
+
+.hero {
+  height:70vh; position:relative;
+  display:flex; align-items:flex-end;
+  padding:3rem 2rem; overflow:hidden;
+}
+.hero-pattern {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(255,215,0,.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 70%, rgba(180,120,0,.1) 0%, transparent 50%),
+    linear-gradient(180deg,#0d0800 0%,#2a1f00 40%,#1a1200 100%);
+}
+.pyramid-deco {
+  position:absolute; font-size:14rem; opacity:.05;
+  pointer-events:none;
+}
+.pyramid-deco:nth-child(2) { bottom:-2rem; right:2rem; }
+.pyramid-deco:nth-child(3) { bottom:-2rem; right:18rem; font-size:10rem; opacity:.04; }
+
+.hero-text { position:relative; z-index:1; color:#e8d5a3; }
+.hero-en { font-size:.8rem; letter-spacing:.5em; color:rgba(255,215,0,.6); margin-bottom:.5rem; }
+.hero-title {
+  font-size:clamp(4rem,10vw,8rem); font-weight:900;
+  color:#ffd700; line-height:1;
+  text-shadow:0 0 60px rgba(255,215,0,.4);
+}
+.hero-sub { font-size:1rem; color:rgba(255,215,0,.7); margin-top:.8rem; letter-spacing:.2em; }
+.hero-line { width:60px; height:2px; background:linear-gradient(90deg,#ffd700,transparent); margin:.8rem 0; }
+
+.content { max-width:1000px; margin:0 auto; padding:3rem 1.5rem; }
+
+.hieroglyph-divider {
+  text-align:center; margin:2.5rem 0;
+  color:rgba(255,215,0,.4); font-size:1.5rem; letter-spacing:.8em;
+}
+
+.intro-card {
+  background:rgba(255,215,0,.06);
+  border-left:4px solid #ffd700;
+  border-radius:0 4px 4px 0;
+  padding:1.8rem 2rem; margin-bottom:2.5rem;
+  box-shadow:4px 4px 20px rgba(0,0,0,.3);
+  font-size:1rem; line-height:2; color:#e8d5a3;
+  font-family:'Georgia',serif;
+}
+
+.info-bar { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.5rem; }
+.info-chip {
+  background:rgba(255,215,0,.1); color:#ffd700;
+  border:1px solid rgba(255,215,0,.3);
+  padding:.4rem 1rem; border-radius:2px;
+  font-size:.8rem; font-weight:700; font-family:'Georgia',serif;
+}
+
+.section-label {
+  font-size:.75rem; font-weight:700;
+  letter-spacing:.4em; color:rgba(255,215,0,.6);
+  margin-bottom:1.5rem; text-align:center;
+}
+
+.spots-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem; margin-bottom:3rem;
+}
+.spot-card {
+  background:rgba(255,215,0,.05);
+  border-radius:4px; overflow:hidden;
+  box-shadow:0 2px 20px rgba(0,0,0,.4);
+  transition:transform .3s, box-shadow .3s;
+  border-top:3px solid #ffd700;
+  border:1px solid rgba(255,215,0,.15);
+}
+.spot-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(255,215,0,.15); }
+.spot-body { padding:1.4rem; }
+.spot-icon-name { font-size:1.1rem; font-weight:700; color:#ffd700; margin-bottom:.3rem; font-family:'Georgia',serif; }
+.spot-loc { font-size:.75rem; color:rgba(255,215,0,.5); margin-bottom:.7rem; }
+.spot-desc { font-size:.87rem; line-height:1.9; color:#c8b882; font-family:'Georgia',serif; }
+.spot-tags { margin-top:.8rem; display:flex; flex-wrap:wrap; gap:.4rem; }
+.tag {
+  padding:.2rem .7rem; border-radius:2px;
+  font-size:.72rem; font-weight:700;
+  background:rgba(255,215,0,.1); color:#ffd700;
+  border:1px solid rgba(255,215,0,.25);
+}
+
+.back-top { text-align:center; margin-top:2rem; }
+.back-top a {
+  display:inline-block;
+  background:#ffd700; color:#1a1200;
+  text-decoration:none; font-size:.85rem; font-weight:700;
+  padding:.7rem 2.5rem; border-radius:2px; letter-spacing:.1em;
+  transition:background .3s;
+}
+.back-top a:hover { background:#ffec6e; }
+
+footer { text-align:center; padding:2.5rem; background:#0d0800; color:rgba(255,215,0,.2); font-size:.78rem; letter-spacing:.2em; }
+.fade-in { opacity:0; transform:translateY(25px); transition:opacity .7s,transform .7s; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+@media(max-width:600px){ .spots-grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
-<a href="index.html" class="back-btn">← BACK</a>
+<a href="index.html" class="back-btn">← 一覧</a>
 <section class="hero">
-<div class="hero-bg-text">𓂀</div>
-<h1>Egypt</h1>
-<p>— 砂漠に眠る、永遠の文明 —</p>
+  <div class="hero-pattern"></div>
+  <div class="pyramid-deco">🔺</div>
+  <div class="pyramid-deco">🔺</div>
+  <div class="hero-text">
+    <div class="hero-en">EGYPT</div>
+    <h1 class="hero-title">Egypt</h1>
+    <div class="hero-line"></div>
+    <p class="hero-sub">砂漠に眠る、永遠の文明</p>
+  </div>
 </section>
 <div class="content">
-<div class="intro fade-in">4500年の時を超えて立ち続けるピラミッド、ナイル川が育んだ古代文明の遺産。エジプトは人類史上最も謎に満ちた国のひとつ。砂漠の熱気と夜空の星が、旅人を太古の世界へと誘う。</div>
-<div class="info-bar fade-in">
-<span class="info-chip">🌞 ベストシーズン：10〜4月</span>
-<span class="info-chip">💰 通貨：エジプトポンド</span>
-<span class="info-chip">🗣 言語：アラビア語</span>
-<span class="info-chip">🏙 首都：カイロ</span>
-<span class="info-chip">🧆 名物：コシャリ・ターメイヤ</span>
-</div>
-<div class="section-label fade-in">— BEST SPOTS —</div>
-<div class="spots-grid">
-<div class="spot-card fade-in">
-<span class="spot-icon">🔺</span>
-<h3 class="spot-name">ギザのピラミッド</h3>
-<div class="spot-loc">📍 カイロ近郊ギザ</div>
-<p class="spot-desc">4500年前に建てられた人類最大の謎。クフ王のピラミッドは高さ138m、230万個の石灰岩ブロックで構成される。砂漠の地平線に浮かぶ三角形のシルエットは時間の概念を超える。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">古代遺跡</span><span class="tag">七不思議</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🦁</span>
-<h3 class="spot-name">スフィンクス</h3>
-<div class="spot-loc">📍 ギザ高原</div>
-<p class="spot-desc">ピラミッドを守護する全長73mの巨大な石像。人間の頭とライオンの体を持つ謎の存在。その視線の先には何千年もの歴史が積み重なっている。</p>
-<div class="spot-tags"><span class="tag">古代遺跡</span><span class="tag">謎</span><span class="tag">フォトスポット</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏺</span>
-<h3 class="spot-name">ルクソール神殿</h3>
-<div class="spot-loc">📍 ルクソール</div>
-<p class="spot-desc">ナイル川沿いに立つ古代エジプト最大の神殿群。アメン神に捧げられた巨大な列柱が並ぶ。夜のライトアップは幻想的な雰囲気を醸し出す。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">神殿</span><span class="tag">夜景</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">⚱️</span>
-<h3 class="spot-name">王家の谷</h3>
-<div class="spot-loc">📍 ルクソール西岸</div>
-<p class="spot-desc">ツタンカーメンをはじめ歴代ファラオが眠る岩窟墓群。壁画に描かれた来世への旅の物語は、3000年の時を超えて鮮やかに残る。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">墓</span><span class="tag">歴史</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🌊</span>
-<h3 class="spot-name">紅海・ダハブ</h3>
-<div class="spot-loc">📍 シナイ半島</div>
-<p class="spot-desc">世界屈指のダイビングスポット。透明度抜群の海中には色鮮やかなサンゴと魚たちが広がる。「ブルーホール」は世界中のダイバーが憧れる伝説のポイント。</p>
-<div class="spot-tags"><span class="tag">ダイビング</span><span class="tag">自然</span><span class="tag">海</span></div>
-</div>
-<div class="spot-card fade-in">
-<span class="spot-icon">🏛️</span>
-<h3 class="spot-name">アブ・シンベル神殿</h3>
-<div class="spot-loc">📍 アスワン南方</div>
-<p class="spot-desc">ラムセス2世が建てた岩窟神殿。年に2回、太陽光が奥の至聖所まで差し込む「太陽祭」は古代エジプト人の天文知識の高さを証明する。</p>
-<div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">神殿</span><span class="tag">絶景</span></div>
-</div>
-</div>
-<div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
+  <div class="intro-card fade-in">4500年の時を超えて立ち続けるピラミッド、ナイル川が育んだ古代文明の遺産。エジプトは人類史上最も謎に満ちた国のひとつ。砂漠の熱気と夜空の星が、旅人を太古の世界へと誘う。</div>
+  <div class="info-bar fade-in">
+    <span class="info-chip">🌞 ベストシーズン：10〜4月</span>
+    <span class="info-chip">💰 通貨：エジプトポンド</span>
+    <span class="info-chip">🗣 言語：アラビア語</span>
+    <span class="info-chip">🏙 首都：カイロ</span>
+    <span class="info-chip">🧆 名物：コシャリ・ターメイヤ</span>
+  </div>
+  <div class="hieroglyph-divider">𓂀 𓃭 𓆣</div>
+  <div class="section-label">— BEST SPOTS —</div>
+  <div class="spots-grid">
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🔺 ギザのピラミッド</div>
+        <div class="spot-loc">📍 カイロ近郊ギザ</div>
+        <p class="spot-desc">4500年前に建てられた人類最大の謎。クフ王のピラミッドは高さ138m、230万個の石灰岩ブロックで構成される。砂漠の地平線に浮かぶ三角形のシルエットは時間の概念を超える。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">古代遺跡</span><span class="tag">七不思議</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🦁 スフィンクス</div>
+        <div class="spot-loc">📍 ギザ高原</div>
+        <p class="spot-desc">ピラミッドを守護する全長73mの巨大な石像。人間の頭とライオンの体を持つ謎の存在。その視線の先には何千年もの歴史が積み重なっている。</p>
+        <div class="spot-tags"><span class="tag">古代遺跡</span><span class="tag">謎</span><span class="tag">フォトスポット</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🏺 ルクソール神殿</div>
+        <div class="spot-loc">📍 ルクソール</div>
+        <p class="spot-desc">ナイル川沿いに立つ古代エジプト最大の神殿群。アメン神に捧げられた巨大な列柱が並ぶ。夜のライトアップは幻想的な雰囲気を醸し出す。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">神殿</span><span class="tag">夜景</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">⚱️ 王家の谷</div>
+        <div class="spot-loc">📍 ルクソール西岸</div>
+        <p class="spot-desc">ツタンカーメンをはじめ歴代ファラオが眠る岩窟墓群。壁画に描かれた来世への旅の物語は、3000年の時を超えて鮮やかに残る。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">墓</span><span class="tag">歴史</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🌊 紅海・ダハブ</div>
+        <div class="spot-loc">📍 シナイ半島</div>
+        <p class="spot-desc">世界屈指のダイビングスポット。透明度抜群の海中には色鮮やかなサンゴと魚たちが広がる。「ブルーホール」は世界中のダイバーが憧れる伝説のポイント。</p>
+        <div class="spot-tags"><span class="tag">ダイビング</span><span class="tag">自然</span><span class="tag">海</span></div>
+      </div>
+    </div>
+    <div class="spot-card fade-in">
+      <div class="spot-body">
+        <div class="spot-icon-name">🏛️ アブ・シンベル神殿</div>
+        <div class="spot-loc">📍 アスワン南方</div>
+        <p class="spot-desc">ラムセス2世が建てた岩窟神殿。年に2回、太陽光が奥の至聖所まで差し込む「太陽祭」は古代エジプト人の天文知識の高さを証明する。</p>
+        <div class="spot-tags"><span class="tag">世界遺産</span><span class="tag">神殿</span><span class="tag">絶景</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="back-top"><a href="index.html">← 国一覧に戻る</a></div>
 </div>
 <footer>© 2026 WORLD TRAVEL GUIDE</footer>
 <script>
