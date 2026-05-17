@@ -10,20 +10,19 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(240, 147, 251, 0.7) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #fff;
   text-align: center;
-  padding: 8rem 2rem;
+  padding: 10rem 2rem;
   position: relative;
   overflow: hidden;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero::before {
@@ -33,8 +32,8 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(255,255,255,.05) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(255,255,255,.1) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -43,40 +42,53 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
+  animation: slideUp .8s ease-out;
 }
 
-.hero-icons {
-  font-size: 4rem;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.plane-icon {
+  font-size: 5rem;
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  animation: planeFly 6s ease-in-out infinite;
+  display: inline-block;
 }
 
-.icon-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.icon-float:nth-child(1) { animation-delay: 0s; }
-.icon-float:nth-child(2) { animation-delay: .5s; }
-.icon-float:nth-child(3) { animation-delay: 1s; }
-.icon-float:nth-child(4) { animation-delay: 1.5s; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+@keyframes planeFly {
+  0% {
+    transform: translateX(-100px) translateY(0) rotate(-5deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100px) translateY(-30px) rotate(5deg);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(0) rotate(-5deg);
+    opacity: 0;
+  }
 }
 
 .hero h1 {
   font-size: clamp(2.5rem, 7vw, 4rem);
   font-weight: 900;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #fff 0%, #ffd700 50%, #fff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 30px rgba(255,255,255,.3);
+  text-shadow: 3px 3px 6px rgba(0,0,0,.4);
+  line-height: 1.2;
 }
 
 .hero p {
@@ -84,6 +96,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   margin-bottom: 2.5rem;
   color: rgba(255,255,255,.95);
   letter-spacing: .05em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.3);
 }
 
 .hero-buttons {
@@ -130,7 +143,8 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 
 .hero-sub {
   font-size: .95rem;
-  color: rgba(255,255,255,.7);
+  color: rgba(255,255,255,.8);
+  text-shadow: 1px 1px 3px rgba(0,0,0,.3);
 }
 
 /* ===== STATS BAR ===== */
@@ -189,22 +203,8 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 }
 
 .country-card:hover {
-  transform: scale(1.08) rotateY(5deg);
+  transform: translateY(-12px) scale(1.05);
   box-shadow: 0 20px 50px rgba(102, 126, 234, .3);
-}
-
-.card-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #ffd700;
-  color: #111;
-  padding: .5rem 1rem;
-  border-radius: 50px;
-  font-size: .75rem;
-  font-weight: 700;
-  z-index: 10;
-  letter-spacing: .05em;
 }
 
 .card-img-wrap { overflow: hidden; }
@@ -282,11 +282,12 @@ footer {
   .stat { padding: 1rem 1.5rem; }
   .country-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
   .card-img { height: 130px; }
-  .hero { padding: 5rem 2rem; }
+  .hero { padding: 5rem 2rem; min-height: auto; }
   .hero h1 { font-size: 2rem; }
   .hero p { font-size: 1rem; }
   .hero-buttons { flex-direction: column; }
   .btn { width: 100%; }
+  .plane-icon { font-size: 3rem; }
 }
 </style>
 </head>
@@ -295,19 +296,14 @@ footer {
 <!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-icons">
-      <span class="icon-float">🏔️</span>
-      <span class="icon-float">🏖️</span>
-      <span class="icon-float">🏛️</span>
-      <span class="icon-float">🌅</span>
-    </div>
-    <h1>世界の絶景へ<br>あなたの冒険が始まる</h1>
-    <p>8カ国・48スポットで、人生最高の思い出を作ろう</p>
+    <div class="plane-icon">✈️</div>
+    <h1>世界の絶景へ<br>わくわくの冒険が始まる</h1>
+    <p>雲の上から見える世界。その絶景があなたを待っている。</p>
     <div class="hero-buttons">
       <a href="#countries" class="btn btn-primary">✈️ 旅を始める</a>
       <a href="#countries" class="btn btn-secondary">詳しく見る</a>
     </div>
-    <p class="hero-sub">最高の旅の相棒になります</p>
+    <p class="hero-sub">8カ国・48スポットの絶景ガイド</p>
   </div>
 </section>
 
@@ -329,7 +325,6 @@ footer {
   <div class="country-grid">
 
     <a href="japan.html" class="country-card">
-      <div class="card-badge">🔥 POPULAR</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="日本" loading="lazy">
       </div>
@@ -342,7 +337,6 @@ footer {
     </a>
 
     <a href="italy.html" class="country-card">
-      <div class="card-badge">✨ ROMANTIC</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&q=80" alt="イタリア" loading="lazy">
       </div>
@@ -355,7 +349,6 @@ footer {
     </a>
 
     <a href="egypt.html" class="country-card">
-      <div class="card-badge">🏛️ HISTORIC</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80" alt="エジプト" loading="lazy">
       </div>
@@ -368,7 +361,6 @@ footer {
     </a>
 
     <a href="brazil.html" class="country-card">
-      <div class="card-badge">🌿 NATURE</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80" alt="ブラジル" loading="lazy">
       </div>
@@ -381,7 +373,6 @@ footer {
     </a>
 
     <a href="india.html" class="country-card">
-      <div class="card-badge">🎨 COLORFUL</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="インド" loading="lazy">
       </div>
@@ -394,7 +385,6 @@ footer {
     </a>
 
     <a href="usa.html" class="country-card">
-      <div class="card-badge">🏞️ SCENIC</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="アメリカ" loading="lazy">
       </div>
@@ -407,7 +397,6 @@ footer {
     </a>
 
     <a href="france.html" class="country-card">
-      <div class="card-badge">🍷 ELEGANT</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="フランス" loading="lazy">
       </div>
@@ -420,7 +409,6 @@ footer {
     </a>
 
     <a href="australia.html" class="country-card">
-      <div class="card-badge">🦘 UNIQUE</div>
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="オーストラリア" loading="lazy">
       </div>
