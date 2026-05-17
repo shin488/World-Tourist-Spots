@@ -140,6 +140,138 @@ footer {
   <div class="stat"><div class="stat-num">∞</div><div class="stat-label">MEMORIES</div></div>
 </div>
 
+/* ===== HEADER ===== */
+.site-header {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 3rem 2rem 2.5rem;
+}
+.site-header .eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+  font-size: .75rem;
+  letter-spacing: .3em;
+  padding: .35rem 1.1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+}
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+.site-header h1 span { color: #FFD700; }
+.site-header p {
+  font-size: 1rem;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .05em;
+}
+
+/* ===== STATS BAR ===== */
+.stats {
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.stat {
+  padding: 1.2rem 3rem;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-size: 1.8rem; font-weight: 800; color: #FFD700; }
+.stat-label { font-size: .72rem; letter-spacing: .15em; color: rgba(255,255,255,.4); margin-top: .2rem; }
+
+/* ===== SECTION ===== */
+.section { padding: 3.5rem 2rem 4rem; }
+.section-head { text-align: center; margin-bottom: 2.5rem; }
+.section-head .label {
+  font-size: .72rem; letter-spacing: .3em;
+  color: #e67e22; font-weight: 700; margin-bottom: .5rem;
+}
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; }
+.section-head p { color: #666; margin-top: .4rem; font-size: .95rem; }
+
+/* ===== COUNTRY GRID ===== */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.country-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  transition: transform .3s, box-shadow .3s;
+}
+.country-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+}
+.card-img-wrap { overflow: hidden; }
+.card-img {
+  width: 100%; height: 200px; object-fit: cover;
+  display: block; transition: transform .4s;
+}
+.country-card:hover .card-img { transform: scale(1.05); }
+.card-body { padding: 1.2rem 1.4rem 1.4rem; background: #fff; }
+.card-flag { font-size: 1.8rem; margin-bottom: .3rem; display: block; }
+.card-name { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+.card-sub { font-size: .82rem; color: #888; margin-bottom: .8rem; }
+.card-link {
+  font-size: .8rem; font-weight: 700;
+  color: #e67e22; letter-spacing: .05em;
+}
+
+/* ===== FEATURE STRIP ===== */
+.feature-strip {
+  background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+  color: #fff; padding: 3.5rem 2rem; text-align: center;
+}
+.feature-strip h2 { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; margin-bottom: .8rem; }
+.feature-strip p { font-size: 1rem; opacity: .9; max-width: 600px; margin: 0 auto; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #111; color: rgba(255,255,255,.4);
+  text-align: center; padding: 2.5rem;
+  font-size: .82rem; letter-spacing: .1em;
+}
+
+@media(max-width:600px) {
+  .stat { padding: 1rem 1.5rem; }
+  .country-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .card-img { height: 130px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="eyebrow">✈ WORLD TRAVEL GUIDE</div>
+  <h1>世界の<span>絶景</span>へ</h1>
+  <p>8カ国・48スポットの観光情報まとめ</p>
+</header>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label">COUNTRIES</div></div>
+  <div class="stat"><div class="stat-num">48</div><div class="stat-label">SPOTS</div></div>
+  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">MEMORIES</div></div>
+</div>
+
 <!-- COUNTRIES -->
 <section class="section" id="countries">
   <div class="section-head">
