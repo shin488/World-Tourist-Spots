@@ -10,9 +10,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.6) 0%, rgba(255, 200, 87, 0.6) 50%, rgba(100, 200, 255, 0.6) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.6) 0%, rgba(255, 200, 87, 0.6) 50%, rgba(100, 200, 255, 0.6) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80') center/cover no-repeat;
   background-attachment: fixed;
   color: #fff;
   text-align: center;
@@ -42,7 +40,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   z-index: 2;
   max-width: 800px;
   margin: 0 auto;
-  animation: slideUp .8s ease-out;
+  animation: slideUp 0.8s ease-out;
 }
 
 @keyframes slideUp {
@@ -261,9 +259,6 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   animation: bounce 2s ease-in-out infinite;
 }
 
-.card-flag:nth-child(1) { animation-delay: 0s; }
-.card-flag:nth-child(2) { animation-delay: .2s; }
-
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -388,6 +383,12 @@ footer {
   border-top: 1px solid rgba(255,255,255,.1);
 }
 
+@media(max-width:768px) {
+  .stat { padding: 1rem 1.5rem; }
+  .country-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .card-img { height: 150px; }
+}
+
 @media(max-width:600px) {
   .stat { padding: 1rem 1.5rem; }
   .country-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -400,6 +401,8 @@ footer {
   .plane-icon { font-size: 3rem; }
   .feature-strip { padding: 3rem 2rem; }
   .section { padding: 3rem 2rem; }
+  .card-name { font-size: 1.2rem; }
+  .card-sub { font-size: .85rem; }
 }
 </style>
 </head>
