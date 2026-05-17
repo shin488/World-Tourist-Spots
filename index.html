@@ -123,13 +123,6 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   color: #e67e22; letter-spacing: .05em;
   display: flex; align-items: center; gap: .3rem;
 }
-.card-badge {
-  position: absolute; top: 1rem; left: 1rem;
-  background: #FFD700; color: #111;
-  font-size: .7rem; font-weight: 700;
-  padding: .25rem .7rem; border-radius: 20px;
-  letter-spacing: .05em;
-}
 .card-symbol {
   position: absolute; top: .8rem; right: .8rem;
   font-size: 1.6rem;
@@ -152,8 +145,10 @@ footer {
 }
 
 /* ===== FADE IN ===== */
-.fade-in { opacity:0; transform:translateY(30px); transition:opacity .7s,transform .7s; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
+/* デフォルトは表示状態。スクロール外の要素だけJSでアニメーション付与 */
+.fade-in { opacity: 1; transform: translateY(0); }
+.fade-in.will-animate { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+.fade-in.will-animate.visible { opacity: 1; transform: translateY(0); }
 
 @media(max-width:600px) {
   .stat { padding: 1rem 1.5rem; }
@@ -197,6 +192,7 @@ footer {
     <a href="japan.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="日本" loading="lazy">
+        <div class="card-symbol">⛩️</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇯🇵</span>
@@ -209,6 +205,7 @@ footer {
     <a href="italy.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&q=80" alt="イタリア" loading="lazy">
+        <div class="card-symbol">🏛️</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇮🇹</span>
@@ -221,6 +218,7 @@ footer {
     <a href="egypt.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80" alt="エジプト" loading="lazy">
+        <div class="card-symbol">🔺</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇪🇬</span>
@@ -233,6 +231,7 @@ footer {
     <a href="brazil.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80" alt="ブラジル" loading="lazy">
+        <div class="card-symbol">🌿</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇧🇷</span>
@@ -245,6 +244,7 @@ footer {
     <a href="india.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="インド" loading="lazy">
+        <div class="card-symbol">🕌</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇮🇳</span>
@@ -257,6 +257,7 @@ footer {
     <a href="usa.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="アメリカ" loading="lazy">
+        <div class="card-symbol">🗽</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇺🇸</span>
@@ -269,6 +270,7 @@ footer {
     <a href="france.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="フランス" loading="lazy">
+        <div class="card-symbol">🗼</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇫🇷</span>
@@ -281,6 +283,7 @@ footer {
     <a href="australia.html" class="country-card fade-in">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="オーストラリア" loading="lazy">
+        <div class="card-symbol">🦘</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇦🇺</span>
@@ -309,10 +312,22 @@ footer {
 <footer>© 2026 WORLD TRAVEL GUIDE — Powered by Unsplash Photos</footer>
 
 <script>
+// 画面外にある要素だけフェードインアニメーションを付与
 const obs = new IntersectionObserver(e => e.forEach(x => {
-  if (x.isIntersecting) x.target.classList.add('visible');
+  if (x.isIntersecting) {
+    x.target.classList.add('visible');
+    obs.unobserve(x.target);
+  }
 }), { threshold: .1 });
-document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.fade-in').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  // 最初から画面内に見えている要素はアニメーションしない
+  if (rect.top > window.innerHeight) {
+    el.classList.add('will-animate');
+    obs.observe(el);
+  }
+});
 </script>
 </body>
 </html>
