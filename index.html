@@ -10,7 +10,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 
 /* ===== HERO SECTION ===== */
 .hero {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(240, 147, 251, 0.7) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80');
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.6) 0%, rgba(255, 200, 87, 0.6) 50%, rgba(100, 200, 255, 0.6) 100%), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -32,7 +32,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.15) 0%, transparent 50%),
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.2) 0%, transparent 50%),
               radial-gradient(circle at 80% 80%, rgba(255,255,255,.1) 0%, transparent 50%);
   pointer-events: none;
 }
@@ -61,6 +61,7 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   margin-bottom: 2rem;
   animation: planeFly 6s ease-in-out infinite;
   display: inline-block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.3));
 }
 
 @keyframes planeFly {
@@ -87,8 +88,9 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   font-size: clamp(2.5rem, 7vw, 4rem);
   font-weight: 900;
   margin-bottom: 1rem;
-  text-shadow: 3px 3px 6px rgba(0,0,0,.4);
+  text-shadow: 4px 4px 12px rgba(0,0,0,.5);
   line-height: 1.2;
+  letter-spacing: .02em;
 }
 
 .hero p {
@@ -96,7 +98,8 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   margin-bottom: 2.5rem;
   color: rgba(255,255,255,.95);
   letter-spacing: .05em;
-  text-shadow: 2px 2px 4px rgba(0,0,0,.3);
+  text-shadow: 3px 3px 6px rgba(0,0,0,.4);
+  line-height: 1.6;
 }
 
 .hero-buttons {
@@ -108,8 +111,8 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 }
 
 .btn {
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
+  padding: 1.2rem 3rem;
+  font-size: 1.05rem;
   font-weight: 700;
   border: none;
   border-radius: 50px;
@@ -118,76 +121,96 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   display: inline-block;
   transition: all .3s;
   letter-spacing: .05em;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
 }
 
 .btn-primary {
-  background: #ffd700;
-  color: #111;
+  background: linear-gradient(135deg, #FF6B35 0%, #FFC857 100%);
+  color: #fff;
 }
 
 .btn-primary:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, .4);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 107, 53, .5);
 }
 
 .btn-secondary {
-  background: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.25);
   color: #fff;
-  border: 2px solid #fff;
+  border: 2px solid rgba(255,255,255,.8);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255,255,255,.3);
-  transform: scale(1.05);
+  background: rgba(255,255,255,.35);
+  transform: scale(1.05) translateY(-2px);
+  border-color: #fff;
 }
 
 .hero-sub {
   font-size: .95rem;
-  color: rgba(255,255,255,.8);
-  text-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  color: rgba(255,255,255,.85);
+  text-shadow: 2px 2px 4px rgba(0,0,0,.3);
 }
 
 /* ===== STATS BAR ===== */
 .stats {
-  background: #1a1a1a;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
   color: #fff;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
 }
 
 .stat {
-  padding: 1.2rem 3rem;
+  padding: 1.5rem 3rem;
   text-align: center;
   border-right: 1px solid rgba(255,255,255,.1);
 }
 
 .stat:last-child { border-right: none; }
 
-.stat-num { font-size: 1.8rem; font-weight: 800; color: #ffd700; }
-
-.stat-label { font-size: .72rem; letter-spacing: .15em; color: rgba(255,255,255,.4); margin-top: .2rem; }
-
-/* ===== SECTION ===== */
-.section { padding: 3.5rem 2rem 4rem; }
-
-.section-head { text-align: center; margin-bottom: 2.5rem; }
-
-.section-head .label {
-  font-size: .72rem; letter-spacing: .3em;
-  color: #667eea; font-weight: 700; margin-bottom: .5rem;
+.stat-num { 
+  font-size: 2rem; 
+  font-weight: 800; 
+  background: linear-gradient(135deg, #FF6B35, #FFC857);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; }
+.stat-label { font-size: .75rem; letter-spacing: .2em; color: rgba(255,255,255,.5); margin-top: .3rem; }
 
-.section-head p { color: #666; margin-top: .4rem; font-size: .95rem; }
+/* ===== SECTION ===== */
+.section { padding: 4rem 2rem 5rem; }
+
+.section-head { text-align: center; margin-bottom: 3rem; }
+
+.section-head .label {
+  font-size: .75rem; 
+  letter-spacing: .3em;
+  color: #FF6B35; 
+  font-weight: 700; 
+  margin-bottom: .8rem;
+  text-transform: uppercase;
+}
+
+.section-head h2 { 
+  font-size: clamp(1.8rem, 3vw, 2.8rem); 
+  font-weight: 900;
+  color: #1a1a1a;
+  margin-bottom: .5rem;
+}
+
+.section-head p { color: #777; margin-top: .5rem; font-size: 1rem; }
 
 /* ===== COUNTRY GRID ===== */
 .country-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -197,247 +220,164 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
   color: inherit;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,.1);
-  transition: all .3s;
+  box-shadow: 0 8px 30px rgba(0,0,0,.12);
+  transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  background: #fff;
 }
 
 .country-card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 20px 50px rgba(102, 126, 234, .3);
+  transform: translateY(-16px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(255, 107, 53, .25);
 }
 
-.card-img-wrap { overflow: hidden; }
+.card-img-wrap { 
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #FF6B35, #FFC857);
+}
 
 .card-img {
-  width: 100%; height: 200px; object-fit: cover;
-  display: block; transition: transform .4s;
+  width: 100%; 
+  height: 220px; 
+  object-fit: cover;
+  display: block; 
+  transition: transform .5s;
 }
 
-.country-card:hover .card-img { transform: scale(1.1); }
+.country-card:hover .card-img { 
+  transform: scale(1.12) rotate(2deg); 
+}
 
-.card-body { padding: 1.2rem 1.4rem 1.4rem; background: #fff; }
+.card-body { 
+  padding: 1.8rem; 
+  background: #fff; 
+}
 
-.card-flag { font-size: 2rem; margin-bottom: .3rem; display: block; }
+.card-flag { 
+  font-size: 2.5rem; 
+  margin-bottom: .5rem; 
+  display: block;
+  animation: bounce 2s ease-in-out infinite;
+}
 
-.card-name { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+.card-flag:nth-child(1) { animation-delay: 0s; }
+.card-flag:nth-child(2) { animation-delay: .2s; }
 
-.card-sub { font-size: .82rem; color: #888; margin-bottom: .8rem; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.card-name { 
+  font-size: 1.4rem; 
+  font-weight: 800; 
+  margin-bottom: .3rem;
+  color: #1a1a1a;
+}
+
+.card-sub { 
+  font-size: .9rem; 
+  color: #999; 
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
 
 .card-link {
-  font-size: .8rem; font-weight: 700;
-  color: #667eea; letter-spacing: .05em;
-}
-
-/* ===== FEATURE STRIP ===== */
-.feature-strip {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #fff; padding: 3.5rem 2rem; text-align: center;
-}
-
-.feature-strip h2 { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; margin-bottom: .8rem; }
-
-.feature-strip p { font-size: 1rem; opacity: .9; max-width: 600px; margin: 0 auto; }
-
-/* ===== GALLERY SECTION ===== */
-.gallery-section {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #111;
-}
-
-.gallery-btn {
-  display: inline-block;
-  background: #ffd700;
-  color: #111;
-  font-size: 1rem;
+  font-size: .85rem; 
   font-weight: 700;
-  padding: .9rem 2.5rem;
-  border-radius: 50px;
-  text-decoration: none;
+  color: #FF6B35; 
   letter-spacing: .05em;
   transition: all .3s;
 }
 
+.country-card:hover .card-link {
+  color: #FFC857;
+  transform: translateX(5px);
+}
+
+/* ===== FEATURE STRIP ===== */
+.feature-strip {
+  background: linear-gradient(135deg, #FF6B35 0%, #FFC857 50%, #64C8FF 100%);
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
+  color: #fff; 
+  padding: 5rem 2rem; 
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.feature-strip::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.feature-strip h2 { 
+  font-size: clamp(1.8rem,3vw,2.8rem); 
+  font-weight: 900; 
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+  position: relative;
+  z-index: 2;
+}
+
+.feature-strip p { 
+  font-size: 1.1rem; 
+  opacity: .95; 
+  max-width: 700px; 
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
+}
+
+.gallery-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF6B35, #FFC857);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1.1rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  letter-spacing: .05em;
+  transition: all .3s;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, .3);
+}
+
 .gallery-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, .4);
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, .4);
 }
 
 .gallery-sub {
-  color: rgba(255,255,255,.4);
-  font-size: .8rem;
-  margin-top: .8rem;
+  color: #999;
+  font-size: .85rem;
+  margin-top: 1rem;
   letter-spacing: .1em;
 }
 
 /* ===== FOOTER ===== */
 footer {
-  background: #111; color: rgba(255,255,255,.4);
-  text-align: center; padding: 2.5rem;
-  font-size: .82rem; letter-spacing: .1em;
-}
-
-@media(max-width:600px) {
-  .stat { padding: 1rem 1.5rem; }
-  .country-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .card-img { height: 130px; }
-  .hero { padding: 5rem 2rem; min-height: auto; }
-  .hero h1 { font-size: 2rem; }
-  .hero p { font-size: 1rem; }
-  .hero-buttons { flex-direction: column; }
-  .btn { width: 100%; }
-  .plane-icon { font-size: 3rem; }
-}
-</style>
-</head>
-<body>
-
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="plane-icon">✈️</div>
-    <h1>世界の絶景へ<br>わくわくの冒険が始まる</h1>
-    <p>雲の上から見える世界。その絶景があなたを待っている。</p>
-    <div class="hero-buttons">
-      <a href="#countries" class="btn btn-primary">✈️ 旅を始める</a>
-      <a href="#countries" class="btn btn-secondary">詳しく見る</a>
-    </div>
-    <p class="hero-sub">8カ国・48スポットの絶景ガイド</p>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-num">8</div><div class="stat-label">COUNTRIES</div></div>
-  <div class="stat"><div class="stat-num">48</div><div class="stat-label">SPOTS</div></div>
-  <div class="stat"><div class="stat-num">∞</div><div class="stat-label">MEMORIES</div></div>
-</div>
-
-<!-- COUNTRIES -->
-<section class="section" id="countries">
-  <div class="section-head">
-    <div class="label">DESTINATIONS</div>
-    <h2>どの国に行きたい？</h2>
-    <p>気になる国をクリックして観光スポットをチェック</p>
-  </div>
-
-  <div class="country-grid">
-
-    <a href="japan.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="日本" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇯🇵</span>
-        <div class="card-name">日本</div>
-        <div class="card-sub">静寂と美の国 — 桜・寺社・富士山</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="italy.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&q=80" alt="イタリア" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇮🇹</span>
-        <div class="card-name">イタリア</div>
-        <div class="card-sub">永遠の都 — ローマ・ヴェネツィア</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="egypt.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80" alt="エジプト" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇪🇬</span>
-        <div class="card-name">エジプト</div>
-        <div class="card-sub">砂漠の文明 — ピラミッド・ナイル</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="brazil.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80" alt="ブラジル" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇧🇷</span>
-        <div class="card-name">ブラジル</div>
-        <div class="card-sub">地球の肺 — イグアス・アマゾン</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="india.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="インド" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇮🇳</span>
-        <div class="card-name">インド</div>
-        <div class="card-sub">色彩の大地 — タージマハル・ガンジス</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="usa.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="アメリカ" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇺🇸</span>
-        <div class="card-name">アメリカ</div>
-        <div class="card-sub">夢の超大国 — NY・グランドキャニオン</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="france.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="フランス" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇫🇷</span>
-        <div class="card-name">フランス</div>
-        <div class="card-sub">優雅と洗練 — パリ・ヴェルサイユ</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-    <a href="australia.html" class="country-card">
-      <div class="card-img-wrap">
-        <img class="card-img" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="オーストラリア" loading="lazy">
-      </div>
-      <div class="card-body">
-        <span class="card-flag">🇦🇺</span>
-        <div class="card-name">オーストラリア</div>
-        <div class="card-sub">野生の大陸 — バリアリーフ・ウルル</div>
-        <div class="card-link">詳しく見る →</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- FEATURE -->
-<div class="feature-strip">
-  <h2>✈️ あなたの次の旅はどこへ？</h2>
-  <p>世界には、まだ見ぬ絶景が待っている。さあ、旅に出よう。</p>
-</div>
-
-<!-- GALLERY SECTION -->
-<div class="gallery-section">
-  <a href="gallery.html" class="gallery-btn">
-    📸 フォトギャラリーを見る →
-  </a>
-  <p class="gallery-sub">全8カ国の絶景写真をまとめて見る</p>
-</div>
-
-<footer>© 2026 WORLD TRAVEL GUIDE — Powered by Unsplash Photos</footer>
-
-</body>
-</html>
+  background: #0*
+
