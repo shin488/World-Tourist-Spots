@@ -7,27 +7,22 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Helvetica Neue',Arial,sans-serif; background:#f8f9fa; color:#222; overflow-x:hidden; }
-
-/* ===== HEADER ===== */
 .header {
   background: linear-gradient(135deg, #FF6B35 0%, #FFC857 100%);
   color: #fff;
   padding: 3rem 2rem;
   text-align: center;
 }
-
 .header h1 {
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
-
 .header p {
   font-size: 1.05rem;
   color: rgba(255,255,255,.9);
   letter-spacing: .05em;
 }
-
 .back-btn {
   display: inline-block;
   background: rgba(255,255,255,.25);
@@ -40,24 +35,18 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#f8f9fa; color:
   transition: all .3s;
   border: 2px solid rgba(255,255,255,.8);
 }
-
 .back-btn:hover {
   background: rgba(255,255,255,.35);
   transform: translateY(-2px);
 }
-
-/* ===== GALLERY CONTAINER ===== */
 .gallery-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 2rem;
 }
-
-/* ===== COUNTRY SECTION ===== */
 .country-section {
   margin-bottom: 5rem;
 }
-
 .country-title {
   display: flex;
   align-items: center;
@@ -66,24 +55,19 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#f8f9fa; color:
   padding-bottom: 1rem;
   border-bottom: 3px solid #FF6B35;
 }
-
 .country-title h2 {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   color: #1a1a1a;
   font-weight: 900;
 }
-
 .country-title .emoji {
   font-size: 2.5rem;
 }
-
-/* ===== PHOTO GRID ===== */
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-
 .photo-card {
   border-radius: 15px;
   overflow: hidden;
@@ -92,12 +76,10 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#f8f9fa; color:
   cursor: pointer;
   background: #fff;
 }
-
 .photo-card:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 20px 50px rgba(255, 107, 53, .25);
 }
-
 .photo-card img {
   width: 100%;
   height: 250px;
@@ -105,30 +87,24 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#f8f9fa; color:
   display: block;
   transition: transform .5s;
 }
-
 .photo-card:hover img {
   transform: scale(1.08);
 }
-
 .photo-info {
   padding: 1.2rem;
   background: #fff;
 }
-
 .photo-info h3 {
   font-size: 1rem;
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: .4rem;
 }
-
 .photo-info p {
   font-size: .85rem;
   color: #777;
   line-height: 1.5;
 }
-
-/* ===== FOOTER ===== */
 footer {
   background: #0a0a0a;
   color: rgba(255,255,255,.4);
@@ -139,13 +115,11 @@ footer {
   margin-top: 3rem;
   border-top: 1px solid rgba(255,255,255,.1);
 }
-
 @media(max-width:768px) {
   .photo-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .header { padding: 2rem 1rem; }
   .country-title h2 { font-size: 1.4rem; }
 }
-
 @media(max-width:600px) {
   .photo-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   .photo-card img { height: 180px; }
@@ -155,17 +129,12 @@ footer {
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
 <div class="header">
   <h1>📸 フォトギャラリー</h1>
   <p>全8カ国の絶景写真をまとめて見る</p>
   <a href="index.html" class="back-btn">← トップに戻る</a>
 </div>
-
-<!-- GALLERY CONTAINER -->
 <div class="gallery-container">
-
   <!-- JAPAN -->
   <div class="country-section">
     <div class="country-title">
@@ -174,10 +143,10 @@ footer {
     </div>
     <div class="photo-grid">
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1522383750817-78dd2dcfe5d1?w=600&q=80" alt="桜">
+        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=600&q=80" alt="伏見稲荷">
         <div class="photo-info">
-          <h3>春の桜景色</h3>
-          <p>日本の春を代表する美しい桜。歴史と自然が融合した風景。</p>
+          <h3>伏見稲荷大社</h3>
+          <p>千本鳥居が続く京都のシンボル。鮮やかな朱色が印象的。</p>
         </div>
       </div>
       <div class="photo-card">
@@ -188,7 +157,7 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1540959375944-7049f642e9d1?w=600&q=80" alt="京都寺院">
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80" alt="京都寺院">
         <div class="photo-info">
           <h3>古都の寺院</h3>
           <p>京都の古い寺院。日本文化の深い歴史を感じさせる。</p>
@@ -196,7 +165,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- ITALY -->
   <div class="country-section">
     <div class="country-title">
@@ -212,14 +180,14 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1552832860-cfaf22038e37?w=600&q=80" alt="ローマの遺跡">
+        <img src="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=600&q=80" alt="ローマ">
         <div class="photo-info">
           <h3>永遠の都ローマ</h3>
           <p>歴史的建造物が立ち並ぶローマ。古代文明の魅力。</p>
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1513326540049-18c008b01666?w=600&q=80" alt="コロッセオ">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="コロッセオ">
         <div class="photo-info">
           <h3>コロッセオ</h3>
           <p>古代ローマの象徴。壮大な円形劇場の遺跡。</p>
@@ -227,7 +195,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- EGYPT -->
   <div class="country-section">
     <div class="country-title">
@@ -243,10 +210,10 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1597899344641-503395e31b31?w=600&q=80" alt="ナイル川">
+        <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=600&q=80" alt="砂漠">
         <div class="photo-info">
-          <h3>ナイル川の風景</h3>
-          <p>エジプト文明を育んだナイル川。歴史の流れを感じる。</p>
+          <h3>砂漠のキャラバン</h3>
+          <p>広がる砂漠とラクダ。エジプトの風土を感じる。</p>
         </div>
       </div>
       <div class="photo-card">
@@ -258,7 +225,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- BRAZIL -->
   <div class="country-section">
     <div class="country-title">
@@ -289,7 +255,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- INDIA -->
   <div class="country-section">
     <div class="country-title">
@@ -305,14 +270,14 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1599659810694-b5ac4dd37e66?w=600&q=80" alt="ガンジス川">
+        <img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=600&q=80" alt="ガンジス川">
         <div class="photo-info">
           <h3>聖なるガンジス川</h3>
           <p>インドの文化と信仰の中心。色彩に満ちた風景。</p>
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1548013146-72f652fcf592?w=600&q=80" alt="インド宮殿">
+        <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80" alt="インド宮殿">
         <div class="photo-info">
           <h3>インドの宮殿</h3>
           <p>カラフルで豪華な建築。インドの芸術と文化。</p>
@@ -320,7 +285,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- USA -->
   <div class="country-section">
     <div class="country-title">
@@ -336,14 +300,14 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&q=80" alt="ニューヨークスカイライン">
+        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&q=80" alt="ニューヨーク">
         <div class="photo-info">
           <h3>ニューヨークの街</h3>
           <p>高層ビルと夜景。不夜城の魅力。</p>
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="ヨセミテ国立公園">
+        <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=600&q=80" alt="ヨセミテ">
         <div class="photo-info">
           <h3>ヨセミテ国立公園</h3>
           <p>美しい渓谷と滝。自然愛好家の天国。</p>
@@ -351,7 +315,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- FRANCE -->
   <div class="country-section">
     <div class="country-title">
@@ -367,14 +330,14 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1550084132-8d0e632de954?w=600&q=80" alt="ルーヴル美術館">
+        <img src="https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?w=600&q=80" alt="ルーヴル">
         <div class="photo-info">
           <h3>ルーヴル美術館</h3>
           <p>世界最大級の美術館。芸術の殿堂。</p>
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1523730895917-c6695c7fbf70?w=600&q=80" alt="ラベンダー畑">
+        <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=600&q=80" alt="ラベンダー畑">
         <div class="photo-info">
           <h3>プロヴァンスの風景</h3>
           <p>紫のラベンダー畑。南フランスの優雅さ。</p>
@@ -382,7 +345,6 @@ footer {
       </div>
     </div>
   </div>
-
   <!-- AUSTRALIA -->
   <div class="country-section">
     <div class="country-title">
@@ -398,7 +360,7 @@ footer {
         </div>
       </div>
       <div class="photo-card">
-        <img src="https://images.unsplash.com/photo-1523382323913-bd8af9fbf468?w=600&q=80" alt="エアーズロック">
+        <img src="https://images.unsplash.com/photo-1528072164453-f4e8ef0d475a?w=600&q=80" alt="エアーズロック">
         <div class="photo-info">
           <h3>エアーズロック</h3>
           <p>赤い大地に聳える岩。先住民文化の聖地。</p>
@@ -413,10 +375,7 @@ footer {
       </div>
     </div>
   </div>
-
 </div>
-
 <footer>© 2026 WORLD TRAVEL GUIDE — Powered by Unsplash Photos</footer>
-
 </body>
 </html>
