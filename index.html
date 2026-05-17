@@ -8,112 +8,91 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#222; overflow-x:hidden; }
 
-/* ===== HERO ===== */
-.hero {
-  height: 100vh;
-  position: relative;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+/* ===== HEADER ===== */
+.site-header {
+  background: #111;
+  color: #fff;
   text-align: center;
-  overflow: hidden;
+  padding: 3rem 2rem 2.5rem;
 }
-.hero-bg {
-  position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80') center/cover no-repeat;
-}
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.8) 100%);
-}
-.hero-content { position: relative; z-index: 1; padding: 0 1rem; }
-.hero-eyebrow {
+.site-header .eyebrow {
   display: inline-block;
-  background: rgba(255,255,255,.15);
-  border: 1px solid rgba(255,255,255,.4);
-  backdrop-filter: blur(8px);
-  color: #fff; font-size: .8rem;
-  letter-spacing: .3em; padding: .4rem 1.2rem;
-  border-radius: 20px; margin-bottom: 1.5rem;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+  font-size: .75rem;
+  letter-spacing: .3em;
+  padding: .35rem 1.1rem;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
 }
-.hero h1 {
-  font-size: clamp(3rem, 8vw, 7rem);
-  color: #fff; font-weight: 800;
-  line-height: 1.05;
-  text-shadow: 0 4px 30px rgba(0,0,0,.4);
-  margin-bottom: 1rem;
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: .6rem;
 }
-.hero h1 span { color: #FFD700; }
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  color: rgba(255,255,255,.85);
-  letter-spacing: .05em; margin-bottom: 2.5rem;
+.site-header h1 span { color: #FFD700; }
+.site-header p {
+  font-size: 1rem;
+  color: rgba(255,255,255,.6);
+  letter-spacing: .05em;
 }
-.hero-btn {
-  display: inline-block;
-  background: #FFD700; color: #111;
-  font-size: 1rem; font-weight: 700;
-  padding: .9rem 2.5rem; border-radius: 50px;
-  text-decoration: none;
-  transition: transform .2s, box-shadow .2s;
-  box-shadow: 0 4px 20px rgba(255,215,0,.5);
-}
-.hero-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,215,0,.6); }
-
-.hero-scroll {
-  position: absolute; bottom: 2rem; left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255,255,255,.6); font-size: .75rem;
-  letter-spacing: .2em; z-index: 1;
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(6px);} }
 
 /* ===== STATS BAR ===== */
 .stats {
-  background: #111; color: #fff;
-  display: flex; justify-content: center;
-  flex-wrap: wrap; gap: 0;
+  background: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .stat {
-  padding: 1.5rem 3rem;
+  padding: 1.2rem 3rem;
   text-align: center;
   border-right: 1px solid rgba(255,255,255,.1);
 }
 .stat:last-child { border-right: none; }
-.stat-num { font-size: 2rem; font-weight: 800; color: #FFD700; }
-.stat-label { font-size: .75rem; letter-spacing: .15em; color: rgba(255,255,255,.5); margin-top: .2rem; }
+.stat-num { font-size: 1.8rem; font-weight: 800; color: #FFD700; }
+.stat-label { font-size: .72rem; letter-spacing: .15em; color: rgba(255,255,255,.4); margin-top: .2rem; }
 
 /* ===== SECTION ===== */
-.section { padding: 5rem 2rem; }
-.section-head { text-align: center; margin-bottom: 3rem; }
+.section { padding: 3.5rem 2rem 4rem; }
+.section-head { text-align: center; margin-bottom: 2.5rem; }
 .section-head .label {
-  font-size: .75rem; letter-spacing: .3em;
+  font-size: .72rem; letter-spacing: .3em;
   color: #e67e22; font-weight: 700; margin-bottom: .5rem;
 }
-.section-head h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; }
-.section-head p { color: #666; margin-top: .5rem; font-size: 1rem; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; }
+.section-head p { color: #666; margin-top: .4rem; font-size: .95rem; }
 
 /* ===== COUNTRY GRID ===== */
 .country-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  max-width: 1200px; margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .country-card {
-  display: block; text-decoration: none; color: inherit;
-  border-radius: 20px; overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20px;
+  overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,.1);
   transition: transform .3s, box-shadow .3s;
-  position: relative;
 }
-.country-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,.18); }
+.country-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.18);
+}
+.card-img-wrap { overflow: hidden; }
 .card-img {
   width: 100%; height: 200px; object-fit: cover;
   display: block; transition: transform .4s;
 }
 .country-card:hover .card-img { transform: scale(1.05); }
-.card-img-wrap { overflow: hidden; position: relative; }
 .card-body { padding: 1.2rem 1.4rem 1.4rem; background: #fff; }
 .card-flag { font-size: 1.8rem; margin-bottom: .3rem; display: block; }
 .card-name { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
@@ -121,21 +100,15 @@ body { font-family:'Helvetica Neue',Arial,sans-serif; background:#fff; color:#22
 .card-link {
   font-size: .8rem; font-weight: 700;
   color: #e67e22; letter-spacing: .05em;
-  display: flex; align-items: center; gap: .3rem;
-}
-.card-symbol {
-  position: absolute; top: .8rem; right: .8rem;
-  font-size: 1.6rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.4));
 }
 
 /* ===== FEATURE STRIP ===== */
 .feature-strip {
   background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-  color: #fff; padding: 4rem 2rem; text-align: center;
+  color: #fff; padding: 3.5rem 2rem; text-align: center;
 }
-.feature-strip h2 { font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; margin-bottom: 1rem; }
-.feature-strip p { font-size: 1.05rem; opacity: .9; max-width: 600px; margin: 0 auto; }
+.feature-strip h2 { font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 800; margin-bottom: .8rem; }
+.feature-strip p { font-size: 1rem; opacity: .9; max-width: 600px; margin: 0 auto; }
 
 /* ===== FOOTER ===== */
 footer {
@@ -143,12 +116,6 @@ footer {
   text-align: center; padding: 2.5rem;
   font-size: .82rem; letter-spacing: .1em;
 }
-
-/* ===== FADE IN ===== */
-/* デフォルトは表示状態。スクロール外の要素だけJSでアニメーション付与 */
-.fade-in { opacity: 1; transform: translateY(0); }
-.fade-in.will-animate { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
-.fade-in.will-animate.visible { opacity: 1; transform: translateY(0); }
 
 @media(max-width:600px) {
   .stat { padding: 1rem 1.5rem; }
@@ -159,18 +126,12 @@ footer {
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">✈ WORLD TRAVEL GUIDE</div>
-    <h1>世界の<span>絶景</span>へ</h1>
-    <p class="hero-sub">8カ国・48スポットの観光情報まとめ</p>
-    <a href="#countries" class="hero-btn">国を選ぶ →</a>
-  </div>
-  <div class="hero-scroll">▼ SCROLL</div>
-</section>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="eyebrow">✈ WORLD TRAVEL GUIDE</div>
+  <h1>世界の<span>絶景</span>へ</h1>
+  <p>8カ国・48スポットの観光情報まとめ</p>
+</header>
 
 <!-- STATS -->
 <div class="stats">
@@ -181,7 +142,7 @@ footer {
 
 <!-- COUNTRIES -->
 <section class="section" id="countries">
-  <div class="section-head fade-in">
+  <div class="section-head">
     <div class="label">DESTINATIONS</div>
     <h2>どの国に行きたい？</h2>
     <p>気になる国をクリックして観光スポットをチェック</p>
@@ -189,10 +150,9 @@ footer {
 
   <div class="country-grid">
 
-    <a href="japan.html" class="country-card fade-in">
+    <a href="japan.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="日本" loading="lazy">
-        <div class="card-symbol">⛩️</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇯🇵</span>
@@ -202,10 +162,9 @@ footer {
       </div>
     </a>
 
-    <a href="italy.html" class="country-card fade-in">
+    <a href="italy.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&q=80" alt="イタリア" loading="lazy">
-        <div class="card-symbol">🏛️</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇮🇹</span>
@@ -215,10 +174,9 @@ footer {
       </div>
     </a>
 
-    <a href="egypt.html" class="country-card fade-in">
+    <a href="egypt.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1539768942893-daf53e448371?w=600&q=80" alt="エジプト" loading="lazy">
-        <div class="card-symbol">🔺</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇪🇬</span>
@@ -228,10 +186,9 @@ footer {
       </div>
     </a>
 
-    <a href="brazil.html" class="country-card fade-in">
+    <a href="brazil.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80" alt="ブラジル" loading="lazy">
-        <div class="card-symbol">🌿</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇧🇷</span>
@@ -241,10 +198,9 @@ footer {
       </div>
     </a>
 
-    <a href="india.html" class="country-card fade-in">
+    <a href="india.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="インド" loading="lazy">
-        <div class="card-symbol">🕌</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇮🇳</span>
@@ -254,10 +210,9 @@ footer {
       </div>
     </a>
 
-    <a href="usa.html" class="country-card fade-in">
+    <a href="usa.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&q=80" alt="アメリカ" loading="lazy">
-        <div class="card-symbol">🗽</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇺🇸</span>
@@ -267,10 +222,9 @@ footer {
       </div>
     </a>
 
-    <a href="france.html" class="country-card fade-in">
+    <a href="france.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80" alt="フランス" loading="lazy">
-        <div class="card-symbol">🗼</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇫🇷</span>
@@ -280,10 +234,9 @@ footer {
       </div>
     </a>
 
-    <a href="australia.html" class="country-card fade-in">
+    <a href="australia.html" class="country-card">
       <div class="card-img-wrap">
         <img class="card-img" src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=80" alt="オーストラリア" loading="lazy">
-        <div class="card-symbol">🦘</div>
       </div>
       <div class="card-body">
         <span class="card-flag">🇦🇺</span>
@@ -297,7 +250,7 @@ footer {
 </section>
 
 <!-- FEATURE -->
-<div class="feature-strip fade-in">
+<div class="feature-strip">
   <h2>✈ あなたの次の旅はどこへ？</h2>
   <p>世界には、まだ見ぬ絶景が待っている。さあ、旅に出よう。</p>
 </div>
@@ -311,23 +264,5 @@ footer {
 
 <footer>© 2026 WORLD TRAVEL GUIDE — Powered by Unsplash Photos</footer>
 
-<script>
-// 画面外にある要素だけフェードインアニメーションを付与
-const obs = new IntersectionObserver(e => e.forEach(x => {
-  if (x.isIntersecting) {
-    x.target.classList.add('visible');
-    obs.unobserve(x.target);
-  }
-}), { threshold: .1 });
-
-document.querySelectorAll('.fade-in').forEach(el => {
-  const rect = el.getBoundingClientRect();
-  // 最初から画面内に見えている要素はアニメーションしない
-  if (rect.top > window.innerHeight) {
-    el.classList.add('will-animate');
-    obs.observe(el);
-  }
-});
-</script>
 </body>
 </html>
